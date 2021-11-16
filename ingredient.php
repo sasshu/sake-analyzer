@@ -29,7 +29,7 @@
         </div>
       </div>
       <?php include("component/search_option.php"); ?>
-      <div class="form-execute"><input type="submit" class="btn query-btn" value="この条件で検索" onclick="return checkProp();"></div>     <!-- 検索ボタン -->
+      <div class="form-execute"><input type="submit" class="btn query-btn" value="この条件で検索" onclick="return checkIng();"></div>     <!-- 検索ボタン -->
       <form class="others" action="" method="post">
         <div class="initialize"><input type="submit" class="btn init-btn" name="init" value="検索条件を初期化"></div>      <!-- 初期化ボタン -->
       </form>
@@ -62,6 +62,7 @@
             ?s a sk-eval:Sake ;
                schema:material ?ingredient .
                <?php ing($ing); ?>
+               <?php addiCon(); ?>
           }
       }
       order by desc(?count)

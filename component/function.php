@@ -25,6 +25,21 @@ function checkProp() {
   return true;
 }
 
+function checkIng() {
+  let ing = document.getElementsByName('ingredient');
+  let count = 0;
+  for (var i = 0; i < ing.length; i++) {
+    if (!ing[i].checked) {
+      count++;
+    }
+    if (count == ing.length) {
+      alert('基本条件（原料）が選択されていません。');
+      return false;
+    }
+  }
+  return true;
+}
+
 function Switch(checks) {      // 絞り込みコンテンツの表示切り替え
   let drop = '';
   let hide = document.getElementsByName(checks.name);     // checks.name = '()-target[]'
@@ -132,23 +147,29 @@ function ing($target) {
       echo '{?ingredient a sk-prep:Rice}'."\n";
       echo 'union{?ingredient a sk-prep:KojiRice}'."\n";
       echo 'union{?ingredient a sk-prep:KakeRice}'."\n";
-      echo '?ingredient schema:name ?ing'."\n";
+      echo '?ingredient schema:name ?ing.'."\n";
       break;
     case 'yeast':
-      // code...
+      echo '?ingredient a sk-prep:Yeast;'."\n";
+      echo '            schema:manufacturer ?yeast_maker;'."\n";
+      echo '            schema:name ?ing.'."\n";
+      echo "filter(?ing != 'きょうかい酵母')"."\n";
       break;
     case 'koji':
-      // code...
+      echo '?ingredient a sk-prep:SeedKoji;'."\n";
+      echo '            schema:brand / schema:name ?ing.'."\n";
       break;
     case 'water':
-      // code...
+      echo '?ingredient a sk-prep:Water;'."\n";
+      echo '            schema:category ?water_type.'."\n";
+      echo 'bind(substr(str(?water_type), 28) as ?ing)'."\n";
       break;
     default:
       break;
   }
 }
 
-function addpCon() {      // 絞り込み条件をクエリに反映
+function addpCon() {      // 成分に対する絞り込み条件をクエリに反映
   if (isset($_POST['p-target'])) {      // 成分のとる範囲で絞り込み
     $count = 0;
     for ($i=0; $i < count($_POST['p-target']); $i++) {
@@ -164,9 +185,9 @@ function addpCon() {      // 絞り込み条件をクエリに反映
       }else if ($flt == $_POST['y-target']) {
         $ord = 'y';
       }else if ($count == 0) {
-        $ord = 'f';
+        $ord = 'fi';
       }else if ($count == 1){
-        $ord = 's';
+        $ord = 'se';
       }
       if ($flt != $_POST['x-target'] && $flt != $_POST['y-target']) {
         echo "?s sk-eval:${flt} / schema:minValue ?${ord}min;"."\n";
@@ -222,33 +243,150 @@ function addpCon() {      // 絞り込み条件をクエリに反映
   if (isset($_POST['m-target'])) {      // 製法の種類で絞り込み
     for ($i=0; $i < count($_POST['m-target']); $i++) {
       $flt = $_POST['m-target'][$i];
+      if ($flt == 'ricePolishingRate') {
+        echo '?s sk-make:ricePolishingRate / schema:value ?ricePolishingRate.'."\n";
+        if (isset($_POST["min_${flt}"])) {
+          $min = $_POST["min_${flt}"];
+        }
+        if (isset($_POST["max_${flt}"])) {
+          $max = $_POST["max_${flt}"];
+        }
+        if ($min != '') {
+          echo "filter(?ricePolishingRate >= ${min})"."\n";
+        }
+        if ($max != '') {
+          echo "filter(?ricePolishingRate <= ${max})"."\n";
+        }
+      }else {
+        if ($flt == 'fermentationMash') {
+          echo "?s sk-make:MashingTimes / schema:value ?${flt}."."\n";
+          $prefix = 'none';
+        }else if ($flt == 'fermentationStarter' || $flt == 'pressing' || $flt == 'ricePolishing' || $flt == 'kojiMaking' || $flt == 'storage') {
+          echo "?s sk-make:makingMethod ?${flt}."."\n";
+          $prefix = 'sk-make';
+        }else {
+          echo "?s schema:category ?${flt}."."\n";
+          $prefix = 'sk-eval';
+        }
+        sameFilter($flt, $flt, $prefix);
+      }
     }
-    if ($flt == 'ricePolishingRate') {
-      echo '?s sk-make:ricePolishingRate / schema:value ?ricePolishingRate.'."\n";
+  }
+}
+
+function addiCon() {      // 原料に対する絞り込み条件をクエリに反映
+  if (isset($_POST['p-target'])) {      // 成分のとる範囲で絞り込み
+    $count = 0;
+    for ($i=0; $i < count($_POST['p-target']); $i++) {
+      $flt = $_POST['p-target'][$i];
       if (isset($_POST["min_${flt}"])) {
         $min = $_POST["min_${flt}"];
       }
       if (isset($_POST["max_${flt}"])) {
         $max = $_POST["max_${flt}"];
       }
+      switch ($count) {
+        case 0:
+          $ord = 'fi';
+          break;
+        case 1:
+          $ord = 'se';
+          break;
+        case 2:
+          $ord = 'th';
+          break;
+        case 3:
+          $ord = 'fo';
+          break;
+        default:
+          break;
+      }
+      echo "?s sk-eval:${flt} / schema:minValue ?${ord}min;"."\n";
+      echo "   sk-eval:${flt} / schema:maxValue ?${ord}max."."\n";
+      echo "bind(((?${ord}min + ?${ord}max) / 2) as ?${ord}_value)"."\n";
       if ($min != '') {
-        echo "filter(?ricePolishingRate >= ${min})"."\n";
+        echo "filter(?${ord}_value >= ${min})"."\n";
       }
       if ($max != '') {
-        echo "filter(?ricePolishingRate <= ${max})"."\n";
+        echo "filter(?${ord}_value <= ${max})"."\n";
       }
-    }else {
-      if ($flt == 'fermentationMash') {
-        echo "?s sk-make:MashingTimes / schema:value ?${flt}."."\n";
-        $prefix = 'none';
-      }else if ($flt == 'fermentationStarter' || $flt == 'pressing' || $flt == 'ricePolishing' || $flt == 'kojiMaking' || $flt == 'storage') {
-        echo "?s sk-make:makingMethod ?${flt}."."\n";
-        $prefix = 'sk-make';
+      $count++;
+    }
+  }
+  if (isset($_POST['i-target'])) {      // 原料の種類で絞り込み
+    for ($i=0; $i < count($_POST['i-target']); $i++) {
+      $flt = $_POST['i-target'][$i];
+      if ($flt == $_POST['ingredient']) {
+        $item = 'ing';
       }else {
-        echo "?s schema:category ?${flt}."."\n";
-        $prefix = 'sk-eval';
+        switch ($flt) {
+          case $_POST['ingredient']:
+            $item = 'ing';
+            break;
+          case 'rice':
+            echo '?s schema:material ?rice.'."\n";
+            echo '{?rice a sk-prep:Rice.}'."\n";
+            echo 'union {?rice a sk-prep:KojiRice.}'."\n";
+            echo 'union {?rice a sk-prep:KakeRice.}'."\n";
+            echo '?rice schema:name ?rice_name.'."\n";
+            $item = 'rice_name';
+            break;
+          case 'yeast':
+            echo '?s schema:material ?yeast.'."\n";
+            echo '?yeast a sk-prep:Yeast;'."\n";
+            echo '       schema:name ?yeast_name.'."\n";
+            $item = 'yeast_name';
+            break;
+          case 'koji':
+            echo '?s schema:material ?koji.'."\n";
+            echo '?koji a sk-prep:SeedKoji;'."\n";
+            echo '      schema:brand / schema:name ?koji_brand.'."\n";
+            $item = 'koji_brand';
+            break;
+          case 'water':
+            echo '?s schema:material ?water.'."\n";
+            echo '?water a sk-prep:Water;'."\n";
+            echo '       schema:category ?type.'."\n";
+            echo 'bind(substr(str(?type), 28) as ?water_type)'."\n";
+            $item = 'water_type';
+            break;
+          default:
+            break;
+        }
       }
-      sameFilter($flt, $flt, $prefix);
+      sameFilter($flt, $item, 'none');
+    }
+  }
+  if (isset($_POST['m-target'])) {      // 製法の種類で絞り込み
+    for ($i=0; $i < count($_POST['m-target']); $i++) {
+      $flt = $_POST['m-target'][$i];
+      if ($flt == 'ricePolishingRate') {
+        echo '?s sk-make:ricePolishingRate / schema:value ?ricePolishingRate.'."\n";
+        if (isset($_POST["min_${flt}"])) {
+          $min = $_POST["min_${flt}"];
+        }
+        if (isset($_POST["max_${flt}"])) {
+          $max = $_POST["max_${flt}"];
+        }
+        if ($min != '') {
+          echo "filter(?ricePolishingRate >= ${min})"."\n";
+        }
+        if ($max != '') {
+          echo "filter(?ricePolishingRate <= ${max})"."\n";
+        }
+      }else {
+        if ($flt == 'fermentationMash') {
+          echo "?s sk-make:MashingTimes / schema:value ?${flt}."."\n";
+          $prefix = 'none';
+        }else if ($flt == 'fermentationStarter' || $flt == 'pressing' || $flt == 'ricePolishing' || $flt == 'kojiMaking' || $flt == 'storage') {
+          echo "?s sk-make:makingMethod ?${flt}."."\n";
+          $prefix = 'sk-make';
+        }else {
+          echo "?s schema:category ?${flt}."."\n";
+          $prefix = 'sk-eval';
+        }
+        sameFilter($flt, $flt, $prefix);
+      }
     }
   }
 }
