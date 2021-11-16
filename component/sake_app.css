@@ -1,0 +1,251 @@
+/* 共通 */
+* {
+	margin: 0px;
+}
+
+html {
+	overflow-y: scroll;
+	font-family: arial;
+}
+
+.container {
+	margin: 50px 100px ;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+label {
+	white-space: nowrap;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.element {
+	cursor: pointer;
+}
+
+.section-title {
+	width: 500px;
+	margin-left: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid lightgray;
+}
+
+.hide {
+	display: none;
+}
+
+.query-btn {
+	background-color: crimson;
+	border: none;
+	cursor: pointer;
+}
+
+.init-btn {
+	background-color: darkslategray;
+	border: none;
+	cursor: pointer;
+}
+
+input[type='number'] {
+	width: 50px;
+}
+
+/* 検索 */
+.form-execute {
+	text-align: center;
+}
+
+.initialize {
+	text-align: center;
+	margin: 50px 0px 30px 0px ;
+}
+
+.filtering-contents {
+	display: flex;
+	justify-content: space-between;
+	margin: 20px 0px 30px 0px;
+}
+
+.filtering-content {
+	width: 32%;
+}
+
+.filtering-target {
+	text-align: center;
+	padding: 20px;
+	border-radius: 15px;
+	background-color: lightgray;
+}
+
+.filtering-target p {
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.filter-detail {
+	text-align: center;
+	padding: 5px 0px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	background-color: darkgray;
+}
+
+.filter-detail p {
+	font-size: 15px;
+}
+
+
+header {
+  height: 65px;
+  width: 100%;
+	margin-bottom: 20px;
+  background-color: rgba(0, 128, 0, 0.8);
+}
+
+.header-left h1 {
+  padding: 10px 25px;
+	color: white;
+}
+
+.header-left {
+  float: left;
+}
+
+.header-right {
+  float: right;
+	display: flex;
+  margin-right: 25px;
+}
+
+.header-right a {
+	display: block;
+  line-height: 65px;
+  padding: 0 25px;
+  color: white;
+}
+
+.header-right li {
+	transition: all 0.5s;
+}
+
+.header-right li:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.header-right li:hover .header-right-child {
+	display: block;
+}
+
+.header-right-child {
+	display:none;
+	position:absolute;
+	background-color: rgba(0, 128, 0, 1.0);
+	padding: 0;
+	z-index: 1;
+}
+
+footer {
+	border-top: 1px solid lightgray;
+	padding: 30px 0;
+}
+
+footer p {
+	text-align: center;
+}
+
+/* index.php */
+.contents {
+	display: flex;
+}
+
+.content {
+	text-align: center;
+	margin: 0 30px;
+}
+
+#chart1 {
+	margin-top: 50px;
+}
+
+.sample-chart {
+	width: 100%;
+}
+
+.search-btn {
+  background-color: mediumseagreen;
+  margin-right: 30px;
+}
+
+.provider-btn {
+  background-color: mediumseagreen;
+}
+
+.btn-wrapper {
+	text-align: center;
+}
+
+.btn {
+  padding: 8px 24px;
+  color: white;
+  display: inline-block;
+  opacity: 0.8;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+/* property.php */
+.property-search {
+	display: flex;
+	margin: 20px 30px 30px 30px;
+}
+
+.property-search p {
+	margin-bottom: 10px;
+	font-size: 20px;
+}
+
+.x-axis {
+	width: 50%;
+	padding: 20px;
+	border-radius: 15px;
+	background-color: lightgray;
+	text-align: center;
+}
+
+.y-axis {
+	width: 50%;
+	margin-left: 80px;
+	padding: 20px;
+	border-radius: 15px;
+	background-color: lightgray;
+	text-align: center;
+}
+
+/* ingredient.php */
+.ingredient-search {
+	margin: 20px 60% 30px 20px;
+	padding: 20px;
+	border-radius: 15px;
+	background-color: lightgray;
+	text-align: center;
+}
+
+/* brewry.php */
+.brewery-query {
+	display: flex;
+
+}
+#brewery-map {
+	margin-right: 30px;
+}
