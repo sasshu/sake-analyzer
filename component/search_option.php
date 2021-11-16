@@ -67,24 +67,24 @@
         <div id="yeast" class="hide">
           <div class="filter-detail">
             <p>品種を選択してください</p>
-            <label><input class="element" type="checkbox" name="yeast[]" value="K601" <?php sCheck('yeast', 'K601'); ?>>きょうかい601号</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="K7" <?php sCheck('yeast', 'K7'); ?>>きょうかい7号</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="K701" <?php sCheck('yeast', 'K701'); ?>>きょうかい701号</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="K901" <?php sCheck('yeast', 'K901'); ?>>きょうかい901号</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="K10" <?php sCheck('yeast', 'K10'); ?>>きょうかい10号</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="K1401" <?php sCheck('yeast', 'K1401'); ?>>きょうかい1401号</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="K1701" <?php sCheck('yeast', 'K1701'); ?>>きょうかい1701号</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="K1801" <?php sCheck('yeast', 'K1801'); ?>>きょうかい1801号</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="G74" <?php sCheck('yeast', 'G74'); ?>>新潟G74</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="G74NF" <?php sCheck('yeast', 'G74NF'); ?>>新潟G74NF</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="G8" <?php sCheck('yeast', 'G8'); ?>>新潟G8</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="G9" <?php sCheck('yeast', 'G9'); ?>>新潟G9</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="G9NF" <?php sCheck('yeast', 'G9NF'); ?>>新潟G9NF</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="TR8" <?php sCheck('yeast', 'TR8'); ?>>新潟TR8</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="T812" <?php sCheck('yeast', 'T812'); ?>>新潟T812</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="K601" <?php sCheck('yeast', 'K601'); ?>>K601</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="K7" <?php sCheck('yeast', 'K7'); ?>>K7</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="K701" <?php sCheck('yeast', 'K701'); ?>>K701</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="K901" <?php sCheck('yeast', 'K901'); ?>>K901</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="K10" <?php sCheck('yeast', 'K10'); ?>>K10</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="K1401" <?php sCheck('yeast', 'K1401'); ?>>K1401</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="K1701" <?php sCheck('yeast', 'K1701'); ?>>K1701</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="K1801" <?php sCheck('yeast', 'K1801'); ?>>K1801</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="G74" <?php sCheck('yeast', 'G74'); ?>>G74</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="G74NF" <?php sCheck('yeast', 'G74NF'); ?>>G74NF</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="G8" <?php sCheck('yeast', 'G8'); ?>>G8</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="G9" <?php sCheck('yeast', 'G9'); ?>>G9</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="G9NF" <?php sCheck('yeast', 'G9NF'); ?>>G9NF</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="TR8" <?php sCheck('yeast', 'TR8'); ?>>TR8</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="T812" <?php sCheck('yeast', 'T812'); ?>>T812</label>
             <label><input class="element" type="checkbox" name="yeast[]" value="M310" <?php sCheck('yeast', 'M310'); ?>>M310</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="S3" <?php sCheck('yeast', 'S3'); ?>>新潟S3</label>
-            <label><input class="element" type="checkbox" name="yeast[]" value="S9" <?php sCheck('yeast', 'S9'); ?>>新潟S9</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="S3" <?php sCheck('yeast', 'S3'); ?>>S3</label>
+            <label><input class="element" type="checkbox" name="yeast[]" value="S9" <?php sCheck('yeast', 'S9'); ?>>S9</label>
             <label><input class="element" type="checkbox" name="yeast[]" value="広島吟醸酵母" <?php sCheck('yeast', '広島吟醸酵母'); ?>>広島吟醸酵母</label>
           </div>
         </div>
