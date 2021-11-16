@@ -1,5 +1,5 @@
 <script type="text/javascript">
-function checkProp() {
+function checkProp() {      // 成分検索の入力チェック
   let x = document.getElementsByName('x-target');
   let y = document.getElementsByName('y-target');
   let countx = 0;
@@ -25,7 +25,7 @@ function checkProp() {
   return true;
 }
 
-function checkIng() {
+function checkIng() {     // 原料検索の入力チェック
   let ing = document.getElementsByName('ingredient');
   let count = 0;
   for (var i = 0; i < ing.length; i++) {
@@ -39,6 +39,52 @@ function checkIng() {
   }
   return true;
 }
+
+function checkMan() {     // 製法検索の入力チェック
+  let man = document.getElementsByName('manufacture');
+  let count = 0;
+  for (var i = 0; i < man.length; i++) {
+    if (!man[i].checked) {
+      count++;
+    }
+    if (count == man.length) {
+      alert('基本条件（製法）が選択されていません。');
+      return false;
+    }
+  }
+  return true;
+}
+
+/*
+function checkOpt() {
+  let opt = ['p-target[]', 'i-target[]', 'm-target[]'];
+  let target = '';
+  let check = '';
+  let subcheck = '';
+  for (var i = 0; i < opt.length; i++) {
+    target = opt[i];
+    check = document.getElementsByName(target);
+    for (var j = 0; j < check.length; j++) {
+      if (target == 'i-target[]') {
+        subcheck = document.getElementsByName(check[j].value + '[]');
+        let count = 0;
+        for (var k = 0; k < subcheck.length; k++) {
+          if (!subcheck[k].checked) {
+            count++;
+          }
+          if (count == subcheck.length) {
+            alert('絞り込み条件（原料）の選択が不十分です。');
+            return false;
+          }
+        }
+      }else if (target == 'p-target[]') {
+        subcheck = document.getElementsByName('min_' + check[j].name);
+      }
+    }
+  }
+  return true;
+}
+*/
 
 function Switch(checks) {      // 絞り込みコンテンツの表示切り替え
   let drop = '';
@@ -75,7 +121,7 @@ function offNumber(drop) {      // input numberの入力削除
   drop.value = '';
 }
 
-let sel = '';
+let sel = 0;
 function offRadio(check, id) {      // ラジオボタンの選択解除
   if (sel == id) {
     let lift = document.getElementById(check.value);
@@ -141,7 +187,7 @@ function Queryjudge($attr, $xt, $yt) {
 }
 */
 
-function ing($target) {
+function ing($target) {     // 原料に対するクエリ詳細
   switch ($target) {
     case 'rice':
       echo '{?ingredient a sk-prep:Rice}'."\n";
@@ -167,6 +213,10 @@ function ing($target) {
     default:
       break;
   }
+}
+
+function man($target) {
+
 }
 
 function addpCon() {      // 成分に対する絞り込み条件をクエリに反映
@@ -389,6 +439,10 @@ function addiCon() {      // 原料に対する絞り込み条件をクエリに
       }
     }
   }
+}
+
+function addmCon() {
+  
 }
 
 function sameFilter($flt, $item, $prefix) {     // クエリの'='で表すフィルター処理

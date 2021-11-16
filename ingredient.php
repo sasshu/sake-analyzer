@@ -22,10 +22,10 @@
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（原料）</h2>
         <div class="ingredient-search">     <!-- 検索対象 = 原料 -->
-          <label><input class="element main" type="radio" name="ingredient" value="rice" onclick="offRadio(this, 'ing1')" <?php sRadio('ingredient', 'rice'); ?>>米</label>
-          <label><input class="element main" type="radio" name="ingredient" value="yeast" onclick="offRadio(this, 'ing2')" <?php sRadio('ingredient', 'yeast'); ?>>酵母</label>
-          <label><input class="element main" type="radio" name="ingredient" value="koji" onclick="offRadio(this, 'ing3')" <?php sRadio('ingredient', 'koji'); ?>>麹</label>
-          <label><input class="element main" type="radio" name="ingredient" value="water" onclick="offRadio(this, 'ing4')" <?php sRadio('ingredient', 'water'); ?>>水</label>
+          <label><input class="element main" type="radio" name="ingredient" value="rice" onclick="offRadio(this, 1)" <?php sRadio('ingredient', 'rice'); ?>>米</label>
+          <label><input class="element main" type="radio" name="ingredient" value="yeast" onclick="offRadio(this, 2)" <?php sRadio('ingredient', 'yeast'); ?>>酵母</label>
+          <label><input class="element main" type="radio" name="ingredient" value="koji" onclick="offRadio(this, 3)" <?php sRadio('ingredient', 'koji'); ?>>麹</label>
+          <label><input class="element main" type="radio" name="ingredient" value="water" onclick="offRadio(this, 4)" <?php sRadio('ingredient', 'water'); ?>>水</label>
         </div>
       </div>
       <?php include("component/search_option.php"); ?>

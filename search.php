@@ -9,6 +9,11 @@
   <header>
     <?php include("component/header.html"); ?>
   </header>
+  <div class="top-wrapper">
+    <div class="container">
+      <p>成分、原料、製法それぞれについてデータを検索し、閲覧できます。</p>
+    </div>
+  </div>
   <footer>
     <p>Ⓒ新潟大学</p>
   </footer>

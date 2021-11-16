@@ -24,17 +24,17 @@
         <div class="property-search">     <!-- 検索対象 = 成分 -->
           <div class="x-axis">      <!-- x軸 -->
             <p>x軸（横方向）</p>
-            <label><input class="element main" type="radio" name="x-target" value="sakeMeterValue" onclick="offRadio(this, 'x1')" <?php sRadio('x-target', 'sakeMeterValue'); ?>>日本酒度</label>
-            <label><input class="element main" type="radio" name="x-target" value="acidRate" onclick="offRadio(this, 'x2')" <?php sRadio('x-target', 'acidRate'); ?>>酸度</label>
-            <label><input class="element main" type="radio" name="x-target" value="aminoAcidRate" onclick="offRadio(this, 'x3')" <?php sRadio('x-target', 'aminoAcidRate'); ?>>アミノ酸度</label>
-            <label><input class="element main" type="radio" name="x-target" value="alcoholContent" onclick="offRadio(this, 'x4')" <?php sRadio('x-target', 'alcoholContent'); ?>>アルコール度</label>
+            <label><input class="element main" type="radio" name="x-target" value="sakeMeterValue" onclick="offRadio(this, 1)" <?php sRadio('x-target', 'sakeMeterValue'); ?>>日本酒度</label>
+            <label><input class="element main" type="radio" name="x-target" value="acidRate" onclick="offRadio(this, 2)" <?php sRadio('x-target', 'acidRate'); ?>>酸度</label>
+            <label><input class="element main" type="radio" name="x-target" value="aminoAcidRate" onclick="offRadio(this, 3)" <?php sRadio('x-target', 'aminoAcidRate'); ?>>アミノ酸度</label>
+            <label><input class="element main" type="radio" name="x-target" value="alcoholContent" onclick="offRadio(this, 4)" <?php sRadio('x-target', 'alcoholContent'); ?>>アルコール度</label>
           </div>
           <div class="y-axis">
             <p>y軸（縦方向）</p>      <!-- y軸 -->
-            <label><input class="element main" type="radio" name="y-target" value="sakeMeterValue" onclick="offRadio(this, 'y1')" <?php sRadio('y-target', 'sakeMeterValue'); ?>>日本酒度</label>
-            <label><input class="element main" type="radio" name="y-target" value="acidRate" onclick="offRadio(this, 'y2')" <?php sRadio('y-target', 'acidRate'); ?>>酸度</label>
-            <label><input class="element main" type="radio" name="y-target" value="aminoAcidRate" onclick="offRadio(this, 'y3')" <?php sRadio('y-target', 'aminoAcidRate'); ?>>アミノ酸度</label>
-            <label><input class="element main" type="radio" name="y-target" value="alcoholContent" onclick="offRadio(this, 'y4')" <?php sRadio('y-target', 'alcoholContent'); ?>>アルコール度</label>
+            <label><input class="element main" type="radio" name="y-target" value="sakeMeterValue" onclick="offRadio(this, 5)" <?php sRadio('y-target', 'sakeMeterValue'); ?>>日本酒度</label>
+            <label><input class="element main" type="radio" name="y-target" value="acidRate" onclick="offRadio(this, 6)" <?php sRadio('y-target', 'acidRate'); ?>>酸度</label>
+            <label><input class="element main" type="radio" name="y-target" value="aminoAcidRate" onclick="offRadio(this, 7)" <?php sRadio('y-target', 'aminoAcidRate'); ?>>アミノ酸度</label>
+            <label><input class="element main" type="radio" name="y-target" value="alcoholContent" onclick="offRadio(this, 8)" <?php sRadio('y-target', 'alcoholContent'); ?>>アルコール度</label>
           </div>
         </div>
       </div>
