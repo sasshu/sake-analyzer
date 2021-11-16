@@ -39,8 +39,8 @@
              schema:location / schema:longitude ?lon ;
              schema:location / schema:address / schema:addressRegion ?a1 ;
              schema:location / schema:address / schema:addressLocality ?a2 ;
-             schema:location / schema:address / schema:streetAddress ?a3 ;
-             schema:url ?url .
+             schema:location / schema:address / schema:streetAddress ?a3 .
+          optional{?x schema:url ?url .}
           bind(concat(?a1, ?a2, ?a3) as ?address)
         }"
         data-sgvizler-chart="sgvizler.visualization.Map"
