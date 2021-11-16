@@ -11,7 +11,7 @@
   </header>
   <div class="top-wrapper">     <!-- アプリ内容の説明 -->
     <div class="container">
-      <p>日本酒の統計データを様々な角度から閲覧できますよ。</p>
+      <p>日本酒の統計データを様々な角度から閲覧できます。</p>
     </div>
   </div>
   <div class="image-wrapper">     <!-- 可視化グラフのサンプル -->
