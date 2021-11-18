@@ -42,6 +42,14 @@
         <div class="initialize"><input type="submit" class="btn init-btn" name="init" value="検索条件を初期化"></div>      <!-- 初期化ボタン -->
       </form>
     </div>
+    <?php
+    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+      $protocol = "https://".$_SERVER['HTTP_HOST'];
+    }else {
+      $protocol='http://'.$_SERVER['HTTP_HOST'];
+    }
+    echo $protocol;
+    ?>
   </form>
   <?php
   if (!isset($_POST['manufacture'])) {
