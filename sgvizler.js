@@ -2269,7 +2269,7 @@
                                 xdr = new XDomainRequest(),
                                 url = endpointURL() +
                                     "?query=" + getEncodedQuery() +
-                                    "&format=" + myEndpointOutput;
+                                    "&output=" + myEndpointOutput;
                             xdr.open("GET", url);
                             xdr.onload = function () {
                                 var data;
@@ -2289,7 +2289,7 @@
                         url: endpointURL(),
                         data: {
                             query: prefixesSPARQL() + query(),
-                            format: (myEndpointOutput === qfJSONP) ? qfJSON : myEndpointOutput
+                            output: (myEndpointOutput === qfJSONP) ? qfJSON : myEndpointOutput
                         },
                         dataType: myEndpointOutput
                     });

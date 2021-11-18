@@ -58,7 +58,7 @@
     <div class="container">
       <h1 class="section-title">検索結果</h1>
       <div id="property-query"
-      data-sgvizler-endpoint="https://www.metabridge.jp/api/sparql/G0000138mb?operation=search"
+      data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
       data-sgvizler-query="
       PREFIX schema: <http://schema.org/>
       PREFIX sk-eval: <http://www.sakevoc.jp/eval/>
