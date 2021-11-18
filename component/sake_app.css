@@ -153,12 +153,15 @@ header {
 
 footer {
 	border-top: 1px solid lightgray;
-	padding: 30px 0;
 }
 
-footer p {
-	text-align: center;
+.mit-contents {
+	line-height: 25px;
+	float: right;
+	margin: 30px 20px;
 }
+
+
 
 /* index.php */
 .contents {

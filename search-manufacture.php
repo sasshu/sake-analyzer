@@ -81,7 +81,7 @@
     </div>
   </div>
   <footer>      <!-- フッター -->
-    <p>Ⓒ新潟大学</p>
+    <?php include("component/footer.html"); ?>
   </footer>
 </body>
 </html>
