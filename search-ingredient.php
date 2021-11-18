@@ -11,6 +11,8 @@
   <?php require_once('component/function.php'); ?>
   <title>原料を検索 | SakeAnalyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
+  <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/x-icon" href="image/favicon.ico">
 </head>
 <body>
   <header>      <!-- ヘッダーの読み込み -->

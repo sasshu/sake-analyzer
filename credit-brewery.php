@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript" src="sgvizler.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>      <!-- jQueryの読み込み -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     <!-- Google Chartsの読み込み -->
+  <script type="text/javascript" src="sgvizler.js"></script>     <!-- Sgvizlerの読み込み -->
   <script type="text/javascript">
     $(document).ready(() => {sgvizler.containerDrawAll();});
     google.charts.load("current", {
@@ -12,8 +12,10 @@
       "mapsApiKey": "AIzaSyBPuJA_VtJj8SMEjZ7o_3-Wyh1CW6Mq2L8"
     })
   </script>
-  <title>データ提供元 | SakeAnalyzer</title>
-  <link rel="stylesheet" href="component/sake_app.css">
+  <title>データ提供元 | SakeAnalyzer</title>     <!-- ページタイトル -->
+  <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
+  <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/x-icon" href="image/favicon.ico">
 </head>
 <body>
   <header>
