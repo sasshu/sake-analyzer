@@ -22,7 +22,7 @@
 
     /**
      * Holds central constants.
-     * 
+     *
      * @class sgvizler.core
      */
 
@@ -629,16 +629,16 @@
     /**
      * Static class for handling functions used for drawing charts,
      * mainpulating datacharts, and what their dependencies are.
-     * 
+     *
      * Dependencies:
-     * 
+     *
      *  - sgvizler.util
-     * 
+     *
      * See also:
-     * 
+     *
      *   - sgvizler.charts, sgvizler.datatables (classes for creating new such functions)
      *   - sgvizler.loader (class for loading dependencies)
-     * 
+     *
      * @class sgvizler.registry
      * @static
      */
@@ -652,7 +652,7 @@
              * @property GVIZ
              * @type String
              * @private
-             * @final 
+             * @final
              * @since 0.6.0
              **/
             GVIZ = 'google.visualization',
@@ -662,7 +662,7 @@
              * @property DATATABLE
              * @type String
              * @private
-             * @final 
+             * @final
              * @since 0.6.0
              **/
             DATATABLE = GVIZ + '.DataTable',
@@ -672,7 +672,7 @@
              * @property GVIZ
              * @type String
              * @private
-             * @final 
+             * @final
              * @since 0.6.0
              **/
             GMAP = 'google.maps',
@@ -696,13 +696,13 @@
              * dependencies, e.g., specifies which google
              * visualization packages to load for the different
              * charts.
-             * 
+             *
              * Property legend:
-             * 
+             *
              *  - `t`: type. Values: `core`, `datatable`, `chart` (default)
              *  - `d`: dependences. Object containing functions--gviz package/js file
              *    - `i`: the function itself, as in I.
-             * 
+             *
              * @property registry
              * @type Object
              * @private
@@ -1022,8 +1022,8 @@
      *  - sgvizler.util
      *  - sgvizler.registry
      *
-     * 
-     * 
+     *
+     *
      * @class sgvizler.charts
      * @static
      */
@@ -1145,11 +1145,11 @@
 
     /**
      * Factory for creating new datatypes functions.
-     * 
+     *
      * Dependencies:
-     * 
+     *
      *  - sgvizler.registry
-     * 
+     *
      * @class sgvizler.datatables
      * @static
      */
@@ -1187,7 +1187,7 @@
     }());
 
 
-    /** 
+    /**
      * Parses a SPARQL result set, assumed to be in either W3C's
      * [XML](http://www.w3.org/TR/rdf-sparql-XMLres/) or
      * [JSON](http://www.w3.org/TR/rdf-sparql-json-res/) format, into
@@ -1195,14 +1195,14 @@
      * JSON](https://developers.google.com/chart/interactive/docs/reference#DataTable)
      * which is the JSON format that the
      * `google.visualization.DataTable` class accepts.
-     * 
+     *
      * Variable notation: xtable, xcol(s), xrow(s) -- x is 's'(parql)
      * or 'g'(oogle).
-     * 
+     *
      * Dependencies:
      *   - `sgvizler.namespace`
      *   - jQuery - for xml "browsing".
-     * 
+     *
      * @class sgvizler.parser
      * @static
      */
@@ -1241,9 +1241,9 @@
             }()),
 
 
-            /** 
-             * Converts XSD datatypes into Google JSON datatypes. 
-             * 
+            /**
+             * Converts XSD datatypes into Google JSON datatypes.
+             *
              * See also property `datatypeXSD2JS`.
              * @method getGoogleJsonDatatype
              * @private
@@ -1259,9 +1259,9 @@
             * according to the Google JSON datatype, i.e., values
             * other than strings and booleans need special
             * treatment. If the value is an URL, we "prefixify" it.
-            * 
+            *
             * See also `sgvizler.namespace.prefixify`
-            * 
+            *
             * @method getGoogleJsonValue
             * @private
             * @param {string|number|boolean} value The value from the SPARQL result set.
@@ -1457,15 +1457,15 @@
 
     /**
      * Loads dependencies for external functions.
-     * 
+     *
      * Dependencies:
-     * 
+     *
      *   - sgvizler.util
      *   - sgvizler.logger
      *   - sgvizler.registry
      *   - jQuery
      *   - google.load
-     * 
+     *
      * @class sgvizler.loader
      * @static
      */
@@ -1480,12 +1480,12 @@
             moduleGooVis = registry.GVIZ,
             moduleGooMap = registry.GMAP,
 
-            /** 
+            /**
              * Contains a list of dependency loaders: function
              * name--deferred pairs. Keeps track of dependencies which
              * have already been asked for (but possibly not been
              * loaded yet).
-             * 
+             *
              * @property loaders
              * @type Object
              * @private
@@ -1797,14 +1797,14 @@
      *   - sgvizler.defaults
      *   - jQuery
      *   - google.visualization
-     * 
-     * 
+     *
+     *
      * Example of how to use the Query class:
-     * 
+     *
      *     var sparqlQueryString = "SELECT * {?s ?p ?o} LIMIT 10",
      *         containerID = "myElementID",
      *         Q = new sgvizler.Query();
-     * 
+     *
      *     // Note that default values may be set in the sgvizler object.
      *     Q.query(sparqlQueryString)
      *         .endpointURL("http://dbpedia.org/sparql")
@@ -2269,7 +2269,7 @@
                                 xdr = new XDomainRequest(),
                                 url = endpointURL() +
                                     "?query=" + getEncodedQuery() +
-                                    "&output=" + myEndpointOutput;
+                                    "&format=" + myEndpointOutput;
                             xdr.open("GET", url);
                             xdr.onload = function () {
                                 var data;
@@ -2289,7 +2289,7 @@
                         url: endpointURL(),
                         data: {
                             query: prefixesSPARQL() + query(),
-                            output: (myEndpointOutput === qfJSONP) ? qfJSON : myEndpointOutput
+                            format: (myEndpointOutput === qfJSONP) ? qfJSON : myEndpointOutput
                         },
                         dataType: myEndpointOutput
                     });
@@ -3365,7 +3365,7 @@
 
             modSC = "sgvizler.visualization";
 
-        /** 
+        /**
          * @class sgvizler.visualization.D3ForceGraph
          * @extends sgvizler.charts.Chart
          * @constructor
@@ -3374,7 +3374,7 @@
          * @beta
          */
 
-        /** 
+        /**
          * @method draw
          * @public
          * @param {google.visualization.DataTable} data
@@ -3539,13 +3539,13 @@
             { d3: '//cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js' }
             );
 
-        /** 
+        /**
          * Make a html dt list.
          *
          * Format, 2--N columns:
          * 1. Term
          * 2--N. Definition
-         * 
+         *
          * @class sgvizler.visualization.DefList
          * @extends sgvizler.charts.Chart
          * @constructor
@@ -3553,15 +3553,15 @@
          * chart will be drawn.
          */
 
-        /** 
+        /**
          * Available options:
-         * 
+         *
          *  - 'cellSep'   :  string (can be html) to separate cells in definition columns. (default: ' ')
          *  - 'termPrefix  :  string (can be html) to prefix each term with. (default: '')
          *  - 'termPostfix :  string (can be html) to postfix each term with. (default: ':')
          *  - 'definitionPrefix  :  string (can be html) to prefix each definition with. (default: '')
          *  - 'definitionPostfix :  string (can be html) to postfix each definition with. (default: '')
-         * 
+         *
          * @method draw
          * @public
          * @param {google.visualization.DataTable} data
@@ -3787,10 +3787,10 @@
         /**
          * Make a html list, either numbered (ol) or bullets
          * (ul). Each row becomes a list item.
-         * 
+         *
          * Any number of columns in any format. Everything is
          * displayed as text.
-         * 
+         *
          * @class sgvizler.visualization.List
          * @extends sgvizler.charts.Chart
          * @constructor
@@ -3799,14 +3799,14 @@
          * @since 0.3.0
          **/
 
-        /** 
+        /**
          * Available options:
-         * 
+         *
          *  - 'list'      :  "ol" / "ul"  (default: "ul")
          *  - 'cellSep'   :  string (can be html) to separate cells in row. (default: ', ')
          *  - 'rowPrefix  :  string (can be html) to prefix each row with. (default: '')
          *  - 'rowPostfix :  string (can be html) to postfix each row with. (default: '')
-         * 
+         *
          * @method draw
          * @public
          * @param {google.visualization.DataTable} data
@@ -3848,20 +3848,20 @@
 
         /**
          * Extends google.visualization.Map in markers dataMode. Draws
-         * textboxes with heading, paragraph, link and image. 
-         * 
+         * textboxes with heading, paragraph, link and image.
+         *
          * Data Format 2--6 columns:
-         * 
+         *
          *   1. lat
          *   2. long
          *   3. name  (optional)
          *   4. text  (optional)
          *   5. link  (optional)
          *   6. image (optional)
-         * 
+         *
          * - If < 4 columns, then behaves just as gMap
          * - Only 6 columns will be read, columns > 6 are ignored.
-         * 
+         *
          * @class sgvizler.visualization.Map
          * @extends sgvizler.charts.Chart
          * @constructor
@@ -3872,7 +3872,7 @@
 
         /**
          * Same options available as for google.visualization.Map.
-         * 
+         *
          * @method draw
          * @public
          * @param {google.visualization.DataTable} data
@@ -4164,9 +4164,9 @@
             }
             );
 
-        /** 
+        /**
          * Make a standard simple html table.
-         * 
+         *
          * @class sgvizler.visualization.Table
          * @extends sgvizler.charts.Chart
          * @constructor
@@ -4175,7 +4175,7 @@
          * @since 0.5.1
          **/
 
-        /** 
+        /**
          * Available options:
          *  - 'headings'   :  "true" / "false"  (default: "true")
          *
@@ -4215,11 +4215,11 @@
                 this.fireListener('ready');
             }
             );
-        /** 
+        /**
          * Write text.
          *
          * Any number of columns. Everything is displayed as text.
-         * 
+         *
          * @class sgvizler.visualization.Text
          * @extends sgvizler.charts.Chart
          * @constructor
@@ -4228,9 +4228,9 @@
          * @since 0.3.0
          **/
 
-        /** 
+        /**
          * Available options:
-         * 
+         *
          *  - 'cellSep'       :  string (can be html) to separate cells in each column. (default: ', ')
          *  - 'cellPrefix     :  string (can be html) to prefix each cell with. (default: '')
          *  - 'cellPostfix    :  string (can be html) to postfix each cell  with. (default: '')
@@ -4377,9 +4377,9 @@
         return C;
     }());
 
-    /** 
+    /**
      * Contains functions for datatable manipulation.
-     * 
+     *
      * @class sgvizler.datatable
      * @static
      */
@@ -4465,7 +4465,7 @@
         });
 
 
-        /** 
+        /**
          * Walks through all cells of columns with datatype string and
          * runs prefixify, which replaces namespace with its prefix.
          *
@@ -4591,7 +4591,7 @@
          * @since 0.6.0
          **/
         /**
-         * Set Base URL. 
+         * Set Base URL.
          * @method defaultBaseURL
          * @public
          * @param {string} url
