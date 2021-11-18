@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>      <!-- jQueryの読み込み -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     <!-- Google Chartsの読み込み -->
-  <script type="text/javascript" src="https://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>     <!-- Sgvizlerの読み込み -->
+  <script type="text/javascript" src="sgvizler.js"></script>     <!-- Sgvizlerの読み込み -->
   <script type="text/javascript">
     $(document).ready(() => {sgvizler.containerDrawAll();});
   </script>     <!-- Sgvizlerコンテナの呼び出し -->

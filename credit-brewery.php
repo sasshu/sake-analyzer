@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript" src="https://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>
+  <script type="text/javascript" src="sgvizler.js"></script>
   <script type="text/javascript">
     $(document).ready(() => {sgvizler.containerDrawAll();});
     google.charts.load("current", {

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>      <!-- jQueryの読み込み -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     <!-- Google Chartsの読み込み -->
-  <script type="text/javascript" src="https://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>     <!-- Sgvizlerの読み込み -->
+  <script type="text/javascript" src="sgvizler.js"></script>     <!-- Sgvizlerの読み込み -->
   <script type="text/javascript">
     $(document).ready(() => {sgvizler.containerDrawAll();});
   </script>     <!-- Sgvizlerコンテナの呼び出し -->
@@ -42,14 +42,6 @@
         <div class="initialize"><input type="submit" class="btn init-btn" name="init" value="検索条件を初期化"></div>      <!-- 初期化ボタン -->
       </form>
     </div>
-    <?php
-    if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
-      $protocol = "https://".$_SERVER['HTTP_HOST'];
-    }else {
-      $protocol='http://'.$_SERVER['HTTP_HOST'];
-    }
-    echo $protocol;
-    ?>
   </form>
   <?php
   if (!isset($_POST['manufacture'])) {
