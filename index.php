@@ -30,8 +30,8 @@
   </div>
   <div class="btn-wrapper">     <!-- ページ遷移ボタン -->
     <div class="container">
-      <a href="search.php" class="btn search-btn">データを閲覧する</a>      <!-- 検索ページへ -->
-      <a href="brewery.php" class="btn provider-btn">データを載せている酒蔵を見る</a>     <!-- 酒蔵のクレジットページへ -->
+      <a href="search" class="btn search-btn">データを閲覧する</a>      <!-- 検索ページへ -->
+      <a href="brewery" class="btn provider-btn">データを載せている酒蔵を見る</a>     <!-- 酒蔵のクレジットページへ -->
     </div>
   </div>
   <footer>      <!-- フッター -->
