@@ -60,7 +60,7 @@
     <div class="container">
       <h1 class="section-title">検索結果</h1>
       <div id="property-query" class="query"
-      data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
+      data-sgvizler-endpoint="//echigodb.jp:8893/sparql/"
       data-sgvizler-query="
       PREFIX schema: <http://schema.org/>
       PREFIX sk-eval: <http://www.sakevoc.jp/eval/>
