@@ -442,7 +442,7 @@ function addiCon() {      // 原料に対する絞り込み条件をクエリに
 }
 
 function addmCon() {
-  
+
 }
 
 function sameFilter($flt, $item, $prefix) {     // クエリの'='で表すフィルター処理
