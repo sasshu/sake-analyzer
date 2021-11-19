@@ -127,7 +127,7 @@
             <label><input class="element" type="checkbox" name="fermentationStarter[]" value="Sokujo" <?php sCheck('fermentationStarter', 'Sokujo'); ?>>速醸酛</label>
           </div>
         </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="fermentationMash" onclick="Switch(this)" <?php sCheck('m-target', 'fermentationMash'); ?>>もろみ造り</label>
+        <label><input class="element main" type="checkbox" name="m-target[]" value="fermentationMash" onclick="Switch(this)" <?php sCheck('m-target', 'fermentationMash'); ?>>段仕込み</label>
         <div id="fermentationMash" class="hide">
           <div class="filter-detail">
             <label><input class="element" type="checkbox" name="fermentationMash[]" value="1" <?php sCheck('fermentationMash', '1'); ?>>一段仕込み</label>
@@ -136,7 +136,7 @@
             <label><input class="element" type="checkbox" name="fermentationMash[]" value="4" <?php sCheck('fermentationMash', '4'); ?>>四段仕込み</label>
           </div>
         </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="pressing" onclick="Switch(this)" <?php sCheck('m-target', 'pressing'); ?>>搾り</label>
+        <label><input class="element main" type="checkbox" name="m-target[]" value="pressing" onclick="Switch(this)" <?php sCheck('m-target', 'pressing'); ?>>上槽法</label>
         <div id="pressing" class="hide">
           <div class="filter-detail">
             <label><input class="element" type="checkbox" name="pressing[]" value="BagHanging" <?php sCheck('pressing', 'BagHanging'); ?>>袋吊り</label>
@@ -169,7 +169,7 @@
             <label><input class="element" type="checkbox" name="storage[]" value="CaskStorage" <?php sCheck('storage', 'CaskStorage'); ?>>瓶貯蔵</label>
           </div>
         </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="premiumSake" onclick="Switch(this)" <?php sCheck('m-target', 'premiumSake'); ?>>特定名称等</label>
+        <label><input class="element main" type="checkbox" name="m-target[]" value="premiumSake" onclick="Switch(this)" <?php sCheck('m-target', 'premiumSake'); ?>>特定名称</label>
         <div id="premiumSake" class="hide">
           <div class="filter-detail">
             <label><input type="checkbox" name="premiumSake[]" value="StandardSake" <?php sCheck('premiumSake', 'StandardSake'); ?>>普通酒</label>

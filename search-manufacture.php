@@ -56,7 +56,7 @@
   <div id="result" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
     <div class="container">
       <h1 class="section-title">検索結果</h1>
-      <div id="manufacture-query"
+      <div id="manufacture-query" class="query"
       data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
       data-sgvizler-query="
       PREFIX schema: <http://schema.org/>

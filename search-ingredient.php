@@ -48,7 +48,7 @@
   <div id="result" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
     <div class="container">
       <h1 class="section-title">検索結果</h1>
-      <div id="ingredient-query"
+      <div id="ingredient-query" class="query"
       data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
       data-sgvizler-query="
       PREFIX schema: <http://schema.org/>
@@ -70,7 +70,7 @@
       order by desc(?count)
       "
       data-sgvizler-chart="google.visualization.PieChart"
-      style="width:90%; height:500px;">
+      style="width:100%; height:500px;">
       </div>
     </div>
   </div>

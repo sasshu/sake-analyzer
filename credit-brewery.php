@@ -25,7 +25,7 @@
     <div class="container">
       <h1 class="section-title">データ提供元</h1>
       <div class="brewery-query">
-        <div id="brewery-map"
+        <div id="brewery-map" class="query"
         data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
         data-sgvizler-query="
         PREFIX schema: <http://schema.org/>
@@ -49,7 +49,7 @@
         data-sgvizler-chart-options="useMapTypeControl=true|showInfoWindow=true|showTooltip=true"
         style="width:750px; height:550px;">
         </div>
-        <div id="brewry-list"
+        <div id="brewry-list" class="query"
           data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
           data-sgvizler-query="
           PREFIX schema: <http://schema.org/>

@@ -59,7 +59,7 @@
   <div id="result" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
     <div class="container">
       <h1 class="section-title">検索結果</h1>
-      <div id="property-query"
+      <div id="property-query" class="query"
       data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
       data-sgvizler-query="
       PREFIX schema: <http://schema.org/>
@@ -87,7 +87,7 @@
       "
       data-sgvizler-chart="google.visualization.BubbleChart"
       data-sgvizler-chart-options="explorer.keepInBounds=true|explorer.maxZoomIn=0.1|hAxis.title=<?php trans($xt); ?>|vAxis.title=<?php trans($yt); ?>|hAxis.minValue=<?php minSize($xt); ?>|hAxis.maxValue=<?php maxSize($xt); ?>|vAxis.minValue=<?php minSize($yt); ?>|vAxis.maxValue=<?php maxSize($yt); ?>|sizeAxis.maxSize=5|colorAxis.colors=red"
-      style="width:90%; height:500px;">
+      style="width:100%; height:500px;">
       </div>
     </div>
   </div>
