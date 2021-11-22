@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>検索 | SakeAnalyzer</title>
   <link rel="stylesheet" href="component/sake_app.css">
-  <link rel="apple-touch-icon" sizes="180x180" href="image/apple-touch-icon-180x180.png">
   <link rel="icon" href="image/favicon.ico">
 </head>
 <body>
