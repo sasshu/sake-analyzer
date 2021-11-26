@@ -20,6 +20,7 @@
   <form id="search_form" class="search-wrapper" action="#result" method="post">     <!-- 検索フォーム -->
     <div class="container">
       <h1 class="section-title">成分を検索</h1>
+      <p class="sec-intro">日本酒の成分を、散布図で可視化します。</p>
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（成分）</h2>
         <div class="property-search">     <!-- 検索対象 = 成分 -->

@@ -20,6 +20,7 @@
   <form id="search_form" class="search-wrapper" action="#result" method="post">     <!-- 検索フォーム -->
     <div class="container">
       <h1 class="section-title">原料を検索</h1>
+      <p class="sec-intro">日本酒製造に用いられる原料の詳細を、円グラフで可視化します。</p>
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（原料）</h2>
         <div class="ingredient-search">     <!-- 検索対象 = 原料 -->

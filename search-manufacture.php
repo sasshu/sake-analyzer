@@ -20,6 +20,7 @@
   <form id="search_form" class="search-wrapper" action="#result" method="post">     <!-- 検索フォーム -->
     <div class="container">
       <h1 class="section-title">製法を検索</h1>
+      <p class="sec-intro">日本酒製造に用いられる製法の詳細を、円グラフまたは棒グラフで可視化します。</p>
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（製法）</h2>
         <div class="manufacture-search">     <!-- 検索対象 = 製法 -->

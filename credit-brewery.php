@@ -12,6 +12,7 @@
       "mapsApiKey": "AIzaSyBPuJA_VtJj8SMEjZ7o_3-Wyh1CW6Mq2L8"
     })
   </script>
+  <?php require_once('component/function.php'); ?>
   <title>データ提供元 | SakeAnalyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
   <link rel="icon" href="image/favicon.ico">
@@ -23,13 +24,31 @@
   <div class="brewery">
     <div class="container">
       <h1 class="section-title">データ提供元</h1>
+      <div class="data-count brewery-count">
+        <p>現在、</p>
+        <div id="count-query" class="query"
+          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-query="
+          <?php preQuery(); ?>
+
+          select  (count(?maker) as ?brewery) where
+          {
+            select distinct ?maker where
+            {
+              ?s a sk-eval:Sake;
+                 schema:manufacturer / schema:name ?maker .
+            }
+          }
+          "
+          data-sgvizler-chart="sgvizler.visualization.Text">
+        </div>
+        <p>の酒蔵が公開した日本酒データが集まっています。</p>
+      </div>
       <div class="brewery-query">
         <div id="brewery-map" class="query"
-        data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
+        data-sgvizler-endpoint="<?php getEndpoint(); ?>"
         data-sgvizler-query="
-        PREFIX schema: <http://schema.org/>
-        PREFIX sk-eval: <http://www.sakevoc.jp/eval/>
-        with <http://sake_data>
+        <?php preQuery(); ?>
 
         select distinct ?lat ?lon ?maker ?address ?url where
         {
@@ -49,11 +68,9 @@
         style="width:750px; height:550px;">
         </div>
         <div id="brewry-list" class="query"
-          data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
+          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
           data-sgvizler-query="
-          PREFIX schema: <http://schema.org/>
-          PREFIX sk-eval: <http://www.sakevoc.jp/eval/>
-          with <http://sake_data>
+          <?php preQuery(); ?>
 
           select distinct ?maker where
           {

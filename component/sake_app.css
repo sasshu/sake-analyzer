@@ -22,9 +22,8 @@ ul {
 
 label {
 	display: inline-block;
-	width: 150px;
+	width: 120px;
 	white-space: nowrap;
-
 }
 
 .element {
@@ -36,6 +35,10 @@ label {
 	margin-left: 20px;
 	margin-bottom: 20px;
 	border-bottom: 1px solid lightgray;
+}
+
+.sec-intro {
+	margin-bottom: 20px;
 }
 
 .hide {
@@ -120,7 +123,8 @@ header {
 }
 
 .header-left h1 {
-  padding: 10px 25px;
+  padding: 0px 25px;
+	line-height: 65px;
 	color: white;
 }
 
@@ -259,10 +263,12 @@ footer {
 }
 
 /* brewry.php */
+.brewery-count {
+	margin-bottom: 10px;
+}
+
 .brewery-query {
 	display: flex;
+	justify-content: space-around;
 
-}
-#brewery-map {
-	margin-right: 30px;
 }
