@@ -21,9 +21,10 @@ ul {
 }
 
 label {
+	display: inline-block;
+	width: 150px;
 	white-space: nowrap;
-	margin-left: 5px;
-	margin-right: 5px;
+
 }
 
 .element {
@@ -78,20 +79,19 @@ input[type='number'] {
 }
 
 .filtering-target {
-	text-align: center;
 	padding: 20px;
 	border-radius: 15px;
 	background-color: lightgray;
 }
 
 .filtering-target p {
+	text-align: center;
 	font-size: 20px;
 	margin-bottom: 10px;
 }
 
 .filter-detail {
-	text-align: center;
-	padding: 5px 0px;
+	padding: 5px 10px;
 	border-radius: 5px;
 	margin-bottom: 10px;
 	background-color: darkgray;
@@ -99,6 +99,16 @@ input[type='number'] {
 
 .filter-detail p {
 	font-size: 15px;
+}
+
+#count-query {
+	color: red;
+	font-weight: bolder;
+	font-size: 19px;
+}
+
+.data-count {
+	display: flex;
 }
 
 
@@ -214,6 +224,7 @@ footer {
 .property-search p {
 	margin-bottom: 10px;
 	font-size: 20px;
+	text-align: center;
 }
 
 .x-axis {
@@ -221,7 +232,6 @@ footer {
 	padding: 20px;
 	border-radius: 15px;
 	background-color: lightgray;
-	text-align: center;
 }
 
 .y-axis {
@@ -230,7 +240,6 @@ footer {
 	padding: 20px;
 	border-radius: 15px;
 	background-color: lightgray;
-	text-align: center;
 }
 
 /* ingredient.php */
@@ -239,7 +248,6 @@ footer {
 	padding: 20px;
 	border-radius: 15px;
 	background-color: lightgray;
-	text-align: center;
 }
 
 /* manufacture.php */
@@ -248,7 +256,6 @@ footer {
 	padding: 20px;
 	border-radius: 15px;
 	background-color: lightgray;
-	text-align: center;
 }
 
 /* brewry.php */

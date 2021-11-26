@@ -47,14 +47,32 @@
   <div id="result" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
     <div class="container">
       <h1 class="section-title">検索結果</h1>
+      <div class="data-count">
+        <div id="count-query" class="query"
+        data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+        data-sgvizler-query="
+        <?php preQuery(); ?>
+
+        select (count(?s) as ?count) where
+        {
+          select distinct ?s ?ing where
+            {
+              ?s a sk-eval:Sake ;
+                 schema:material ?ingredient .
+                 <?php ing($ing); ?>
+                 <?php addiCon(); ?>
+            }
+        }
+        "
+        data-sgvizler-chart="sgvizler.visualization.Text"
+        data-sgvizler-chart-options="">
+        </div>
+        <p>件ヒットしました。</p>
+      </div>
       <div id="ingredient-query" class="query"
-      data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
+      data-sgvizler-endpoint="<?php getEndpoint(); ?>"
       data-sgvizler-query="
-      PREFIX schema: <http://schema.org/>
-      PREFIX sk-eval: <http://www.sakevoc.jp/eval/>
-      PREFIX sk-prep: <http://www.sakevoc.jp/prep/>
-      PREFIX sk-make: <http://www.sakevoc.jp/make/>
-      with <http://sake_data>
+      <?php preQuery(); ?>
 
       select ?ing (count(?s) as ?count) where
       {

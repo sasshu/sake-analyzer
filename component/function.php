@@ -187,6 +187,18 @@ function Queryjudge($attr, $xt, $yt) {
 }
 */
 
+function getEndpoint() {      // SPARQL endpointの取得
+  echo 'http://echigodb.jp:8893/sparql/';
+}
+
+function preQuery() {     // グラフやprefixの指定
+  echo 'PREFIX schema: <http://schema.org/>'."\n";
+  echo 'PREFIX sk-eval: <http://www.sakevoc.jp/eval/>'."\n";
+  echo 'PREFIX sk-prep: <http://www.sakevoc.jp/prep/>'."\n";
+  echo 'PREFIX sk-make: <http://www.sakevoc.jp/make/>'."\n";
+  echo 'with <http://sake_data>'."\n";
+}
+
 function ing($target) {     // 原料に対するクエリ詳細
   switch ($target) {
     case 'rice':
@@ -207,16 +219,149 @@ function ing($target) {     // 原料に対するクエリ詳細
       break;
     case 'water':
       echo '?ingredient a sk-prep:Water;'."\n";
-      echo '            schema:category ?water_type.'."\n";
-      echo 'bind(substr(str(?water_type), 28) as ?ing)'."\n";
+      echo '            schema:category / rdfs:label ?ing.'."\n";
+      echo "filter(lang(?ing) = 'ja')"."\n";
       break;
     default:
       break;
   }
 }
 
-function man($target) {
+function dataSort($target) {
+  if ($target == 'ricePolishingRate') {
+    echo 'order by desc(?value)';
+  }else {
+    echo 'order by desc(?count)';
+  }
+}
 
+function selectChart($target) {     // グラフの種類を指定
+if ($target == 'pressingOrder' || $target == 'pasteurization' || $target == 'aging' || $target == 'other' /* || $target == 'unfilteredSake' || $target == 'undilutedSake' || $target == 'cloudySake' || $target == 'orizake' || $target == 'firstlyMadeSake' || $target == 'sparklingSake' */) {
+    echo "google.visualization.ColumnChart";
+  }else {
+    echo "google.visualization.PieChart";
+  }
+}
+
+function man($target) {
+  switch ($target) {
+    case 'ricePolishingRate':
+      echo '?s sk-make:ricePolishingRate / schema:value ?value.'."\n";
+      echo '?s sk-make:ricePolishingRate / schema:unitText ?unit.'."\n";
+      echo 'bind(concat(?value, ?unit) as ?man)'."\n";
+      break;
+    case 'premiumSake':
+      echo '?s schema:category ?categ .'."\n";
+      echo '{?categ rdfs:subClassOf / rdfs:subClassOf sk-eval:PremiumSake.}'."\n";
+      echo 'union{sk-eval:PremiumSake owl:disjointWith ?categ.}'."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'ricePolishing':
+      echo '?s sk-make:makingMethod ?mtd.'."\n";
+      echo '?mtd rdfs:subClassOf sk-make:RicePolishing;'."\n";
+      echo '     rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'kojiMaking':
+      echo '?s sk-make:makingMethod ?mtd.'."\n";
+      echo '?mtd rdfs:subClassOf sk-make:KojiMaking;'."\n";
+      echo '     rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'fermentationStarter':
+      echo '?s sk-make:makingMethod ?mtd.'."\n";
+      echo '{?mtd rdfs:subClassOf sk-make:MakingFermentationStarter.}'."\n";
+      echo 'union{?mtd rdfs:subClassOf / rdfs:subClassOf sk-make:MakingFermentationStarter.}'."\n";
+      echo '?mtd rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'fermentationMash':
+      echo '?s sk-make:mashingTimes / schema:value ?value.'."\n";
+      echo '?s sk-make:mashingTimes / schema:unitText ?unit.'."\n";
+      echo "bind(concat(?value, ?unit) as ?man)"."\n";
+      break;
+    case 'pressing':
+      echo '?s sk-make:makingMethod ?mtd.'."\n";
+      echo '?mtd rdfs:subClassOf sk-make:Pressing;'."\n";
+      echo '     rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'pressingOrder':
+      echo '?s schema:category ?categ.'."\n";
+      echo '{?categ owl:disjointWith sk-eval:MiddleRunSake.}'."\n";
+      echo 'union{sk-eval:FirstRun owl:disjointWith ?categ.}'."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'pasteurization':
+      echo '?s schema:category ?categ.'."\n";
+      echo '{?categ owl:disjointWith sk-eval:Namazake.}'."\n";
+      echo 'union{sk-eval:LiveBottledSake owl:disjointWith ?categ.}'."\n";
+      echo 'union{?categ rdfs:subClassOf sk-eval:LiveBottledSake.}'."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'storage':
+      echo '?s sk-make:makingMethod ?mtd.'."\n";
+      echo '?mtd rdfs:subClassOf sk-make:Storage;'."\n";
+      echo '     rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'aging':
+      echo '?s schema:category ?categ.'."\n";
+      echo '{?categ owl:disjointWith sk-eval:OldSake.}'."\n";
+      echo 'union{sk-eval:FreshSake owl:disjointWith ?categ.}'."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'other':
+      echo '?s schema:category ?categ.'."\n";
+      echo "filter(?categ = sk-eval:UnfilteredSake || ?categ = sk-eval:UndilutedSake || ?categ = sk-eval:CloudySake || ?categ = sk-eval:Orizake || ?categ = sk-eval:SparklingSake)"."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    /*
+    case 'unfilteredSake':
+      echo '?s schema:category ?categ.'."\n";
+      echo "filter(?categ = sk-eval:UnfilteredSake)"."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'undilutedSake':
+      echo '?s schema:category ?categ.'."\n";
+      echo "filter(?categ = sk-eval:UndilutedSake)"."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'cloudySake':
+      echo '?s schema:category ?categ.'."\n";
+      echo "filter(?categ = sk-eval:CloudySake)"."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'orizake':
+      echo '?s schema:category ?categ.'."\n";
+      echo "filter(?categ = sk-eval:Orizake)"."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'firstlyMadeSake':
+      echo '?s schema:category ?categ.'."\n";
+      echo "filter(?categ = sk-eval:FirstlyMadeSake)"."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    case 'sparklingSake':
+      echo '?s schema:category ?categ.'."\n";
+      echo "filter(?categ = sk-eval:SparklingSake)"."\n";
+      echo '?categ rdfs:label ?man.'."\n";
+      echo "filter(lang(?man) = 'ja')"."\n";
+      break;
+    */
+    default:
+      break;
+  }
 }
 
 function addpCon() {      // 成分に対する絞り込み条件をクエリに反映
@@ -280,9 +425,10 @@ function addpCon() {      // 成分に対する絞り込み条件をクエリに
         case 'water':
           echo '?s schema:material ?water.'."\n";
           echo '?water a sk-prep:Water;'."\n";
-          echo '       schema:category ?type.'."\n";
-          echo 'bind(substr(str(?type), 28) as ?water_type)'."\n";
-          $item = 'water_type';
+          echo '       schema:category / rdfs:label ?water_type.'."\n";
+          echo "filter(lang(?water_type) = 'ja')"."\n";
+          echo "bind(str(?water_type) as ?water_tp)"."\n";
+          $item = 'water_tp';
           break;
         default:
           break;
@@ -366,43 +512,40 @@ function addiCon() {      // 原料に対する絞り込み条件をクエリに
   if (isset($_POST['i-target'])) {      // 原料の種類で絞り込み
     for ($i=0; $i < count($_POST['i-target']); $i++) {
       $flt = $_POST['i-target'][$i];
-      if ($flt == $_POST['ingredient']) {
-        $item = 'ing';
-      }else {
-        switch ($flt) {
-          case $_POST['ingredient']:
-            $item = 'ing';
-            break;
-          case 'rice':
-            echo '?s schema:material ?rice.'."\n";
-            echo '{?rice a sk-prep:Rice.}'."\n";
-            echo 'union {?rice a sk-prep:KojiRice.}'."\n";
-            echo 'union {?rice a sk-prep:KakeRice.}'."\n";
-            echo '?rice schema:name ?rice_name.'."\n";
-            $item = 'rice_name';
-            break;
-          case 'yeast':
-            echo '?s schema:material ?yeast.'."\n";
-            echo '?yeast a sk-prep:Yeast;'."\n";
-            echo '       schema:name ?yeast_name.'."\n";
-            $item = 'yeast_name';
-            break;
-          case 'koji':
-            echo '?s schema:material ?koji.'."\n";
-            echo '?koji a sk-prep:SeedKoji;'."\n";
-            echo '      schema:brand / schema:name ?koji_brand.'."\n";
-            $item = 'koji_brand';
-            break;
-          case 'water':
-            echo '?s schema:material ?water.'."\n";
-            echo '?water a sk-prep:Water;'."\n";
-            echo '       schema:category ?type.'."\n";
-            echo 'bind(substr(str(?type), 28) as ?water_type)'."\n";
-            $item = 'water_type';
-            break;
-          default:
-            break;
-        }
+      switch ($flt) {
+        case $_POST['ingredient']:
+          $item = 'ing';
+          break;
+        case 'rice':
+          echo '?s schema:material ?rice.'."\n";
+          echo '{?rice a sk-prep:Rice.}'."\n";
+          echo 'union {?rice a sk-prep:KojiRice.}'."\n";
+          echo 'union {?rice a sk-prep:KakeRice.}'."\n";
+          echo '?rice schema:name ?rice_name.'."\n";
+          $item = 'rice_name';
+          break;
+        case 'yeast':
+          echo '?s schema:material ?yeast.'."\n";
+          echo '?yeast a sk-prep:Yeast;'."\n";
+          echo '       schema:name ?yeast_name.'."\n";
+          $item = 'yeast_name';
+          break;
+        case 'koji':
+          echo '?s schema:material ?koji.'."\n";
+          echo '?koji a sk-prep:SeedKoji;'."\n";
+          echo '      schema:brand / schema:name ?koji_brand.'."\n";
+          $item = 'koji_brand';
+          break;
+        case 'water':
+          echo '?s schema:material ?water.'."\n";
+          echo '?water a sk-prep:Water;'."\n";
+          echo '       schema:category / rdfs:label ?water_type.'."\n";
+          echo "filter(lang(?water_type) = 'ja')"."\n";
+          echo "bind(str(?water_type) as ?water_tp)"."\n";
+          $item = 'water_tp';
+          break;
+        default:
+          break;
       }
       sameFilter($flt, $item, 'none');
     }
@@ -441,8 +584,139 @@ function addiCon() {      // 原料に対する絞り込み条件をクエリに
   }
 }
 
-function addmCon() {
-
+function addmCon() {      // 製法に対する絞り込み条件をクエリに反映
+  if (isset($_POST['p-target'])) {      // 成分のとる範囲で絞り込み
+    $count = 0;
+    for ($i=0; $i < count($_POST['p-target']); $i++) {
+      $flt = $_POST['p-target'][$i];
+      if (isset($_POST["min_${flt}"])) {
+        $min = $_POST["min_${flt}"];
+      }
+      if (isset($_POST["max_${flt}"])) {
+        $max = $_POST["max_${flt}"];
+      }
+      switch ($count) {
+        case 0:
+          $ord = 'fi';
+          break;
+        case 1:
+          $ord = 'se';
+          break;
+        case 2:
+          $ord = 'th';
+          break;
+        case 3:
+          $ord = 'fo';
+          break;
+        default:
+          break;
+      }
+      echo "?s sk-eval:${flt} / schema:minValue ?${ord}min;"."\n";
+      echo "   sk-eval:${flt} / schema:maxValue ?${ord}max."."\n";
+      echo "bind(((?${ord}min + ?${ord}max) / 2) as ?${ord}_value)"."\n";
+      if ($min != '') {
+        echo "filter(?${ord}_value >= ${min})"."\n";
+      }
+      if ($max != '') {
+        echo "filter(?${ord}_value <= ${max})"."\n";
+      }
+      $count++;
+    }
+  }
+  if (isset($_POST['i-target'])) {     // 原料の種類で絞り込み
+    for ($i=0; $i < count($_POST['i-target']); $i++) {
+      $flt = $_POST['i-target'][$i];
+      switch ($flt) {
+        case 'rice':
+          echo '?s schema:material ?rice.'."\n";
+          echo '{?rice a sk-prep:Rice.}'."\n";
+          echo 'union {?rice a sk-prep:KojiRice.}'."\n";
+          echo 'union {?rice a sk-prep:KakeRice.}'."\n";
+          echo '?rice schema:name ?rice_name.'."\n";
+          $item = 'rice_name';
+          break;
+        case 'yeast':
+          echo '?s schema:material ?yeast.'."\n";
+          echo '?yeast a sk-prep:Yeast;'."\n";
+          echo '       schema:name ?yeast_name.'."\n";
+          $item = 'yeast_name';
+          break;
+        case 'koji':
+          echo '?s schema:material ?koji.'."\n";
+          echo '?koji a sk-prep:SeedKoji;'."\n";
+          echo '      schema:brand / schema:name ?koji_brand.'."\n";
+          $item = 'koji_brand';
+          break;
+        case 'water':
+          echo '?s schema:material ?water.'."\n";
+          echo '?water a sk-prep:Water;'."\n";
+          echo '       schema:category / rdfs:label ?water_type.'."\n";
+          echo "filter(lang(?water_type) = 'ja')"."\n";
+          echo "bind(str(?water_type) as ?water_tp)"."\n";
+          $item = 'water_tp';
+          break;
+        default:
+          break;
+      }
+      sameFilter($flt, $item, 'none');
+    }
+  }
+  if (isset($_POST['m-target'])) {      // 製法の種類で絞り込み
+    for ($i=0; $i < count($_POST['m-target']); $i++) {
+      $flt = $_POST['m-target'][$i];
+      if ($flt == 'ricePolishingRate') {
+        if (isset($_POST["min_${flt}"])) {
+          $min = $_POST["min_${flt}"];
+        }
+        if (isset($_POST["max_${flt}"])) {
+          $max = $_POST["max_${flt}"];
+        }
+        if ($flt == $_POST['manufacture']) {
+          if ($min != '') {
+            echo "filter(?value >= ${min})"."\n";
+          }
+          if ($max != '') {
+            echo "filter(?value <= ${max})"."\n";
+          }
+        }else {
+          echo '?s sk-make:ricePolishingRate / schema:value ?ricePolishingRate.'."\n";
+          if ($min != '') {
+            echo "filter(?ricePolishingRate >= ${min})"."\n";
+          }
+          if ($max != '') {
+            echo "filter(?ricePolishingRate <= ${max})"."\n";
+          }
+        }
+      }else {
+        if ($flt == 'fermentationMash') {
+          $prefix = 'none';
+          if ($flt == $_POST['manufacture']) {
+            $item = 'value';
+          }else {
+            echo "?s sk-make:MashingTimes / schema:value ?${flt}."."\n";
+            $item = $flt;
+          }
+        }else if ($flt == 'fermentationStarter' || $flt == 'pressing' || $flt == 'ricePolishing' || $flt == 'kojiMaking' || $flt == 'storage') {
+          $prefix = 'sk-make';
+          if ($flt == $_POST['manufacture']) {
+            $item = 'mtd';
+          }else {
+            echo "?s sk-make:makingMethod ?${flt}."."\n";
+            $item = $flt;
+          }
+        }else {
+          $prefix = 'sk-eval';
+          if ($flt == $_POST['manufacture']) {
+            $item = 'categ';
+          }else {
+            echo "?s schema:category ?${flt}."."\n";
+            $item = $flt;
+          }
+        }
+        sameFilter($flt, $item, $prefix);
+      }
+    }
+  }
 }
 
 function sameFilter($flt, $item, $prefix) {     // クエリの'='で表すフィルター処理
@@ -450,11 +724,11 @@ function sameFilter($flt, $item, $prefix) {     // クエリの'='で表すフ�
   echo 'filter(';
   for ($i=0; $i<count($element); $i++) {
     $value = $element[$i];
-    if ($prefix != 'none') {
+    if ($prefix != 'none') {      // IRIの場合
       echo "?${item} = ${prefix}:${value}";
-    }else if (is_numeric($value)) {
+    }else if (is_numeric($value)) {     // 数値の場合
       echo "?${item} = ${value}";
-    }else {
+    }else {     // テキストの場合
       echo "?${item} = '${value}'";
     }
     if (isset($element[$i+1])) {

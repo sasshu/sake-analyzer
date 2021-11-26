@@ -101,8 +101,8 @@
         <div id="water" class="hide">
           <div class="filter-detail">
             <p>硬度を選択してください</p>
-            <label><input class="element" type="checkbox" name="water[]" value="SoftWater" <?php sCheck('water', 'SoftWater'); ?>>軟水</label>
-            <label><input class="element" type="checkbox" name="water[]" value="HardWater" <?php sCheck('water', 'HardWater'); ?>>硬水</label>
+            <label><input class="element" type="checkbox" name="water[]" value="軟水" <?php sCheck('water', '軟水'); ?>>軟水</label>
+            <label><input class="element" type="checkbox" name="water[]" value="硬水" <?php sCheck('water', '硬水'); ?>>硬水</label>
           </div>
         </div>
       </div>
@@ -110,12 +110,29 @@
     <div class="filtering-content">     <!-- 製法によるフィルタリング -->
       <div class="filtering-target">
         <p>製法</p>
+        <label><input class="element main" type="checkbox" name="m-target[]" value="ricePolishing" onclick="Switch(this)" <?php sCheck('m-target', 'ricePolishing'); ?>>精米法</label>
+        <div id="ricePolishing" class="hide">
+          <div class="filter-detail">
+            <label><input class="element" type="checkbox" name="ricePolishing[]" value="RoundRicePolishing" <?php sCheck('ricePolishing', 'RoundRicePolishing'); ?>>普通精米</label>
+            <label><input class="element" type="checkbox" name="ricePolishing[]" value="SimilarRicePolishing" <?php sCheck('ricePolishing', 'SimilarRicePolishing'); ?>>原型精米</label>
+            <label><input class="element" type="checkbox" name="ricePolishing[]" value="FlatRicePolishing" <?php sCheck('ricePolishing', 'FlatRicePolishing'); ?>>扁平精米</label>
+          </div>
+        </div>
         <label><input class="element main" type="checkbox" name="m-target[]" value="ricePolishingRate" onclick="Switch(this)" <?php sCheck('m-target', 'ricePolishingRate'); ?>>精米歩合</label>
         <div id="ricePolishingRate" class="hide">
           <div class="filter-detail">
             <p>範囲を設定してください</p>
             <label><input type="number" step="1" name="min_ricePolishingRate" min="0" max="100" placeholder="50" <?php sNumber('min_ricePolishingRate'); ?>>以上</label>
             <label><input type="number" step="1" name="max_ricePolishingRate" min="0" min="100" placeholder="65" <?php sNumber('max_ricePolishingRate'); ?>>以下</label>
+          </div>
+        </div>
+        <label><input class="element main" type="checkbox" name="m-target[]" value="kojiMaking" onclick="Switch(this)" <?php sCheck('m-target', 'kojiMaking'); ?>>製麹法</label>
+        <div id="kojiMaking" class="hide">
+          <div class="filter-detail">
+            <label><input class="element" type="checkbox" name="kojiMaking[]" value="TrayKoji" <?php sCheck('kojiMaking', 'TrayKoji'); ?>>蓋麹</label>
+            <label><input class="element" type="checkbox" name="kojiMaking[]" value="BoxKoji" <?php sCheck('kojiMaking', 'BoxKoji'); ?>>箱麹</label>
+            <label><input class="element" type="checkbox" name="kojiMaking[]" value="FloorKoji" <?php sCheck('kojiMaking', 'FloorKoji'); ?>>床麹</label>
+            <label><input class="element" type="checkbox" name="kojiMaking[]" value="MachineryKoji" <?php sCheck('kojiMaking', 'MachineryKoji'); ?>>機械製麹</label>
           </div>
         </div>
         <label><input class="element main" type="checkbox" name="m-target[]" value="fermentationStarter" onclick="Switch(this)" <?php sCheck('m-target', 'fermentationStarter'); ?>>酒母造り</label>
@@ -144,29 +161,37 @@
             <label><input class="element" type="checkbox" name="pressing[]" value="FilterPressing" <?php sCheck('pressing', 'FilterPressing'); ?>>圧搾搾り</label>
           </div>
         </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="ricePolishing" onclick="Switch(this)" <?php sCheck('m-target', 'ricePolishing'); ?>>精米</label>
-        <div id="ricePolishing" class="hide">
+        <label><input class="element main" type="checkbox" name="m-target[]" value="pressingOrder" onclick="Switch(this)" <?php sCheck('m-target', 'pressingOrder'); ?>>搾り取る順番</label>
+        <div id="pressingOrder" class="hide">
           <div class="filter-detail">
-            <label><input class="element" type="checkbox" name="ricePolishing[]" value="RoundRicePolishing" <?php sCheck('ricePolishing', 'RoundRicePolishing'); ?>>普通精米</label>
-            <label><input class="element" type="checkbox" name="ricePolishing[]" value="SimilarRicePolishing" <?php sCheck('ricePolishing', 'SimilarRicePolishing'); ?>>原型精米</label>
-            <label><input class="element" type="checkbox" name="ricePolishing[]" value="FlatRicePolishing" <?php sCheck('ricePolishing', 'FlatRicePolishing'); ?>>扁平精米</label>
+            <label><input type="checkbox" name="pressingOrder[]" value="FirstRun" <?php sCheck('pressingOrder', 'FirstRun'); ?>>荒走り</label>
+            <label><input type="checkbox" name="pressingOrder[]" value="MiddleRunSake" <?php sCheck('pressingOrder', 'MiddleRunSake'); ?>>中汲み</label>
+            <label><input type="checkbox" name="pressingOrder[]" value="FinalRunSake" <?php sCheck('pressingOrder', 'FinalRunSake'); ?>>責め</label>
           </div>
         </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="kojiMaking" onclick="Switch(this)" <?php sCheck('m-target', 'kojiMaking'); ?>>製麹</label>
-        <div id="kojiMaking" class="hide">
+        <label><input class="element main" type="checkbox" name="m-target[]" value="pasteurization" onclick="Switch(this)" <?php sCheck('m-target', 'pasteurization'); ?>>火入れ</label>
+        <div id="pasteurization" class="hide">
           <div class="filter-detail">
-            <label><input class="element" type="checkbox" name="kojiMaking[]" value="TrayKoji" <?php sCheck('kojiMaking', 'TrayKoji'); ?>>蓋麹</label>
-            <label><input class="element" type="checkbox" name="kojiMaking[]" value="BoxKoji" <?php sCheck('kojiMaking', 'BoxKoji'); ?>>箱麹</label>
-            <label><input class="element" type="checkbox" name="kojiMaking[]" value="FloorKoji" <?php sCheck('kojiMaking', 'FloorKoji'); ?>>床麹</label>
-            <label><input class="element" type="checkbox" name="kojiMaking[]" value="MachineryKoji" <?php sCheck('kojiMaking', 'MachineryKoji'); ?>>機械製麹</label>
+            <label><input type="checkbox" name="pasteurization[]" value="Namazake" <?php sCheck('pasteurization', 'Namazake'); ?>>生酒</label>
+            <label><input type="checkbox" name="pasteurization[]" value="LiveBottledSake" <?php sCheck('pasteurization', 'LiveBottledSake'); ?>>生詰酒</label>
+            <label><input type="checkbox" name="pasteurization[]" value="LiveStorageSake" <?php sCheck('pasteurization', 'LiveStorageSake'); ?>>生貯蔵酒</label>
+            <label><input type="checkbox" name="pasteurization[]" value="Hiyaoroshi" <?php sCheck('pasteurization', 'Hiyaoroshi'); ?>>ひやおろし</label>
+            <!-- <label><input type="checkbox" name="pasteurization[]" value="BottlePasteurization">瓶火入れ</label> -->
           </div>
         </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="storage" onclick="Switch(this)" <?php sCheck('m-target', 'storage'); ?>>貯蔵</label>
+        <label><input class="element main" type="checkbox" name="m-target[]" value="storage" onclick="Switch(this)" <?php sCheck('m-target', 'storage'); ?>>貯蔵容器</label>
         <div id="storage" class="hide">
           <div class="filter-detail">
             <label><input class="element" type="checkbox" name="storage[]" value="TankStorage" <?php sCheck('storage', 'TankStorage'); ?>>タンク貯蔵</label>
             <label><input class="element" type="checkbox" name="storage[]" value="BottleStorage" <?php sCheck('storage', 'BottleStorage'); ?>>樽貯蔵</label>
             <label><input class="element" type="checkbox" name="storage[]" value="CaskStorage" <?php sCheck('storage', 'CaskStorage'); ?>>瓶貯蔵</label>
+          </div>
+        </div>
+        <label><input class="element main" type="checkbox" name="m-target[]" value="aging" onclick="Switch(this)" <?php sCheck('m-target', 'aging'); ?>>熟成の程度</label>
+        <div id="aging" class="hide">
+          <div class="filter-detail">
+            <label><input type="checkbox" name="aging[]" value="FreshSake" <?php sCheck('aging', 'FreshSake'); ?>>しぼりたて</label>
+            <label><input type="checkbox" name="aging[]" value="OldSake" <?php sCheck('aging', 'OldSake'); ?>>古酒（3年以上熟成）</label>
           </div>
         </div>
         <label><input class="element main" type="checkbox" name="m-target[]" value="premiumSake" onclick="Switch(this)" <?php sCheck('m-target', 'premiumSake'); ?>>特定名称</label>
@@ -181,31 +206,6 @@
             <label><input type="checkbox" name="premiumSake[]" value="Daiginjo" <?php sCheck('premiumSake', 'Daiginjo'); ?>>大吟醸酒</label>
             <label><input type="checkbox" name="premiumSake[]" value="JunmaiGinjo" <?php sCheck('premiumSake', 'JunmaiGinjo'); ?>>純米吟醸酒</label>
             <label><input type="checkbox" name="premiumSake[]" value="JunmaiDaiginjo" <?php sCheck('premiumSake', 'JunmaiDaiginjo'); ?>>純米大吟醸酒</label>
-          </div>
-        </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="pasteurization" onclick="Switch(this)" <?php sCheck('m-target', 'pasteurization'); ?>>火入れ</label>
-        <div id="pasteurization" class="hide">
-          <div class="filter-detail">
-            <label><input type="checkbox" name="pasteurization[]" value="Namazake" <?php sCheck('pasteurization', 'Namazake'); ?>>生酒</label>
-            <label><input type="checkbox" name="pasteurization[]" value="LiveBottledSake" <?php sCheck('pasteurization', 'LiveBottledSake'); ?>>生詰酒</label>
-            <label><input type="checkbox" name="pasteurization[]" value="LiveStorageSake" <?php sCheck('pasteurization', 'LiveStorageSake'); ?>>生貯蔵酒</label>
-            <label><input type="checkbox" name="pasteurization[]" value="Hiyaoroshi" <?php sCheck('pasteurization', 'Hiyaoroshi'); ?>>ひやおろし</label>
-            <!-- <label><input type="checkbox" name="pasteurization[]" value="BottlePasteurization">瓶火入れ</label> -->
-          </div>
-        </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="pressingOrder" onclick="Switch(this)" <?php sCheck('m-target', 'pressingOrder'); ?>>搾り取る順番</label>
-        <div id="pressingOrder" class="hide">
-          <div class="filter-detail">
-            <label><input type="checkbox" name="pressingOrder[]" value="FirstRun" <?php sCheck('pressingOrder', 'FirstRun'); ?>>荒走り</label>
-            <label><input type="checkbox" name="pressingOrder[]" value="MiddleRunSake" <?php sCheck('pressingOrder', 'MiddleRunSake'); ?>>中汲み</label>
-            <label><input type="checkbox" name="pressingOrder[]" value="FinalRunSake" <?php sCheck('pressingOrder', 'FinalRunSake'); ?>>責め</label>
-          </div>
-        </div>
-        <label><input class="element main" type="checkbox" name="m-target[]" value="aging" onclick="Switch(this)" <?php sCheck('m-target', 'aging'); ?>>熟成</label>
-        <div id="aging" class="hide">
-          <div class="filter-detail">
-            <label><input type="checkbox" name="aging[]" value="FreshSake" <?php sCheck('aging', 'FreshSake'); ?>>しぼりたて</label>
-            <label><input type="checkbox" name="aging[]" value="OldSake" <?php sCheck('aging', 'OldSake'); ?>>古酒（3年以上熟成）</label>
           </div>
         </div>
         <label><input class="element main" type="checkbox" name="m-target[]" value="other" onclick="Switch(this)" <?php sCheck('m-target', 'other'); ?>>その他</label>

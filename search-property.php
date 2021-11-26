@@ -58,19 +58,41 @@
   <div id="result" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
     <div class="container">
       <h1 class="section-title">検索結果</h1>
+      <div class="data-count">
+        <div id="count-query" class="query"
+        data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+        data-sgvizler-query="
+        <?php preQuery(); ?>
+
+        select (count(?s) as ?count) where
+        {
+          ?s a sk-eval:Sake .
+          bind('' as ?label)
+
+          ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
+             sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
+          bind(((?min_x+ ?max_x) / 2) as ?x_value)
+
+          ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
+             sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
+          bind(((?min_y + ?max_y) / 2) as ?y_value)
+
+          <?php addpCon(); ?>
+        }
+        "
+        data-sgvizler-chart="sgvizler.visualization.Text"
+        data-sgvizler-chart-options="">
+        </div>
+        <p>件ヒットしました。</p>
+      </div>
       <div id="property-query" class="query"
-      data-sgvizler-endpoint="http://echigodb.jp:8893/sparql/"
+      data-sgvizler-endpoint="<?php getEndpoint(); ?>"
       data-sgvizler-query="
-      PREFIX schema: <http://schema.org/>
-      PREFIX sk-eval: <http://www.sakevoc.jp/eval/>
-      PREFIX sk-prep: <http://www.sakevoc.jp/prep/>
-      PREFIX sk-make: <http://www.sakevoc.jp/make/>
-      with <http://sake_data>
+      <?php preQuery(); ?>
 
       select ?label ?x_value ?y_value (count(?s) as ?count) where
       {
         ?s a sk-eval:Sake .
-        ?s schema:name ?name .
         bind('' as ?label)
 
         ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
