@@ -1,4 +1,15 @@
 <script type="text/javascript">
+let menu = 1;
+function dropdown() {
+  if (menu == 1) {
+    document.getElementById('search-menu').style.display = 'block';
+    menu *= -1;
+  }else {
+    document.getElementById('search-menu').style.display = 'none';
+    menu *= -1;
+  }
+}
+
 function checkProp() {      // 成分検索の入力チェック
   let x = document.getElementsByName('x-target');
   let y = document.getElementsByName('y-target');

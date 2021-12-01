@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <?php require_once('component/function.php'); ?>
   <title>ホーム | SakeAnalyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
   <link rel="icon" href="image/favicon.ico">
@@ -31,8 +32,32 @@
   </div>
   <div class="btn-wrapper">     <!-- ページ遷移ボタン -->
     <div class="container">
-      <a href="search" class="btn search-btn">データを閲覧する</a>      <!-- 検索ページへ -->
-      <a href="credit-brewery" class="btn provider-btn">データを載せている酒蔵を見る</a>     <!-- 酒蔵のクレジットページへ -->
+      <div class="popup_wrap">
+        <input id="search_trig" type="checkbox"><label for="search_trig" class="btn scopen">データを閲覧する</label>      <!-- 検索ページへ -->
+        <div class="popup_overlay">
+          <div class="scpop_content">
+            <label for="search_trig" class="scclose">×</label>
+            <p>成分・原料・製法それぞれを検索できます。</p>
+            <div class="search-intro">
+              <div class="search-index">
+                <img src="image/property_index.png" alt="成分">
+                <a href="search-property" class="btn scpop-btn">成分を検索</a>
+              </div>
+              <div class="search-index">
+                <img src="image/ingredient_index.png" alt="原料">
+                <a href="search-ingredient" class="btn scpop-btn">原料を検索</a>
+              </div>
+              <div class="search-index">
+                <img src="image/manufacture_index.png" alt="製法">
+                <a href="search-manufacture" class="btn scpop-btn">製法を検索</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a href="credit-brewery" class="btn provider-btn">データを載せている酒蔵を見る</a>     <!-- 酒蔵のクレジットページへ -->
+      </div>
     </div>
   </div>
   <footer>      <!-- フッター -->

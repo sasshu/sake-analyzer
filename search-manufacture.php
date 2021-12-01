@@ -24,17 +24,17 @@
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（製法）</h2>
         <div class="manufacture-search">     <!-- 検索対象 = 製法 -->
-          <label><input class="element main" type="radio" name="manufacture" value="ricePolishing" onclick="offRadio(this, 1)" <?php sRadio('manufacture', 'ricePolishing'); ?>>精米法</label>
-          <label><input class="element main" type="radio" name="manufacture" value="ricePolishingRate" onclick="offRadio(this, 2)" <?php sRadio('manufacture', 'ricePolishingRate'); ?>>精米歩合</label>
-          <label><input class="element main" type="radio" name="manufacture" value="kojiMaking" onclick="offRadio(this, 3)" <?php sRadio('manufacture', 'kojiMaking'); ?>>製麹法</label>
-          <label><input class="element main" type="radio" name="manufacture" value="fermentationStarter" onclick="offRadio(this, 4)" <?php sRadio('manufacture', 'fermentationStarter'); ?>>酒母造り</label>
-          <label><input class="element main" type="radio" name="manufacture" value="fermentationMash" onclick="offRadio(this, 5)" <?php sRadio('manufacture', 'fermentationMash'); ?>>段仕込み段数</label>
-          <label><input class="element main" type="radio" name="manufacture" value="pressing" onclick="offRadio(this, 6)" <?php sRadio('manufacture', 'pressing'); ?>>上槽法</label>
-          <label><input class="element main" type="radio" name="manufacture" value="pressingOrder" onclick="offRadio(this, 7)" <?php sRadio('manufacture', 'pressingOrder'); ?>>搾り取る順番</label>
-          <label><input class="element main" type="radio" name="manufacture" value="pasteurization" onclick="offRadio(this, 8)" <?php sRadio('manufacture', 'pasteurization'); ?>>火入れ</label>
-          <label><input class="element main" type="radio" name="manufacture" value="storage" onclick="offRadio(this, 9)" <?php sRadio('manufacture', 'storage'); ?>>貯蔵容器</label>
-          <label><input class="element main" type="radio" name="manufacture" value="aging" onclick="offRadio(this, 10)" <?php sRadio('manufacture', 'aging'); ?>>熟成の程度</label>
-          <label><input class="element main" type="radio" name="manufacture" value="premiumSake" onclick="offRadio(this, 11)" <?php sRadio('manufacture', 'premiumSake'); ?>>特定名称</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="ricePolishing" onclick="offRadio(this, 1)" <?php sRadio('manufacture', 'ricePolishing'); ?>>精米法</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="ricePolishingRate" onclick="offRadio(this, 2)" <?php sRadio('manufacture', 'ricePolishingRate'); ?>>精米歩合</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="kojiMaking" onclick="offRadio(this, 3)" <?php sRadio('manufacture', 'kojiMaking'); ?>>製麹法</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="fermentationStarter" onclick="offRadio(this, 4)" <?php sRadio('manufacture', 'fermentationStarter'); ?>>酒母造り</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="fermentationMash" onclick="offRadio(this, 5)" <?php sRadio('manufacture', 'fermentationMash'); ?>>段仕込み段数</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="pressing" onclick="offRadio(this, 6)" <?php sRadio('manufacture', 'pressing'); ?>>上槽法</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="pressingOrder" onclick="offRadio(this, 7)" <?php sRadio('manufacture', 'pressingOrder'); ?>>搾り取る順番</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="pasteurization" onclick="offRadio(this, 8)" <?php sRadio('manufacture', 'pasteurization'); ?>>火入れ</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="storage" onclick="offRadio(this, 9)" <?php sRadio('manufacture', 'storage'); ?>>貯蔵容器</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="aging" onclick="offRadio(this, 10)" <?php sRadio('manufacture', 'aging'); ?>>熟成の程度</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="premiumSake" onclick="offRadio(this, 11)" <?php sRadio('manufacture', 'premiumSake'); ?>>特定名称</label>
           <!--
           <label><input class="element main" type="radio" name="manufacture" value="unfilteredSake" onclick="offRadio(this, 12)" <?php sRadio('manufacture', 'unfilteredSake'); ?>>無濾過酒</label>
           <label><input class="element main" type="radio" name="manufacture" value="undilutedSake" onclick="offRadio(this, 13)" <?php sRadio('manufacture', 'undilutedSake'); ?>>原酒</label>
@@ -43,7 +43,7 @@
           <label><input class="element main" type="radio" name="manufacture" value="firstlyMadeSake" onclick="offRadio(this, 16)" <?php sRadio('manufacture', 'firstlyMadeSake'); ?>>初しぼり</label>
           <label><input class="element main" type="radio" name="manufacture" value="sparklingSake" onclick="offRadio(this, 17)" <?php sRadio('manufacture', 'sparklingSake'); ?>>発泡清酒</label>
           -->
-          <label><input class="element main" type="radio" name="manufacture" value="other" onclick="offRadio(this, 18)" <?php sRadio('manufacture', 'other'); ?>>その他</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="other" onclick="offRadio(this, 18)" <?php sRadio('manufacture', 'other'); ?>>その他</label>
         </div>
       </div>
       <?php include("component/search_option.php"); ?>

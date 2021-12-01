@@ -3,7 +3,7 @@
 	margin: 0px;
 }
 
-html {
+body {
 	overflow-y: scroll;
 	font-family: arial;
 }
@@ -20,7 +20,7 @@ ul {
 	list-style: none;
 }
 
-label {
+.check {
 	display: inline-block;
 	width: 120px;
 	white-space: nowrap;
@@ -114,7 +114,6 @@ input[type='number'] {
 	display: flex;
 }
 
-
 header {
   height: 65px;
   width: 100%;
@@ -152,13 +151,13 @@ header {
 .header-right li:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
-
+/*
 .header-right li:hover .header-right-child {
-	display: block;
+  display: block;
 }
-
+*/
 .header-right-child {
-	display:none;
+	display: none;
 	position:absolute;
 	background-color: rgba(0, 128, 0, 1.0);
 	padding: 0;
@@ -193,9 +192,76 @@ footer {
 	width: 100%;
 }
 
-.search-btn {
-  background-color: mediumseagreen;
-  margin-right: 30px;
+.popup_wrap input {
+  display: none;
+}
+
+.popup_overlay {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+	top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: #37beb03d;
+  opacity: 0;
+  transition: opacity 0.5s, transform 0s 0.5s;
+  transform: scale(0);
+}
+
+.scpop_content {
+	padding: 10px;
+	position: relative;
+  align-self: center;
+  width: 85%;
+  background: #fff;
+  transition: 0.5s;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(94, 94, 94, 0.7);
+}
+
+.search-index img {
+	width: 80%;
+	margin-bottom: 20px;
+}
+
+.scpop_content p {
+  text-align: center;
+}
+
+.search-intro {
+	display: flex;
+}
+
+.search-index {
+	width: 32%;
+}
+
+.scclose {
+  position: absolute;
+	top: 14px;
+  right: 16px;
+  font-size: 30px;
+  cursor: pointer;
+  color: black;
+}
+
+.popup_wrap input:checked ~ .popup_overlay {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s;
+}
+
+.scopen {
+	cursor: pointer;
+	background-color: mediumseagreen;
+	margin-right: 30px;
+}
+
+.scpop-btn {
+	background-color: darkcyan;
 }
 
 .provider-btn {
@@ -204,6 +270,11 @@ footer {
 
 .btn-wrapper {
 	text-align: center;
+}
+
+.btn-wrapper .container {
+	display: flex;
+	justify-content: center;
 }
 
 .btn {
