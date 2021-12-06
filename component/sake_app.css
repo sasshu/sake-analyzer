@@ -114,6 +114,12 @@ input[type='number'] {
 	display: flex;
 }
 
+.delete {
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+}
+
 header {
   height: 65px;
   width: 100%;

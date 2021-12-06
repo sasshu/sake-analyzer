@@ -1,6 +1,8 @@
 <div class="filtering-search">      <!-- フィルタリング条件の入力 -->
   <h2>絞り込み条件</h2>
-  <div class="filtering-contents">
+  <input type="button" value="比較する" onclick="dupFilter(this);">
+  <div id="filter" class="filtering-contents">
+    <input class="delete" type="button" value="×" onclick="delFilter(this);">
     <div class="filtering-content">     <!-- 成分によるフィルタリング -->
       <div class="filtering-target">
         <p>成分</p>
@@ -8,32 +10,32 @@
         <div id="sakeMeterValue" class="hide">
           <div class="filter-detail">
             <p>範囲を設定してください</p>
-            <label class="check"><input type="number" step="0.1" name="min_sakeMeterValue" placeholder="0.0" <?php sNumber('min_sakeMeterValue'); ?>>以上</label>
-            <label class="check"><input type="number" step="0.1" name="max_sakeMeterValue" placeholder="5.0" <?php sNumber('max_sakeMeterValue'); ?>>以下</label>
+            <label class="check"><input type="number" step="0.1" name="min_sakeMeterValue" <?php sNumber('min_sakeMeterValue'); ?>>以上</label>
+            <label class="check"><input type="number" step="0.1" name="max_sakeMeterValue" <?php sNumber('max_sakeMeterValue'); ?>>以下</label>
           </div>
         </div>
         <label class="check"><input class="element main" type="checkbox" name="p-target[]" value="acidRate" onclick="Switch(this)" <?php sCheck('p-target', 'acidRate'); ?>>酸度</label>
         <div id="acidRate" class="hide">
           <div class="filter-detail">
             <p>範囲を設定してください</p>
-            <label class="check"><input type="number" step="0.1" name="min_acidRate" min="0" placeholder="1.0" <?php sNumber('min_acidRate'); ?>>以上</label>
-            <label class="check"><input type="number" step="0.1" name="max_acidRate" min="0" placeholder="2.0" <?php sNumber('max_acidRate'); ?>>以下</label>
+            <label class="check"><input type="number" step="0.1" name="min_acidRate" min="0" <?php sNumber('min_acidRate'); ?>>以上</label>
+            <label class="check"><input type="number" step="0.1" name="max_acidRate" min="0" <?php sNumber('max_acidRate'); ?>>以下</label>
           </div>
         </div>
         <label class="check"><input class="element main" type="checkbox" name="p-target[]" value="aminoAcidRate" onclick="Switch(this)" <?php sCheck('p-target', 'aminoAcidRate'); ?>>アミノ酸度</label>
         <div id="aminoAcidRate" class="hide">
           <div class="filter-detail">
             <p>範囲を設定してください</p>
-            <label class="check"><input type="number" step="0.1" name="min_aminoAcidRate" min="0" placeholder="1.0" <?php sNumber('min_aminoAcidRate'); ?>>以上</label>
-            <label class="check"><input type="number" step="0.1" name="max_aminoAcidRate" min="0" placeholder="1.5" <?php sNumber('max_aminoAcidRate'); ?>>以下</label>
+            <label class="check"><input type="number" step="0.1" name="min_aminoAcidRate" min="0" <?php sNumber('min_aminoAcidRate'); ?>>以上</label>
+            <label class="check"><input type="number" step="0.1" name="max_aminoAcidRate" min="0" <?php sNumber('max_aminoAcidRate'); ?>>以下</label>
           </div>
         </div>
         <label class="check"><input class="element main" type="checkbox" name="p-target[]" value="alcoholContent" onclick="Switch(this)" <?php sCheck('p-target', 'alcoholContent'); ?>>アルコール度</label>
         <div id="alcoholContent" class="hide">
           <div class="filter-detail">
             <p>範囲を設定してください</p>
-            <label class="check"><input type="number" step="0.1" name="min_alcoholContent" min="0" placeholder="15.0" <?php sNumber('min_alcoholContent'); ?>>以上</label>
-            <label class="check"><input type="number" step="0.1" name="max_alcoholContent" min="0" max="22" placeholder="16.0" <?php sNumber('max_alcoholContent'); ?>>以下</label>
+            <label class="check"><input type="number" step="0.1" name="min_alcoholContent" min="0" <?php sNumber('min_alcoholContent'); ?>>以上</label>
+            <label class="check"><input type="number" step="0.1" name="max_alcoholContent" min="0" max="22" <?php sNumber('max_alcoholContent'); ?>>以下</label>
           </div>
         </div>
       </div>
@@ -122,8 +124,8 @@
         <div id="ricePolishingRate" class="hide">
           <div class="filter-detail">
             <p>範囲を設定してください</p>
-            <label class="check"><input type="number" step="1" name="min_ricePolishingRate" min="0" max="100" placeholder="50" <?php sNumber('min_ricePolishingRate'); ?>>以上</label>
-            <label class="check"><input type="number" step="1" name="max_ricePolishingRate" min="0" min="100" placeholder="65" <?php sNumber('max_ricePolishingRate'); ?>>以下</label>
+            <label class="check"><input type="number" step="1" name="min_ricePolishingRate" min="0" max="100" <?php sNumber('min_ricePolishingRate'); ?>>以上</label>
+            <label class="check"><input type="number" step="1" name="max_ricePolishingRate" min="0" min="100" <?php sNumber('max_ricePolishingRate'); ?>>以下</label>
           </div>
         </div>
         <label class="check"><input class="element main" type="checkbox" name="m-target[]" value="kojiMaking" onclick="Switch(this)" <?php sCheck('m-target', 'kojiMaking'); ?>>製麹法</label>

@@ -101,20 +101,20 @@ function Switch(checks) {      // 絞り込みコンテンツの表示切り替�
   let drop = '';
   let hide = document.getElementsByName(checks.name);     // checks.name = '()-target[]'
   for (var i = 0; i < hide.length; i++) {
-    let display = document.getElementById(hide[i].value);
+    let display = document.getElementById(hide[i].value);     //
     if (hide[i].checked) {
       display.className = hide[i].value;
     }else if (!hide[i].checked) {
       display.className = 'hide';
-      if (checks.name == 'i-target[]') {
+      if (checks.name.includes('i-target')) {
         drop = document.getElementsByName(hide[i].value + '[]');
         offSelect(drop);
-      }else if (checks.name == 'p-target[]') {
+      }else if (checks.name.includes('p-target')) {
         drop = document.getElementsByName('min_' + hide[i].value);
         offNumber(drop);
         drop = document.getElementsByName('max_' + hide[i].value);
         offNumber(drop);
-      }else if (checks.name == 'm-target[]') {
+      }else if (checks.name.includes('m-target')) {
         drop = document.getElementsByName(hide[i].value + '[]');
         offSelect(drop);
       }
@@ -146,21 +146,51 @@ function offRadio(check, id) {      // ラジオボタンの選択解除
   }
 }
 
+function dupFilter(btn) {      // 絞り込み条件画面の追加
+  let element = document.getElementsByClassName('filtering-contents');
+  let copy_area = btn.nextElementSibling;
+  let copy_element = copy_area.cloneNode(true);
+  if (copy_area.style.display == 'none') {
+    copy_area.style.display = 'flex';
+  }else {
+    element[element.length-1].after(copy_element);      // 複製した要素を一番後ろに挿入
+    let num = element.length;
+    let last = element[element.length-1].innerHTML;     // 挿入した要素を文字列に変換
+    last = last.replace(/p-target/g, 'p-target' + num).replace(/i-target/g, 'i-target' + num).replace(/m-target/g, 'm-target' + num);
+    last = last.replace(/sakeMeterValue/g, 'sakeMeterValue'+ num).replace(/acidRate/g, 'acidRate'+ num).replace(/aminoAcidRate/g, 'aminoAcidRate'+ num).replace(/alcoholContent/g, 'alcoholContent'+ num);
+    last = last.replace(/rice/g, 'rice'+ num).replace(/yeast/g, 'yeast'+ num).replace(/koji/g, 'koji'+ num).replace(/water/g, 'water'+ num);
+    element[element.length-1].innerHTML = last;     // 変更した文字列を要素に適用
+  }
+}
+
+function delFilter(btn) {     // 絞り込み条件画面の削除
+  let element = document.getElementsByClassName('filtering-contents');
+  if (element.length > 1) {
+    btn.parentNode.remove();
+  }else {
+    btn.parentNode.style.display = 'none';
+  }
+}
+
 
 // ページ更新の度に実行
 window.onload = () => {
-  let it = document.getElementsByName('i-target[]');
-  let pt = document.getElementsByName('p-target[]');
-  let mt = document.getElementsByName('m-target[]');
-  for (var i = 0; i < pt.length; i++) {     // 選択した絞り込み条件（成分）の再表示
-    Switch(pt[i]);
+  let element = document.getElementsByClassName('filtering-contents');
+  for (var n = 0; n < element.length; n++) {
+    let it = document.getElementsByName('i-target' + n + '[]');
+    let pt = document.getElementsByName('p-target' + n + '[]');
+    let mt = document.getElementsByName('m-target' + n + '[]');
+    for (var i = 0; i < pt.length; i++) {     // 選択した絞り込み条件（成分）の再表示
+      Switch(pt[i]);
+    }
+    for (var i = 0; i < it.length; i++) {     // 選択した絞り込み条件（原料）の再表示
+      Switch(it[i]);
+    }
+    for (var i = 0; i < mt.length; i++) {     // 選択した絞り込み条件（製法）の再表示
+      Switch(mt[i]);
+    }
   }
-  for (var i = 0; i < it.length; i++) {     // 選択した絞り込み条件（原料）の再表示
-    Switch(it[i]);
-  }
-  for (var i = 0; i < mt.length; i++) {     // 選択した絞り込み条件（製法）の再表示
-    Switch(mt[i]);
-  }
+
 }
 </script>
 
