@@ -17,40 +17,38 @@
   <header>      <!-- ヘッダーの読み込み -->
     <?php include("component/header.html"); ?>
   </header>
-  <form id="search_form" class="search-wrapper" action="#result" method="post">     <!-- 検索フォーム -->
+  <form id="search_form" class="search-wrapper" action="#result0" method="post">     <!-- 検索フォーム -->
     <div class="container">
       <h1 class="section-title">製法を検索</h1>
       <p class="sec-intro">日本酒製造に用いられる製法の詳細を、円グラフまたは棒グラフで可視化します。</p>
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（製法）</h2>
         <div class="manufacture-search">     <!-- 検索対象 = 製法 -->
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="ricePolishing" onclick="offRadio(this, 1)" <?php sRadio('manufacture', 'ricePolishing'); ?>>精米法</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="ricePolishingRate" onclick="offRadio(this, 2)" <?php sRadio('manufacture', 'ricePolishingRate'); ?>>精米歩合</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="kojiMaking" onclick="offRadio(this, 3)" <?php sRadio('manufacture', 'kojiMaking'); ?>>製麹法</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="fermentationStarter" onclick="offRadio(this, 4)" <?php sRadio('manufacture', 'fermentationStarter'); ?>>酒母造り</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="fermentationMash" onclick="offRadio(this, 5)" <?php sRadio('manufacture', 'fermentationMash'); ?>>段仕込み段数</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="pressing" onclick="offRadio(this, 6)" <?php sRadio('manufacture', 'pressing'); ?>>上槽法</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="pressingOrder" onclick="offRadio(this, 7)" <?php sRadio('manufacture', 'pressingOrder'); ?>>搾り取る順番</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="pasteurization" onclick="offRadio(this, 8)" <?php sRadio('manufacture', 'pasteurization'); ?>>火入れ</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="storage" onclick="offRadio(this, 9)" <?php sRadio('manufacture', 'storage'); ?>>貯蔵容器</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="aging" onclick="offRadio(this, 10)" <?php sRadio('manufacture', 'aging'); ?>>熟成の程度</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="premiumSake" onclick="offRadio(this, 11)" <?php sRadio('manufacture', 'premiumSake'); ?>>特定名称</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="ricePolishing" onclick="sRadio(this)">精米法</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="ricePolishingRate" onclick="sRadio(this)">精米歩合</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="kojiMaking" onclick="sRadio(this)">製麹法</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="fermentationStarter" onclick="sRadio(this)">酒母造り</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="fermentationMash" onclick="sRadio(this)">段仕込み段数</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="pressing" onclick="sRadio(this)">上槽法</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="pressingOrder" onclick="sRadio(this)">搾り取る順番</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="pasteurization" onclick="sRadio(this)">火入れ</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="storage" onclick="sRadio(this)">貯蔵容器</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="aging" onclick="sRadio(this)">熟成の程度</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="premiumSake" onclick="sRadio(this)">特定名称</label>
           <!--
-          <label><input class="element main" type="radio" name="manufacture" value="unfilteredSake" onclick="offRadio(this, 12)" <?php sRadio('manufacture', 'unfilteredSake'); ?>>無濾過酒</label>
-          <label><input class="element main" type="radio" name="manufacture" value="undilutedSake" onclick="offRadio(this, 13)" <?php sRadio('manufacture', 'undilutedSake'); ?>>原酒</label>
-          <label><input class="element main" type="radio" name="manufacture" value="cloudySake" onclick="offRadio(this, 14)" <?php sRadio('manufacture', 'cloudySake'); ?>>にごり酒</label>
-          <label><input class="element main" type="radio" name="manufacture" value="orizake" onclick="offRadio(this, 15)" <?php sRadio('manufacture', 'orizake'); ?>>おり酒</label>
-          <label><input class="element main" type="radio" name="manufacture" value="firstlyMadeSake" onclick="offRadio(this, 16)" <?php sRadio('manufacture', 'firstlyMadeSake'); ?>>初しぼり</label>
-          <label><input class="element main" type="radio" name="manufacture" value="sparklingSake" onclick="offRadio(this, 17)" <?php sRadio('manufacture', 'sparklingSake'); ?>>発泡清酒</label>
+          <label><input class="element main" type="radio" name="manufacture" value="unfilteredSake" onclick="sRadio(this)">無濾過酒</label>
+          <label><input class="element main" type="radio" name="manufacture" value="undilutedSake" onclick=""sRadio(this)">原酒</label>
+          <label><input class="element main" type="radio" name="manufacture" value="cloudySake" onclick="sRadio(this)">にごり酒</label>
+          <label><input class="element main" type="radio" name="manufacture" value="orizake" onclick="sRadio(this)">おり酒</label>
+          <label><input class="element main" type="radio" name="manufacture" value="firstlyMadeSake" onclick="sRadio(this)">初しぼり</label>
+          <label><input class="element main" type="radio" name="manufacture" value="sparklingSake" onclick="sRadio(this)">発泡清酒</label>
           -->
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="other" onclick="offRadio(this, 18)" <?php sRadio('manufacture', 'other'); ?>>その他</label>
+          <label class="check"><input class="element main" type="radio" name="manufacture" value="other" onclick="sRadio(this)">その他</label>
         </div>
       </div>
       <?php include("component/search_option.php"); ?>
       <div class="form-execute"><input type="submit" class="btn query-btn" value="この条件で検索" onclick="return checkMan();"></div>     <!-- 検索ボタン -->
-      <form class="others" action="" method="post">
-        <div class="initialize"><input type="submit" class="btn init-btn" name="init" value="検索条件を初期化"></div>      <!-- 初期化ボタン -->
-      </form>
+      <div class="initialize"><input type="button" class="btn init-btn" name="init" value="検索条件を初期化" onclick="initialize()"></div>      <!-- 初期化ボタン -->
     </div>
   </form>
   <?php
@@ -62,46 +60,49 @@
     $chart = '';
   }
   ?>
-  <div id="result" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
-    <div class="container">
-      <h1 class="section-title">検索結果</h1>
-      <div class="data-count">
-        <div id="count-query" class="query"
+  <div class="result-contents">
+    <div id="result0" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
+      <div class="container">
+        <h1 class="section-title">検索結果</h1>
+        <div class="data-count">
+          <div id="count-query0" class="query"
+          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-query="
+          <?php preQuery(); ?>
+
+          select (count(?s) as ?count) where
+          {
+            ?s a sk-eval:Sake .
+            <?php man($man); ?>
+            <?php addmCon(0); ?>
+          }
+          "
+          data-sgvizler-chart="sgvizler.visualization.Text"
+          data-sgvizler-chart-options="">
+          </div>
+          <p>件ヒットしました。</p>
+        </div>
+        <div id="manufacture-query0" class="query"
         data-sgvizler-endpoint="<?php getEndpoint(); ?>"
         data-sgvizler-query="
         <?php preQuery(); ?>
 
-        select (count(?s) as ?count) where
+        select ?man (count(?s) as ?count) where
         {
           ?s a sk-eval:Sake .
           <?php man($man); ?>
-          <?php addmCon(); ?>
+          <?php addmCon(0); ?>
         }
+        <?php dataSort($man); ?>
         "
-        data-sgvizler-chart="sgvizler.visualization.Text"
-        data-sgvizler-chart-options="">
+        data-sgvizler-chart="<?php selectChart($man); ?>"
+        data-sgvizler-chart-options=""
+        style="width:90%; height:500px;">
         </div>
-        <p>件ヒットしました。</p>
-      </div>
-      <div id="manufacture-query" class="query"
-      data-sgvizler-endpoint="<?php getEndpoint(); ?>"
-      data-sgvizler-query="
-      <?php preQuery(); ?>
-
-      select ?man (count(?s) as ?count) where
-      {
-        ?s a sk-eval:Sake .
-        <?php man($man); ?>
-        <?php addmCon(); ?>
-      }
-      <?php dataSort($man); ?>
-      "
-      data-sgvizler-chart="<?php selectChart($man); ?>"
-      data-sgvizler-chart-options=""
-      style="width:90%; height:500px;">
       </div>
     </div>
   </div>
+
   <footer>      <!-- フッター -->
     <?php include("component/footer.html"); ?>
   </footer>
