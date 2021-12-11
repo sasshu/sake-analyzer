@@ -1,4 +1,5 @@
 <script type="text/javascript">
+/*
 let menu = 1;
 function dropdown() {
   if (menu == 1) {
@@ -9,6 +10,7 @@ function dropdown() {
     menu *= -1;
   }
 }
+*/
 
 // 成分検索の入力チェック
 function checkProp() {
@@ -79,82 +81,78 @@ function Switch(checks) {
   }else if (!checks.checked) {
     display.className = 'hide';
     drop = document.getElementsByName(checks.value + '[]');
-    offCheck(drop);
+    for (var i = 0; i < drop.length; i++) {
+      offCheck(drop[i]);
+    }
     drop = document.getElementsByName('min_' + checks.value);
-    offNumber(drop);
+    for (var i = 0; i < drop.length; i++) {
+      offNumber(drop[i]);
+    }
     drop = document.getElementsByName('max_' + checks.value);
-    offNumber(drop);
+    for (var i = 0; i < drop.length; i++) {
+      offNumber(drop[i]);
+    }
   }
 }
 
 // チェックボックスの選択解除
-function offCheck(drop) {
-  for (var i = 0; i < drop.length; i++) {
-    let key = addNumber(drop[i]);
-    sessionStorage.removeItem(key);
-    drop[i].checked = false;
-  }
+function offCheck(sel) {
+  let key = addNumber(sel);
+  sessionStorage.removeItem(key);
+  sel.checked = false;
 }
 
 // input numberの入力削除
-function offNumber(drop) {
-  for (var i = 0; i < drop.length; i++) {
-    let key = drop[i].name;
-    sessionStorage.removeItem(key);
-    drop[i].value = '';
+function offNumber(sel) {
+  let key = sel.name;
+  sessionStorage.removeItem(key);
+  sel.value = '';
+}
+
+function dupFilter(check) {
+  let element = document.getElementsByClassName('filtering-contents');
+  if (check.checked) {
+    addDisp(element);
+  }else {
+    remDisp(element);
   }
 }
 
-// 画面の追加
-function dupFilter(btn) {
-  // 絞り込み条件画面の追加
-  let element = document.getElementsByClassName('filtering-contents');
-  let copy_area = btn.nextElementSibling;
+// 絞り込み条件画面の追加
+function addDisp(element) {
+  let copy_area = element[0];
   let copy_element = copy_area.cloneNode(true);
+  copy_area.after(copy_element);      // 複製した要素を一番後ろに挿入
+  copy_element.innerHTML = replaceElement(copy_element.innerHTML, 1);     // 変更した文字列を要素に適用
 
-  let last = element.length - 1;
-  element[last].after(copy_element);      // 複製した要素を一番後ろに挿入
-  element[last+1].innerHTML = replaceElement(element[last+1].innerHTML, last+1);     // 変更した文字列を要素に適用
-
-  // 結果画面の追加
-  let graph = document.getElementsByClassName('result-contents');
-  let graph_area = graph[0];
-  let copy_graph = graph_area.cloneNode(true);
-  let end = graph.length - 1;
-  graph[end].after(copy_graph);      // 複製した要素を一番後ろに挿入
-  graph[end+1].innerHTML = replaceResult(graph[end+1].innerHTML, end+1);     // 変更した文字列を要素に適用
+  sessionStorage.setItem('condition', 2);
 }
 
-// 複製した画面の削除
-function delFilter(btn) {
-  // 絞り込み条件画面の削除
-  let element = document.getElementsByClassName('filtering-contents');
-  let num = element.length;
-  if (element.length > 1) {       // 2つ以上要素があれば
-    for (var i = 0; i < element.length; i++) {
-      if (btn.parentNode == element[i]) {
-        btn.parentNode.remove();      // 要素を削除
-        delete element[i];
-        num = i;
-      }
+// 絞り込み条件画面の削除
+function remDisp(element) {
+  sessionStorage.removeItem('condition');
+  /*
+  let child = document.getElementsByClassName('group1');
+  for (var i = 0; i < child.length; i++) {
+    if (child[i].type == 'checkbox') {
+      offCheck(child[i]);
+    }else if (child[i].type == 'number') {
+      offNumber(child[i]);
     }
-    for (var i = num; i < element.length; i++) {      // 要素番号を前に詰める
-      element[i].innerHTML = replaceElement(element[i].innerHTML, i);
-    }
-  }else {                         // 1つしか残っていない場合
-    alert('これ以上削除できません。');
-    return false;
+  }
+  */
+  element[1].remove();
+}
+
+function addResult(condition) {
+  let result = document.getElementById('result1');
+  if (Number(condition) > 1) {
+    result.style.display = 'block';
+  }else {
+    result.style.display = 'none';
   }
 }
 
-// 複製した要素（結果画面）を文字列に変換
-function replaceResult(text, num) {
-  // クエリ
-  text = text.replace(/result\d{1}/g, 'result' + num);
-  text = text.replace(/addpCon(\d{1})/g, 'addpCon' + '(' + num + ')').replace(/addiCon(\d{1})/g, 'addiCon' + '(' + num + ')').replace(/addmCon(\d{1})/g, 'addmCon' + '(' + num + ')');
-  text = text.replace(/count-query\d{1}/g, 'count-query' + num).replace(/property-query\d{1}/g, 'property-query' + num);
-  return text;
-}
 
 // 複製した要素（絞り込み条件）を文字列に変換
 function replaceElement(text, num) {
@@ -168,53 +166,51 @@ function replaceElement(text, num) {
   text = text.replace(/ricePolishing\d{1}/g, 'ricePolishing' + num).replace(/ricePolishingRate\d{1}/g, 'ricePolishingRate' + num).replace(/kojiMaking\d{1}/g, 'kojiMaking' + num).replace(/fermentationStarter\d{1}/g, 'fermentationStarter' + num);
   text = text.replace(/fermentationMash\d{1}/g, 'fermentationMash' + num).replace(/pressing\d{1}/g, 'pressing' + num).replace(/pressingOrder\d{1}/g, 'pressingOrder' + num).replace(/pasteurization\d{1}/g, 'pasteurization' + num);
   text = text.replace(/storage\d{1}/g, 'storage' + num).replace(/aging\d{1}/g, 'aging' + num).replace(/premiumSake\d{1}/g, 'premiumSake' + num).replace(/other\d{1}/g, 'other' + num);
-  text = text.replace(/filter\d{1}/g, 'filter' + num);
+  // その他
+  text = text.replace(/group\d{1}/g, 'group' + num);
   return text;
 }
 
-// ページ更新直前に実行
-window.addEventListener('DOMContentLoaded', () => {
-  sessionStorage.setItem('condition', String(document.getElementsByClassName('filtering-contents').length));
-  let condition = sessionStorage.getItem('condition');
-  console.log(condition);
-});
-
-
 // ページ更新直後に実行
 window.onload = () => {
+  getCheck(document.getElementById('compare'));
+  console.log('element:' + document.getElementsByClassName('main group0').length);
+
   let condition = sessionStorage.getItem('condition');
+  addResult(condition);
   console.log(condition);
-  for (var n = 0; n < 3; n++) {
-    /*
-    if (n > 0) {
-      let btn = document.getElementById('compare');
-      dupFilter(btn);
-    }
-    */
+
+  let max = 1
+  if (condition != null) {
+    max = Number(condition);
+  }
+  console.log('max:' + max);
+  for (var n = 0; n < max; n++) {
     // 選択した絞り込み条件（成分）の復元
     let pt = document.getElementsByName('p-target' + n + '[]');
     for (var i = 0; i < pt.length; i++) {
       getCheck(pt[i]);
+      Switch(pt[i]);
       let min_pt = document.getElementsByName('min_' + pt[i].value);
       let max_pt = document.getElementsByName('max_' + pt[i].value);
       getNumber(min_pt[0]);
       getNumber(max_pt[0]);
-      Switch(pt[i]);
     }
     // 選択した絞り込み条件（原料）の復元
     let it = document.getElementsByName('i-target' + n + '[]');
     for (var i = 0; i < it.length; i++) {
       getCheck(it[i]);
+      Switch(it[i]);
       let child_it = document.getElementsByName(it[i].value + '[]');
       for (var j = 0; j < child_it.length; j++) {
         getCheck(child_it[j]);
       }
-      Switch(it[i]);
     }
     // 選択した絞り込み条件（製法）の復元
     let mt = document.getElementsByName('m-target' + n + '[]');
     for (var i = 0; i < mt.length; i++) {
       getCheck(mt[i]);
+      Switch(mt[i]);
       if (mt[i].value.includes('ricePolishingRate')) {                   // 精米歩合
         let min_mt = document.getElementsByName('min_' + mt[i].value);
         let max_mt = document.getElementsByName('max_' + mt[i].value);
@@ -226,7 +222,10 @@ window.onload = () => {
           getCheck(child_mt[j]);
         }
       }
-      Switch(mt[i]);
+    }
+    // 絞り込み条件画面の複製
+    if (n == 0 && max > 1) {
+      addDisp(document.getElementsByClassName('filtering-contents'));
     }
   }
   let main = document.querySelectorAll("input[type='radio']");
@@ -300,34 +299,43 @@ function addNumber(element) {
   return val;
 }
 
-function initialize() {
+function confInit() {
   let init = confirm('検索条件を初期化してもよろしいですか？');
   if (init) {
-    sessionStorage.clear();       // sessionの初期化
-    let checks = document.querySelectorAll("input[type='checkbox']");
-    let radios = document.querySelectorAll("input[type='radio']");
-    for (var i = 0; i < checks.length; i++) {
-      checks[i].checked = false;      // checkboxのチェックをすべて外す
-      if (checks[i].className == 'element main') {
-        let display = document.getElementById(checks[i].value);
-        display.className = 'hide';     // 要素を非表示にする
-      }
-    }
-    for (var i = 0; i < radios.length; i++) {
-      radios[i].checked = false;      // ラジオボタンのチェックをすべて外す
+    initialize();
+  }
+}
+
+function initialize() {
+  let radios = document.querySelectorAll("input[type='radio']");
+  let checks = document.querySelectorAll("input[type='checkbox']");
+  let numbers = document.querySelectorAll("input[type='number']");
+  for (var i = 0; i < radios.length; i++) {
+    offCheck(radios[i]);      // ラジオボタンのチェックをすべて外す
+  }
+  for (var i = 0; i < checks.length; i++) {
+    offCheck(checks[i]);         // checkboxのチェックをすべて外す
+  }
+  for (var i = 0; i < checks.length; i++) {
+    if (checks[i].className == 'element main') {
+      let display = document.getElementById(checks[i].value);
+      display.className = 'hide';     // 要素を非表示にする
     }
   }
+  for (var i = 0; i < numbers.length; i++) {
+    offNumber(numbers[i]);               // input numberの値を初期化する
+  }
+
+  if (Number(sessionStorage.getItem('condition')) > 1) {
+    remDisp(document.getElementsByClassName('filtering-contents'));     // 比較ボタンの初期化
+  }
+  document.getElementById('result-graphs').className = 'hide';
+  sessionStorage.clear();       // sessionの初期化
 }
 </script>
 
 
 <?php
-/*
-if (isset($_POST['init'])) {      // 検索条件の初期化
-  $_POST = '';
-}
-*/
-
 function sRadio($type, $value) {      // ラジオボタンの入力保持
   if (isset($_POST[$type]) && $_POST[$type] == $value) {
     echo 'checked';

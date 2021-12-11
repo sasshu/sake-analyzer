@@ -24,31 +24,31 @@
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（製法）</h2>
         <div class="manufacture-search">     <!-- 検索対象 = 製法 -->
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="ricePolishing" onclick="sRadio(this)">精米法</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="ricePolishingRate" onclick="sRadio(this)">精米歩合</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="kojiMaking" onclick="sRadio(this)">製麹法</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="fermentationStarter" onclick="sRadio(this)">酒母造り</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="fermentationMash" onclick="sRadio(this)">段仕込み段数</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="pressing" onclick="sRadio(this)">上槽法</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="pressingOrder" onclick="sRadio(this)">搾り取る順番</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="pasteurization" onclick="sRadio(this)">火入れ</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="storage" onclick="sRadio(this)">貯蔵容器</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="aging" onclick="sRadio(this)">熟成の程度</label>
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="premiumSake" onclick="sRadio(this)">特定名称</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="ricePolishing" onclick="sRadio(this)">精米法</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="ricePolishingRate" onclick="sRadio(this)">精米歩合</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="kojiMaking" onclick="sRadio(this)">製麹法</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="fermentationStarter" onclick="sRadio(this)">酒母造り</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="fermentationMash" onclick="sRadio(this)">段仕込み段数</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="pressing" onclick="sRadio(this)">上槽法</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="pressingOrder" onclick="sRadio(this)">搾り取る順番</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="pasteurization" onclick="sRadio(this)">火入れ</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="storage" onclick="sRadio(this)">貯蔵容器</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="aging" onclick="sRadio(this)">熟成の程度</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="premiumSake" onclick="sRadio(this)">特定名称</label>
           <!--
-          <label><input class="element main" type="radio" name="manufacture" value="unfilteredSake" onclick="sRadio(this)">無濾過酒</label>
-          <label><input class="element main" type="radio" name="manufacture" value="undilutedSake" onclick=""sRadio(this)">原酒</label>
-          <label><input class="element main" type="radio" name="manufacture" value="cloudySake" onclick="sRadio(this)">にごり酒</label>
-          <label><input class="element main" type="radio" name="manufacture" value="orizake" onclick="sRadio(this)">おり酒</label>
-          <label><input class="element main" type="radio" name="manufacture" value="firstlyMadeSake" onclick="sRadio(this)">初しぼり</label>
-          <label><input class="element main" type="radio" name="manufacture" value="sparklingSake" onclick="sRadio(this)">発泡清酒</label>
+          <label><input class="element master" type="radio" name="manufacture" value="unfilteredSake" onclick="sRadio(this)">無濾過酒</label>
+          <label><input class="element master" type="radio" name="manufacture" value="undilutedSake" onclick=""sRadio(this)">原酒</label>
+          <label><input class="element master" type="radio" name="manufacture" value="cloudySake" onclick="sRadio(this)">にごり酒</label>
+          <label><input class="element master" type="radio" name="manufacture" value="orizake" onclick="sRadio(this)">おり酒</label>
+          <label><input class="element master" type="radio" name="manufacture" value="firstlyMadeSake" onclick="sRadio(this)">初しぼり</label>
+          <label><input class="element master" type="radio" name="manufacture" value="sparklingSake" onclick="sRadio(this)">発泡清酒</label>
           -->
-          <label class="check"><input class="element main" type="radio" name="manufacture" value="other" onclick="sRadio(this)">その他</label>
+          <label class="check"><input class="element master" type="radio" name="manufacture" value="other" onclick="sRadio(this)">その他</label>
         </div>
       </div>
       <?php include("component/search_option.php"); ?>
       <div class="form-execute"><input type="submit" class="btn query-btn" value="この条件で検索" onclick="return checkMan();"></div>     <!-- 検索ボタン -->
-      <div class="initialize"><input type="button" class="btn init-btn" name="init" value="検索条件を初期化" onclick="initialize()"></div>      <!-- 初期化ボタン -->
+      <div class="initialize"><input type="button" class="btn init-btn" name="init" value="検索条件を初期化" onclick="confInit()"></div>      <!-- 初期化ボタン -->
     </div>
   </form>
   <?php

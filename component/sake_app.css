@@ -157,11 +157,11 @@ header {
 .header-right li:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
-/*
+
 .header-right li:hover .header-right-child {
   display: block;
 }
-*/
+
 .header-right-child {
 	display: none;
 	position:absolute;

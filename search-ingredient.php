@@ -24,15 +24,15 @@
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（原料）</h2>
         <div class="ingredient-search">     <!-- 検索対象 = 原料 -->
-          <label class="check"><input class="element main" type="radio" name="ingredient" value="rice" onclick="sRadio(this)">米</label>
-          <label class="check"><input class="element main" type="radio" name="ingredient" value="yeast" onclick="sRadio(this)">酵母</label>
-          <label class="check"><input class="element main" type="radio" name="ingredient" value="koji" onclick="sRadio(this)">麹</label>
-          <label class="check"><input class="element main" type="radio" name="ingredient" value="water" onclick="sRadio(this)">水</label>
+          <label class="check"><input class="element master" type="radio" name="ingredient" value="rice" onclick="sRadio(this)">米</label>
+          <label class="check"><input class="element master" type="radio" name="ingredient" value="yeast" onclick="sRadio(this)">酵母</label>
+          <label class="check"><input class="element master" type="radio" name="ingredient" value="koji" onclick="sRadio(this)">麹</label>
+          <label class="check"><input class="element master" type="radio" name="ingredient" value="water" onclick="sRadio(this)">水</label>
         </div>
       </div>
       <?php include("component/search_option.php"); ?>
       <div class="form-execute"><input type="submit" class="btn query-btn" value="この条件で検索" onclick="return checkIng();"></div>     <!-- 検索ボタン -->
-      <div class="initialize"><input type="button" class="btn init-btn" name="init" value="検索条件を初期化" onclick="initialize()"></div>      <!-- 初期化ボタン -->
+      <div class="initialize"><input type="button" class="btn init-btn" name="init" value="検索条件を初期化" onclick="confInit()"></div>      <!-- 初期化ボタン -->
     </div>
   </form>
   <?php
