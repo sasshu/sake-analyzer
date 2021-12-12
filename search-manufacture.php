@@ -17,7 +17,7 @@
   <header>      <!-- ヘッダーの読み込み -->
     <?php include("component/header.html"); ?>
   </header>
-  <form id="search_form" class="search-wrapper" action="#result0" method="post">     <!-- 検索フォーム -->
+  <form id="search_form" class="search-wrapper" action="#result-graphs" method="post">     <!-- 検索フォーム -->
     <div class="container">
       <h1 class="section-title">製法を検索</h1>
       <p class="sec-intro">日本酒製造に用いられる製法の詳細を、円グラフまたは棒グラフで可視化します。</p>
@@ -60,12 +60,12 @@
     $chart = '';
   }
   ?>
-  <div class="result-contents">
-    <div id="result0" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
-      <div class="container">
-        <h1 class="section-title">検索結果</h1>
+  <div id="result-graphs" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
+    <div class="container">
+      <h1 class="section-title">検索結果</h1>
+      <div id="result1" class="result-coutents">
         <div class="data-count">
-          <div id="count-query0" class="query"
+          <div id="count-query1" class="query"
           data-sgvizler-endpoint="<?php getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
@@ -74,7 +74,7 @@
           {
             ?s a sk-eval:Sake .
             <?php man($man); ?>
-            <?php addmCon(0); ?>
+            <?php addmCon(1); ?>
           }
           "
           data-sgvizler-chart="sgvizler.visualization.Text"
@@ -82,7 +82,7 @@
           </div>
           <p>件ヒットしました。</p>
         </div>
-        <div id="manufacture-query0" class="query"
+        <div id="manufacture-query1" class="query"
         data-sgvizler-endpoint="<?php getEndpoint(); ?>"
         data-sgvizler-query="
         <?php preQuery(); ?>
@@ -91,7 +91,44 @@
         {
           ?s a sk-eval:Sake .
           <?php man($man); ?>
-          <?php addmCon(0); ?>
+          <?php addmCon(1); ?>
+        }
+        <?php dataSort($man); ?>
+        "
+        data-sgvizler-chart="<?php selectChart($man); ?>"
+        data-sgvizler-chart-options=""
+        style="width:90%; height:500px;">
+        </div>
+      </div>
+      <div id="result2" class="result-coutents">
+        <div class="data-count">
+          <div id="count-query2" class="query"
+          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-query="
+          <?php preQuery(); ?>
+
+          select (count(?s) as ?count) where
+          {
+            ?s a sk-eval:Sake .
+            <?php man($man); ?>
+            <?php addmCon(2); ?>
+          }
+          "
+          data-sgvizler-chart="sgvizler.visualization.Text"
+          data-sgvizler-chart-options="">
+          </div>
+          <p>件ヒットしました。</p>
+        </div>
+        <div id="manufacture-query2" class="query"
+        data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+        data-sgvizler-query="
+        <?php preQuery(); ?>
+
+        select ?man (count(?s) as ?count) where
+        {
+          ?s a sk-eval:Sake .
+          <?php man($man); ?>
+          <?php addmCon(2); ?>
         }
         <?php dataSort($man); ?>
         "
@@ -102,7 +139,6 @@
       </div>
     </div>
   </div>
-
   <footer>      <!-- フッター -->
     <?php include("component/footer.html"); ?>
   </footer>

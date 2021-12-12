@@ -17,7 +17,7 @@
   <header>      <!-- ヘッダーの読み込み -->
     <?php include("component/header.html"); ?>
   </header>
-  <form id="search_form" class="search-wrapper" action="#result0" method="post">     <!-- 検索フォーム -->
+  <form id="search_form" class="search-wrapper" action="#result-graphs" method="post">     <!-- 検索フォーム -->
     <div class="container">
       <h1 class="section-title">原料を検索</h1>
       <p class="sec-intro">日本酒製造に用いられる原料の詳細を、円グラフで可視化します。</p>
@@ -43,12 +43,13 @@
     $ing = $_POST['ingredient'];
   }
   ?>
-  <div class="result-coutents">
-    <div id="result0" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
-      <div class="container">
-        <h1 class="section-title">検索結果</h1>
+
+  <div id="result-graphs" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
+    <div class="container">
+      <h1 class="section-title">検索結果</h1>
+      <div id="result1" class="result-coutents">
         <div class="data-count">
-          <div id="count-query0" class="query"
+          <div id="count-query1" class="query"
           data-sgvizler-endpoint="<?php getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
@@ -60,7 +61,7 @@
                 ?s a sk-eval:Sake ;
                    schema:material ?ingredient .
                    <?php ing($ing); ?>
-                   <?php addiCon(0); ?>
+                   <?php addiCon(1); ?>
               }
           }
           "
@@ -69,7 +70,7 @@
           </div>
           <p>件ヒットしました。</p>
         </div>
-        <div id="ingredient-query0" class="query"
+        <div id="ingredient-query1" class="query"
         data-sgvizler-endpoint="<?php getEndpoint(); ?>"
         data-sgvizler-query="
         <?php preQuery(); ?>
@@ -81,7 +82,51 @@
               ?s a sk-eval:Sake ;
                  schema:material ?ingredient .
                  <?php ing($ing); ?>
-                 <?php addiCon(0); ?>
+                 <?php addiCon(1); ?>
+            }
+        }
+        order by desc(?count)
+        "
+        data-sgvizler-chart="google.visualization.PieChart"
+        style="width:100%; height:500px;">
+        </div>
+      </div>
+      <div id="result2" class="result-coutents">
+        <div class="data-count">
+          <div id="count-query2" class="query"
+          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-query="
+          <?php preQuery(); ?>
+
+          select (count(?s) as ?count) where
+          {
+            select distinct ?s ?ing where
+              {
+                ?s a sk-eval:Sake ;
+                   schema:material ?ingredient .
+                   <?php ing($ing); ?>
+                   <?php addiCon(2); ?>
+              }
+          }
+          "
+          data-sgvizler-chart="sgvizler.visualization.Text"
+          data-sgvizler-chart-options="">
+          </div>
+          <p>件ヒットしました。</p>
+        </div>
+        <div id="ingredient-query2" class="query"
+        data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+        data-sgvizler-query="
+        <?php preQuery(); ?>
+
+        select ?ing (count(?s) as ?count) where
+        {
+          select distinct ?s ?ing where
+            {
+              ?s a sk-eval:Sake ;
+                 schema:material ?ingredient .
+                 <?php ing($ing); ?>
+                 <?php addiCon(2); ?>
             }
         }
         order by desc(?count)

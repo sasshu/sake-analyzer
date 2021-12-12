@@ -110,27 +110,31 @@ function offNumber(sel) {
 }
 
 function dupFilter(check) {
-  let element = document.getElementsByClassName('filtering-contents');
+  let num = document.getElementsByClassName('filtering-contents').length;
   if (check.checked) {
-    addDisp(element);
+    addDisp(num);
   }else {
-    remDisp(element);
+    remDisp(num);
   }
 }
 
 // 絞り込み条件画面の追加
-function addDisp(element) {
-  let copy_area = element[0];
+function addDisp(num) {
+  let copy_area = document.getElementById('filter0');
   let copy_element = copy_area.cloneNode(true);
-  copy_area.after(copy_element);      // 複製した要素を一番後ろに挿入
-  copy_element.innerHTML = replaceElement(copy_element.innerHTML, 1);     // 変更した文字列を要素に適用
+  let group = document.getElementsByClassName('filtering-contents');
+  let front = group[num-1].parentNode;
+  front.after(copy_element);      // 複製した要素を一番後ろに挿入
+  copy_element.innerHTML = replaceElement(copy_element.innerHTML, num);     // 変更した文字列を要素に適用
+  copy_element.className = 'block';
 
-  sessionStorage.setItem('condition', 2);
+  sessionStorage.setItem('condition', String(num+1));
 }
 
 // 絞り込み条件画面の削除
-function remDisp(element) {
-  sessionStorage.removeItem('condition');
+function remDisp(num) {
+  let element = document.getElementsByClassName('filtering-contents')[num-1].parentNode;
+  sessionStorage.setItem('condition', String(num-1));
   /*
   let child = document.getElementsByClassName('group1');
   for (var i = 0; i < child.length; i++) {
@@ -141,12 +145,12 @@ function remDisp(element) {
     }
   }
   */
-  element[1].remove();
+  element.remove();
 }
 
 function addResult(condition) {
-  let result = document.getElementById('result1');
-  if (Number(condition) > 1) {
+  let result = document.getElementById('result2');
+  if (Number(condition) > 2) {
     result.style.display = 'block';
   }else {
     result.style.display = 'none';
@@ -167,25 +171,27 @@ function replaceElement(text, num) {
   text = text.replace(/fermentationMash\d{1}/g, 'fermentationMash' + num).replace(/pressing\d{1}/g, 'pressing' + num).replace(/pressingOrder\d{1}/g, 'pressingOrder' + num).replace(/pasteurization\d{1}/g, 'pasteurization' + num);
   text = text.replace(/storage\d{1}/g, 'storage' + num).replace(/aging\d{1}/g, 'aging' + num).replace(/premiumSake\d{1}/g, 'premiumSake' + num).replace(/other\d{1}/g, 'other' + num);
   // その他
-  text = text.replace(/group\d{1}/g, 'group' + num);
+  text = text.replace(/group\d{1}/g, 'group' + num).replace(/filter\d{1}/g, 'filter' + num);
   return text;
 }
 
 // ページ更新直後に実行
 window.onload = () => {
   getCheck(document.getElementById('compare'));
-  console.log('element:' + document.getElementsByClassName('main group0').length);
 
   let condition = sessionStorage.getItem('condition');
   addResult(condition);
-  console.log(condition);
+  console.log('condition' + condition);
 
-  let max = 1
+  let max = 2;
   if (condition != null) {
     max = Number(condition);
   }
   console.log('max:' + max);
-  for (var n = 0; n < max; n++) {
+  for (var n = 1; n < max; n++) {
+    // 絞り込み条件画面の複製
+    addDisp(n);
+
     // 選択した絞り込み条件（成分）の復元
     let pt = document.getElementsByName('p-target' + n + '[]');
     for (var i = 0; i < pt.length; i++) {
@@ -223,10 +229,6 @@ window.onload = () => {
         }
       }
     }
-    // 絞り込み条件画面の複製
-    if (n == 0 && max > 1) {
-      addDisp(document.getElementsByClassName('filtering-contents'));
-    }
   }
   let main = document.querySelectorAll("input[type='radio']");
   for (var i = 0; i < main.length; i++) {
@@ -257,6 +259,7 @@ function getRadio(radio) {
   let checked = sessionStorage.getItem(value);    // sessionからcheckboxの値を取得
   if (checked == 'true') {
     radio.checked = true;
+    console.log('check:' + value);
   }
 }
 
@@ -268,7 +271,10 @@ function sNumber(numbers) {
 // 数値を取得・反映
 function getNumber(numbers) {
   let value = sessionStorage.getItem(numbers.name);      // sessionから数値を取得
-  numbers.value = value;
+  if (value != null) {
+    numbers.value = value;
+    console.log(numbers.name + ':' + value);
+  }
 }
 
 // checkboxの値を保存
@@ -287,13 +293,14 @@ function getCheck(checks) {
   let checked = sessionStorage.getItem(value);    // sessionからcheckboxの値を取得
   if (checked == 'true') {
     checks.checked = true;
+    console.log('check:' + value);
   }
 }
 
 // 要素番号を追加
 function addNumber(element) {
   let val = element.value;
-  if (element.className == 'element sub') {      // 要素番号がない場合
+  if (element.className.includes('element sub')) {      // 要素番号がない場合
     val += '-' + element.name.substr(-3, 1);        // 要素番号を末尾に追加
   }
   return val;
@@ -317,7 +324,7 @@ function initialize() {
     offCheck(checks[i]);         // checkboxのチェックをすべて外す
   }
   for (var i = 0; i < checks.length; i++) {
-    if (checks[i].className == 'element main') {
+    if (checks[i].className.includes('element main')) {
       let display = document.getElementById(checks[i].value);
       display.className = 'hide';     // 要素を非表示にする
     }
@@ -326,8 +333,9 @@ function initialize() {
     offNumber(numbers[i]);               // input numberの値を初期化する
   }
 
-  if (Number(sessionStorage.getItem('condition')) > 1) {
-    remDisp(document.getElementsByClassName('filtering-contents'));     // 比較ボタンの初期化
+  let len = document.getElementsByClassName('filtering-contents').length;
+  if (len > 1) {      //
+    remDisp(len);     // 追加した絞り込み条件画面の初期化
   }
   document.getElementById('result-graphs').className = 'hide';
   sessionStorage.clear();       // sessionの初期化
