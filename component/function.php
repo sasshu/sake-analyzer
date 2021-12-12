@@ -118,23 +118,55 @@ function dupFilter(check) {
   }
 }
 
+// cssの動的変化
+function changeStyle(check) {
+  let parent = document.getElementById('parent-group');
+  let group = document.getElementsByClassName('filtering-contents');
+  let target = document.getElementsByClassName('filtering-content');
+  if (check.checked) {                // 2通りの検索をする場合
+    for (var i = 0; i < group.length; i++) {
+      group[i].style.display = 'block';
+      group[i].parentNode.style.width = '49%';
+    }
+    for (var i = 0; i < target.length; i++) {
+      target[i].style.width = '100%';
+      target[i].style.margin = '10px 0px';
+    }
+    parent.style.display = 'flex';
+  }else {                             // 1通りの検索をする場合
+    for (var i = 0; i < group.length; i++) {
+      group[i].style.display = 'flex';
+      group[i].parentNode.style.width = '100%';
+    }
+    for (var i = 0; i < target.length; i++) {
+      target[i].style.width = '32%';
+      target[i].style.margin = '0px';
+    }
+    parent.style.display = 'block';
+  }
+}
+
 // 絞り込み条件画面の追加
 function addDisp(num) {
-  let copy_area = document.getElementById('filter0');
+  let copy_area = document.getElementById('group0');
   let copy_element = copy_area.cloneNode(true);
   let group = document.getElementsByClassName('filtering-contents');
   let front = group[num-1].parentNode;
   front.after(copy_element);      // 複製した要素を一番後ろに挿入
   copy_element.innerHTML = replaceElement(copy_element.innerHTML, num);     // 変更した文字列を要素に適用
-  copy_element.id = 'filter' + num;
-  copy_element.className = 'block';
+  copy_element.id = 'group' + num;
+  copy_element.className = 'filtergroup';
 
   sessionStorage.setItem('condition', String(num+1));
 }
 
 // 絞り込み条件画面の削除
 function remDisp(num) {
-  let element = document.getElementsByClassName('filtering-contents')[num-1].parentNode;
+  let group = document.getElementsByClassName('filtering-contents');
+  let element = group[num-1].parentNode;
+  for (var i = 0; i < group.length; i++) {
+    group[i].style.display = 'flex';
+  }
   sessionStorage.setItem('condition', String(num-1));
   /*
   let child = document.getElementsByClassName('group1');
@@ -235,6 +267,7 @@ window.onload = () => {
   for (var i = 0; i < main.length; i++) {
     getRadio(main[i]);
   }
+  changeStyle(document.getElementById('compare'));
 }
 
 // ラジオボタンの値を保存
@@ -333,12 +366,14 @@ function initialize() {
   for (var i = 0; i < numbers.length; i++) {
     offNumber(numbers[i]);               // input numberの値を初期化する
   }
-
+  
+  changeStyle(document.getElementById('compare'));
   let len = document.getElementsByClassName('filtering-contents').length;
-  if (len > 1) {      //
+  if (len > 2) {      //
     remDisp(len);     // 追加した絞り込み条件画面の初期化
   }
-  document.getElementById('result-graphs').className = 'hide';
+  document.getElementById('result-graphs').className = 'hide';      // グラフ画面の非表示
+
   sessionStorage.clear();       // sessionの初期化
 }
 </script>

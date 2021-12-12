@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-	margin: 50px 100px ;
+	margin: 50px 25px ;
 }
 
 a {
@@ -74,15 +74,21 @@ input[type='number'] {
 .filtering-contents {
 	display: flex;
 	justify-content: space-between;
-	margin: 20px 0px 30px 0px;
+	padding: 10px;
 }
 
 .filtering-content {
 	width: 32%;
 }
 
-.aaa {
-	
+.filtergroup {
+	border-radius: 10px;
+	background-color: whitesmoke;
+}
+
+#parent-group {
+	margin: 20px 0px;
+	justify-content: space-between;
 }
 
 .filtering-target {
@@ -335,7 +341,7 @@ footer {
 
 /* ingredient.php */
 .ingredient-search {
-	margin: 20px 60% 30px 20px;
+	margin: 20px 50% 30px 20px;
 	padding: 20px;
 	border-radius: 15px;
 	background-color: lightgray;
