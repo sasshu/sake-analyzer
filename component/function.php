@@ -126,6 +126,7 @@ function addDisp(num) {
   let front = group[num-1].parentNode;
   front.after(copy_element);      // 複製した要素を一番後ろに挿入
   copy_element.innerHTML = replaceElement(copy_element.innerHTML, num);     // 変更した文字列を要素に適用
+  copy_element.id = 'filter' + num;
   copy_element.className = 'block';
 
   sessionStorage.setItem('condition', String(num+1));
