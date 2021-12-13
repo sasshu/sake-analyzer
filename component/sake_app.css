@@ -58,7 +58,19 @@ ul {
 }
 
 input[type='number'] {
+	border: 2px solid #0a0;
+	border-radius: 5px;
 	width: 50px;
+	margin-right: 0.5em;
+}
+
+input[type="radio"] , input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 0.5em;
+}
+
+.center {
+	text-align: center;
 }
 
 /* 検索 */
@@ -91,6 +103,11 @@ input[type='number'] {
 	justify-content: space-between;
 }
 
+#parent-group h3 {
+	text-align: center;
+	padding-top: 10px;
+}
+
 .filtering-target {
 	padding: 20px;
 	border-radius: 15px;
@@ -114,6 +131,61 @@ input[type='number'] {
 	font-size: 15px;
 }
 
+.slidecheck {
+	display: flex;
+	font-size: 20px;
+	margin: 20px;
+}
+
+.slidecheck p {
+	margin-left: 10px;
+}
+
+.slidebutton {
+	display: none;
+}
+
+.slidebutton + label {
+	cursor: pointer;
+	display: inline-block;
+  box-sizing: content-box;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: #FFF;
+  border: 2px solid #CCC;
+  border-radius: 30px;
+}
+
+.slidebutton:checked + label {
+	background-color: #78D376;
+  border-color: #78D376;
+}
+
+.slidebutton + label:before {
+	content: "";
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background-color: #FFF;
+  box-shadow: 2px 2px 4px gray;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.slidebutton:checked + label:before {
+	-webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  box-shadow: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* 結果 */
 [id^="count-query"] {
 	color: red;
 	font-weight: bolder;
@@ -363,5 +435,4 @@ footer {
 .brewery-query {
 	display: flex;
 	justify-content: space-around;
-
 }

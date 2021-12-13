@@ -47,14 +47,36 @@
   <div id="result-graphs" class="<?php echo $attr; ?>">     <!-- 可視化グラフの生成 -->
     <div class="container">
       <h1 class="section-title">検索結果</h1>
-      <div id="result1" class="result-coutents">
-        <div class="data-count">
-          <div id="count-query1" class="query"
+      <div id="result-contents">
+        <div id="result1" class="result-coutent">
+          <div class="data-count">
+            <div id="count-query1" class="query"
+            data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+            data-sgvizler-query="
+            <?php preQuery(); ?>
+
+            select (count(?s) as ?count) where
+            {
+              select distinct ?s ?ing where
+                {
+                  ?s a sk-eval:Sake ;
+                     schema:material ?ingredient .
+                     <?php ing($ing); ?>
+                     <?php addiCon(1); ?>
+                }
+            }
+            "
+            data-sgvizler-chart="sgvizler.visualization.Text"
+            data-sgvizler-chart-options="">
+            </div>
+            <p>件ヒットしました。</p>
+          </div>
+          <div id="ingredient-query1" class="query"
           data-sgvizler-endpoint="<?php getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
 
-          select (count(?s) as ?count) where
+          select ?ing (count(?s) as ?count) where
           {
             select distinct ?s ?ing where
               {
@@ -64,41 +86,42 @@
                    <?php addiCon(1); ?>
               }
           }
+          order by desc(?count)
           "
-          data-sgvizler-chart="sgvizler.visualization.Text"
-          data-sgvizler-chart-options="">
+          data-sgvizler-chart="google.visualization.PieChart"
+          data-sgvizler-chart-options="chartArea.left=20%|chartArea.right=10%"
+          style="width:<?php graphStyle(); ?>; height:600px;">
           </div>
-          <p>件ヒットしました。</p>
         </div>
-        <div id="ingredient-query1" class="query"
-        data-sgvizler-endpoint="<?php getEndpoint(); ?>"
-        data-sgvizler-query="
-        <?php preQuery(); ?>
+        <div id="result2" class="result-coutent">
+          <div class="data-count">
+            <div id="count-query2" class="query"
+            data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+            data-sgvizler-query="
+            <?php preQuery(); ?>
 
-        select ?ing (count(?s) as ?count) where
-        {
-          select distinct ?s ?ing where
+            select (count(?s) as ?count) where
             {
-              ?s a sk-eval:Sake ;
-                 schema:material ?ingredient .
-                 <?php ing($ing); ?>
-                 <?php addiCon(1); ?>
+              select distinct ?s ?ing where
+                {
+                  ?s a sk-eval:Sake ;
+                     schema:material ?ingredient .
+                     <?php ing($ing); ?>
+                     <?php addiCon(2); ?>
+                }
             }
-        }
-        order by desc(?count)
-        "
-        data-sgvizler-chart="google.visualization.PieChart"
-        style="width:100%; height:500px;">
-        </div>
-      </div>
-      <div id="result2" class="result-coutents">
-        <div class="data-count">
-          <div id="count-query2" class="query"
+            "
+            data-sgvizler-chart="sgvizler.visualization.Text"
+            data-sgvizler-chart-options="">
+            </div>
+            <p>件ヒットしました。</p>
+          </div>
+          <div id="ingredient-query2" class="query"
           data-sgvizler-endpoint="<?php getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
 
-          select (count(?s) as ?count) where
+          select ?ing (count(?s) as ?count) where
           {
             select distinct ?s ?ing where
               {
@@ -108,31 +131,12 @@
                    <?php addiCon(2); ?>
               }
           }
+          order by desc(?count)
           "
-          data-sgvizler-chart="sgvizler.visualization.Text"
-          data-sgvizler-chart-options="">
+          data-sgvizler-chart="google.visualization.PieChart"
+          data-sgvizler-chart-options="chartArea.left=20%|chartArea.right=10%"
+          style="width:<?php graphStyle(); ?>; height:600px;">
           </div>
-          <p>件ヒットしました。</p>
-        </div>
-        <div id="ingredient-query2" class="query"
-        data-sgvizler-endpoint="<?php getEndpoint(); ?>"
-        data-sgvizler-query="
-        <?php preQuery(); ?>
-
-        select ?ing (count(?s) as ?count) where
-        {
-          select distinct ?s ?ing where
-            {
-              ?s a sk-eval:Sake ;
-                 schema:material ?ingredient .
-                 <?php ing($ing); ?>
-                 <?php addiCon(2); ?>
-            }
-        }
-        order by desc(?count)
-        "
-        data-sgvizler-chart="google.visualization.PieChart"
-        style="width:100%; height:500px;">
         </div>
       </div>
     </div>

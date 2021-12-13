@@ -65,7 +65,7 @@
         }"
         data-sgvizler-chart="sgvizler.visualization.Map"
         data-sgvizler-chart-options="useMapTypeControl=true|showInfoWindow=true|showTooltip=true"
-        style="width:750px; height:550px;">
+        style="width:75%; height:600px;">
         </div>
         <div id="brewry-list" class="query"
           data-sgvizler-endpoint="<?php getEndpoint(); ?>"
@@ -78,7 +78,7 @@
                schema:manufacturer / schema:name ?maker .
           }"
           data-sgvizler-chart="google.visualization.Table"
-          style="width:200px; height:550px;">
+          style="width:20%; height:600px;">
         </div>
       </div>
     </div>

@@ -123,6 +123,10 @@ function changeStyle(check) {
   let parent = document.getElementById('parent-group');
   let group = document.getElementsByClassName('filtering-contents');
   let target = document.getElementsByClassName('filtering-content');
+
+  let graph = document.getElementsByClassName('result-content');
+  let result = document.getElementById('result-contents');
+
   if (check.checked) {                // 2通りの検索をする場合
     for (var i = 0; i < group.length; i++) {
       group[i].style.display = 'block';
@@ -132,7 +136,9 @@ function changeStyle(check) {
       target[i].style.width = '100%';
       target[i].style.margin = '10px 0px';
     }
+
     parent.style.display = 'flex';
+    result.style.display = 'flex';
   }else {                             // 1通りの検索をする場合
     for (var i = 0; i < group.length; i++) {
       group[i].style.display = 'flex';
@@ -142,7 +148,9 @@ function changeStyle(check) {
       target[i].style.width = '32%';
       target[i].style.margin = '0px';
     }
+
     parent.style.display = 'block';
+    result.style.display = 'black';
   }
 }
 
@@ -204,7 +212,7 @@ function replaceElement(text, num) {
   text = text.replace(/fermentationMash\d{1}/g, 'fermentationMash' + num).replace(/pressing\d{1}/g, 'pressing' + num).replace(/pressingOrder\d{1}/g, 'pressingOrder' + num).replace(/pasteurization\d{1}/g, 'pasteurization' + num);
   text = text.replace(/storage\d{1}/g, 'storage' + num).replace(/aging\d{1}/g, 'aging' + num).replace(/premiumSake\d{1}/g, 'premiumSake' + num).replace(/other\d{1}/g, 'other' + num);
   // その他
-  text = text.replace(/group\d{1}/g, 'group' + num).replace(/filter\d{1}/g, 'filter' + num);
+  text = text.replace(/条件\d{1}/g, '条件' + num);
   return text;
 }
 
@@ -366,7 +374,7 @@ function initialize() {
   for (var i = 0; i < numbers.length; i++) {
     offNumber(numbers[i]);               // input numberの値を初期化する
   }
-  
+
   changeStyle(document.getElementById('compare'));
   let len = document.getElementsByClassName('filtering-contents').length;
   if (len > 2) {      //
@@ -446,9 +454,9 @@ function dataSort($target) {
 
 function selectChart($target) {     // グラフの種類を指定
 if ($target == 'pressingOrder' || $target == 'pasteurization' || $target == 'aging' || $target == 'other' /* || $target == 'unfilteredSake' || $target == 'undilutedSake' || $target == 'cloudySake' || $target == 'orizake' || $target == 'firstlyMadeSake' || $target == 'sparklingSake' */) {
-    echo "google.visualization.ColumnChart";
+    return "google.visualization.ColumnChart";
   }else {
-    echo "google.visualization.PieChart";
+    return "google.visualization.PieChart";
   }
 }
 
@@ -1013,4 +1021,24 @@ function maxSize($val) {
       break;
   }
 }
+function graphStyle() {
+  if (!empty($_POST['compare'])) {
+    echo '50%';
+  }else {
+    echo '100%';
+  }
+}
+
+function chartArea($chart) {
+  if (strpos($chart, 'Column')) {
+    echo 'chartArea.left=10%';
+    echo '|';
+    echo 'chartArea.right=10%';
+  }else if (strpos($chart, 'Pie')) {
+    echo 'chartArea.left=20%';
+    echo '|';
+    echo 'chartArea.right=10%';
+  }
+}
+
 ?>
