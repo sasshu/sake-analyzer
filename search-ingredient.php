@@ -20,7 +20,19 @@
   <form id="search_form" class="search-wrapper" action="#result-graphs" method="post">     <!-- 検索フォーム -->
     <div class="container">
       <h1 class="section-title">原料を検索</h1>
-      <p class="sec-intro">日本酒製造に用いられる原料の詳細を、円グラフで可視化します。</p>
+      <p class="sec-intro">日本酒製造に用いられる原料の詳細を、円グラフで可視化します。<br>各原料の品種やブランドごとの使用される割合を調べることができます。</p>
+      <div class="popup_wrap">
+        <input id="manual_trig" type="checkbox"><label for="manual_trig"><u>検索方法</u></label>
+        <div class="popup_overlay">
+          <label for="manual_trig" class="pop_trig"></label>
+          <div class="pop_content">
+            <label for="manual_trig" class="close">×</label>
+            <div class="manual">
+              <img src="image/manual_ingredient.png" alt="原料検索マニュアル">
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（原料）</h2>
         <div class="ingredient-search">     <!-- 検索対象 = 原料 -->
@@ -51,7 +63,7 @@
         <div id="result1" class="result-coutent">
           <div class="data-count">
             <div id="count-query1" class="query"
-            data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+            data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
             data-sgvizler-query="
             <?php preQuery(); ?>
 
@@ -72,7 +84,7 @@
             <p>件ヒットしました。</p>
           </div>
           <div id="ingredient-query1" class="query"
-          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
 
@@ -89,14 +101,14 @@
           order by desc(?count)
           "
           data-sgvizler-chart="google.visualization.PieChart"
-          data-sgvizler-chart-options="chartArea.left=20%|chartArea.right=10%"
+          data-sgvizler-chart-options="titleTextStyle.fontSize=20|title=〈結果1〉|chartArea.left=20%|chartArea.right=10%"
           style="width:<?php graphStyle(); ?>; height:600px;">
           </div>
         </div>
         <div id="result2" class="result-coutent">
           <div class="data-count">
             <div id="count-query2" class="query"
-            data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+            data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
             data-sgvizler-query="
             <?php preQuery(); ?>
 
@@ -117,7 +129,7 @@
             <p>件ヒットしました。</p>
           </div>
           <div id="ingredient-query2" class="query"
-          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
 
@@ -134,7 +146,7 @@
           order by desc(?count)
           "
           data-sgvizler-chart="google.visualization.PieChart"
-          data-sgvizler-chart-options="chartArea.left=20%|chartArea.right=10%"
+          data-sgvizler-chart-options="titleTextStyle.fontSize=20|title=〈結果2〉|chartArea.left=20%|chartArea.right=10%"
           style="width:<?php graphStyle(); ?>; height:600px;">
           </div>
         </div>

@@ -20,7 +20,19 @@
   <form id="search_form" class="search-wrapper" action="#result-graphs" method="post">     <!-- 検索フォーム -->
     <div class="container">
       <h1 class="section-title">製法を検索</h1>
-      <p class="sec-intro">日本酒製造に用いられる製法の詳細を、円グラフまたは棒グラフで可視化します。</p>
+      <p class="sec-intro">日本酒製造に用いられる製法の詳細を、円グラフまたは棒グラフで可視化します。<br>指定した製法で造られた日本酒の数や割合を調べることができます。</p>
+      <div class="popup_wrap">
+        <input id="manual_trig" type="checkbox"><label for="manual_trig"><u>検索方法</u></label>
+        <div class="popup_overlay">
+          <label for="manual_trig" class="pop_trig"></label>
+          <div class="pop_content">
+            <label for="manual_trig" class="close">×</label>
+            <div class="manual">
+              <img src="image/manual_manufacture.png" alt="製法検索マニュアル">
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（製法）</h2>
         <div class="manufacture-search">     <!-- 検索対象 = 製法 -->
@@ -67,7 +79,7 @@
         <div id="result1" class="result-coutent">
           <div class="data-count">
             <div id="count-query1" class="query"
-            data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+            data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
             data-sgvizler-query="
             <?php preQuery(); ?>
 
@@ -83,7 +95,7 @@
             <p>件ヒットしました。</p>
           </div>
           <div id="manufacture-query1" class="query"
-          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
 
@@ -96,14 +108,14 @@
           <?php dataSort($man); ?>
           "
           data-sgvizler-chart="<?php echo selectChart($man); ?>"
-          data-sgvizler-chart-options="<?php chartArea(selectChart($man)); ?>"
+          data-sgvizler-chart-options="bar.groupWidth=<?php barWidth($man); ?>|explorer.keepInBounds=true|explorer.maxZoomIn=0.1|titleTextStyle.fontSize=20|title=〈結果1〉|<?php chartArea(selectChart($man)); ?>|hAxis.title=<?php trans($man); ?>|vAxis.title=<?php trans('count'); ?>|hAxis.minValue=<?php minSize($man); ?>|hAxis.maxValue=<?php maxSize($man); ?>|vAxis.maxValue=<?php matchSize($man); ?>"
           style="width:<?php graphStyle(); ?>; height:600px;">
           </div>
         </div>
         <div id="result2" class="result-coutent">
           <div class="data-count">
             <div id="count-query2" class="query"
-            data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+            data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
             data-sgvizler-query="
             <?php preQuery(); ?>
 
@@ -120,7 +132,7 @@
             <p>件ヒットしました。</p>
           </div>
           <div id="manufacture-query2" class="query"
-          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
 
@@ -133,7 +145,7 @@
           <?php dataSort($man); ?>
           "
           data-sgvizler-chart="<?php echo selectChart($man); ?>"
-          data-sgvizler-chart-options="<?php chartArea(selectChart($man)); ?>"
+          data-sgvizler-chart-options="bar.groupWidth=<?php barWidth($man); ?>|explorer.keepInBounds=true|explorer.maxZoomIn=0.1|titleTextStyle.fontSize=20|title=〈結果2〉|<?php chartArea(selectChart($man)); ?>|hAxis.title=<?php trans($man); ?>|vAxis.title=<?php trans('count'); ?>|hAxis.minValue=<?php minSize($man); ?>|hAxis.maxValue=<?php maxSize($man); ?>|vAxis.maxValue=<?php matchSize($man); ?>"
           style="width:<?php graphStyle(); ?>; height:600px;">
           </div>
         </div>

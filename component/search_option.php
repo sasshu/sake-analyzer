@@ -2,7 +2,7 @@
   <h2>絞り込み条件</h2>
   <div class="slidecheck">
     <input id="compare" class="slidebutton" type="checkbox" name="compare" value="compare" onclick="dupFilter(this);sCheck(this);changeStyle(this)"><label for="compare"></label>
-    <p>2通りの条件で検索</p>
+    <p>二通りの条件で検索</p>
   </div>
   <div id="parent-group">
     <div id="group0" class="hide">
@@ -41,13 +41,13 @@
                 </div>
               </div>
             </div>
-            <label class="check"><input class="element main group0" type="checkbox" name="p-target0[]" value="alcoholContent0" onclick="Switch(this);sCheck(this)">アルコール度</label>
+            <label class="check"><input class="element main group0" type="checkbox" name="p-target0[]" value="alcoholContent0" onclick="Switch(this);sCheck(this)">アルコール分</label>
             <div id="alcoholContent0" class="hide">
               <div class="filter-detail">
                 <p>範囲を設定してください</p>
                 <div class="center">
-                  <label class="check"><input class="group0" type="number" step="0.1" name="min_alcoholContent0" min="0" max="22" oninput="sNumber(this)">以上</label>
-                  <label class="check"><input class="group0" type="number" step="0.1" name="max_alcoholContent0" min="0" max="22" oninput="sNumber(this)">以下</label>
+                  <label class="check"><input class="group0" type="number" step="0.1" name="min_alcoholContent0" min="0" max="22" oninput="sNumber(this)">度以上</label>
+                  <label class="check"><input class="group0" type="number" step="0.1" name="max_alcoholContent0" min="0" max="22" oninput="sNumber(this)">度以下</label>
                 </div>
               </div>
             </div>
@@ -137,8 +137,10 @@
             <div id="ricePolishingRate0" class="hide">
               <div class="filter-detail">
                 <p>範囲を設定してください</p>
-                <label class="check"><input class="group0" type="number" step="1" name="min_ricePolishingRate0" min="0" max="100" oninput="sNumber(this)">以上</label>
-                <label class="check"><input class="group0" type="number" step="1" name="max_ricePolishingRate0" min="0" min="100" oninput="sNumber(this)">以下</label>
+                <div class="center">
+                  <label class="check"><input class="group0" type="number" step="1" name="min_ricePolishingRate0" min="0" max="100" oninput="sNumber(this)">％以上</label>
+                  <label class="check"><input class="group0" type="number" step="1" name="max_ricePolishingRate0" min="0" min="100" oninput="sNumber(this)">％以下</label>
+                </div>
               </div>
             </div>
             <label class="check"><input class="element main group0" type="checkbox" name="m-target0[]" value="kojiMaking0" onclick="Switch(this);sCheck(this)">製麹法</label>

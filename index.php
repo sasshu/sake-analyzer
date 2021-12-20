@@ -35,9 +35,9 @@
       <div class="popup_wrap">
         <input id="search_trig" type="checkbox"><label for="search_trig" class="btn scopen">データを閲覧する</label>      <!-- 検索ページへ -->
         <div class="popup_overlay">
-          <label for="search_trig" class="scpop_trig"></label>
-          <div class="scpop_content">
-            <label for="search_trig" class="scclose">×</label>
+          <label for="search_trig" class="pop_trig"></label>
+          <div class="pop_content">
+            <label for="search_trig" class="close">×</label>
             <p>成分・原料・製法それぞれを検索できます。</p>
             <div class="search-intro">
               <div class="search-index">

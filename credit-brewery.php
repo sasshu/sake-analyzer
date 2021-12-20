@@ -27,7 +27,7 @@
       <div class="data-count brewery-count">
         <p>現在、</p>
         <div id="count-query" class="query"
-          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
 
@@ -46,7 +46,7 @@
       </div>
       <div class="brewery-query">
         <div id="brewery-map" class="query"
-        data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+        data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
         data-sgvizler-query="
         <?php preQuery(); ?>
 
@@ -68,7 +68,7 @@
         style="width:75%; height:600px;">
         </div>
         <div id="brewry-list" class="query"
-          data-sgvizler-endpoint="<?php getEndpoint(); ?>"
+          data-sgvizler-endpoint="<?php echo getEndpoint(); ?>"
           data-sgvizler-query="
           <?php preQuery(); ?>
 
