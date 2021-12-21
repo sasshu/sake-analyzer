@@ -475,7 +475,10 @@ function Queryjudge($attr, $xt, $yt) {
 */
 
 function getEndpoint() {      // SPARQL endpointの取得
+  /*
   return 'http://echigodb.jp:8893/sparql/';
+  */
+  return 'https://echigosake.tk/';
 }
 
 function preQuery() {     // グラフやprefixの指定
