@@ -56,6 +56,9 @@
           </div>
         </div>
       </div>
+      <div class="credit">
+        <a href="credit-brewery" class="btn provider-btn">データを載せている酒蔵を見る</a>      <!-- 酒蔵のクレジットページへ -->
+      </div>
     </div>
   </div>
   <footer>      <!-- フッター -->
