@@ -11,6 +11,7 @@
   <?php require_once('component/function.php'); ?>
   <title>製法を検索 | SakeAnalyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
   <link rel="icon" href="image/favicon.ico">
 </head>
 <body>
@@ -32,6 +33,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div id="page_top">
+        <a href="#"></a>
       </div>
       <div class="basic-search">      <!-- メインの検索対象の入力 -->
         <h2>基本条件（製法）</h2>
@@ -108,7 +112,7 @@
           <?php dataSort($man); ?>
           "
           data-sgvizler-chart="<?php echo selectChart($man); ?>"
-          data-sgvizler-chart-options="bar.groupWidth=<?php barWidth($man); ?>|explorer.keepInBounds=true|explorer.maxZoomIn=0.1|titleTextStyle.fontSize=20|title=〈結果1〉|<?php chartArea(selectChart($man)); ?>|hAxis.title=<?php trans($man); ?>|vAxis.title=<?php trans('count'); ?>|hAxis.minValue=<?php minSize($man); ?>|hAxis.maxValue=<?php maxSize($man); ?>|vAxis.maxValue=<?php matchSize($man); ?>"
+          data-sgvizler-chart-options="<?php columnSetting($man); ?>|titleTextStyle.fontSize=20|title=〈結果1〉|<?php chartArea(selectChart($man)); ?>|hAxis.title=<?php trans($man); ?>|vAxis.title=<?php trans('count'); ?>|hAxis.minValue=<?php minSize($man); ?>|hAxis.maxValue=<?php maxSize($man); ?>|vAxis.maxValue=<?php matchSize($man); ?>"
           style="width:<?php graphStyle(); ?>; height:600px;">
           </div>
         </div>
@@ -145,7 +149,7 @@
           <?php dataSort($man); ?>
           "
           data-sgvizler-chart="<?php echo selectChart($man); ?>"
-          data-sgvizler-chart-options="bar.groupWidth=<?php barWidth($man); ?>|explorer.keepInBounds=true|explorer.maxZoomIn=0.1|titleTextStyle.fontSize=20|title=〈結果2〉|<?php chartArea(selectChart($man)); ?>|hAxis.title=<?php trans($man); ?>|vAxis.title=<?php trans('count'); ?>|hAxis.minValue=<?php minSize($man); ?>|hAxis.maxValue=<?php maxSize($man); ?>|vAxis.maxValue=<?php matchSize($man); ?>"
+          data-sgvizler-chart-options="<?php columnSetting($man); ?>|titleTextStyle.fontSize=20|title=〈結果2〉|<?php chartArea(selectChart($man)); ?>|hAxis.title=<?php trans($man); ?>|vAxis.title=<?php trans('count'); ?>|hAxis.minValue=<?php minSize($man); ?>|hAxis.maxValue=<?php maxSize($man); ?>|vAxis.maxValue=<?php matchSize($man); ?>"
           style="width:<?php graphStyle(); ?>; height:600px;">
           </div>
         </div>

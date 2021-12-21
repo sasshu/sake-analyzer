@@ -85,6 +85,13 @@ function filterCheck() {
             return false;
           }
         }
+        if (min.value == '0') {
+          console.log('だめだこりゃ');
+          document.getElementsByName('min_' + pt[i].value)[0].value = 0.0;
+        }
+        if (max.value == 0) {
+          document.getElementsByName('mmax_' + pt[i].value)[0].value = 0.0;
+        }
       }
     }
     let it = document.getElementsByName('i-target' + n + '[]');
@@ -681,11 +688,11 @@ function addpCon($num) {      // 成分に対する絞り込み条件をクエ�
         echo "bind(((?min_${ord} + ?max_${ord}) / 2) as ?${ord}_value)"."\n";
         $count++;
       }
-      if (!empty($_POST["min_${flt}"])) {
+      if (!empty($_POST["min_${flt}"]) || $_POST["min_${flt}"] == '0') {
         $min = $_POST["min_${flt}"];
         echo "filter(?${ord}_value >= ${min})"."\n";
       }
-      if (!empty($_POST["max_${flt}"])) {
+      if (!empty($_POST["max_${flt}"]) || $_POST["max_${flt}"] == '0') {
         $max = $_POST["max_${flt}"];
         echo "filter(?${ord}_value <= ${max})"."\n";
       }
@@ -707,11 +714,11 @@ function addpCon($num) {      // 成分に対する絞り込み条件をクエ�
 
       if ($iri == "ricePolishingRate") {
         echo "?s sk-make:${iri} / schema:value ?${iri}."."\n";
-        if (!empty($_POST["min_${flt}"])) {
+        if (!empty($_POST["min_${flt}"]) || $_POST["min_${flt}"] == '0') {
           $min = $_POST["min_${flt}"];
           echo "filter(?${iri} >= ${min})"."\n";
         }
-        if (!empty($_POST["max_${flt}"])) {
+        if (!empty($_POST["max_${flt}"]) || $_POST["max_${flt}"] == '0') {
           $max = $_POST["max_${flt}"];
           echo "filter(?${iri} <= ${max})"."\n";
         }
@@ -750,11 +757,11 @@ function addiCon($num) {      // 原料に対する絞り込み条件をクエ�
       echo "   sk-eval:${iri} / schema:maxValue ?max_${ord}."."\n";
       echo "bind(((?min_${ord} + ?max_${ord}) / 2) as ?${ord}_value)"."\n";
 
-      if (!empty($_POST["min_${flt}"])) {
+      if (!empty($_POST["min_${flt}"]) || $_POST["min_${flt}"] == '0') {
         $min = $_POST["min_${flt}"];
         echo "filter(?${ord}_value >= ${min})"."\n";
       }
-      if (!empty($_POST["max_${flt}"])) {
+      if (!empty($_POST["max_${flt}"]) || $_POST["max_${flt}"] == '0') {
         $max = $_POST["max_${flt}"];
         echo "filter(?${ord}_value <= ${max})"."\n";
       }
@@ -777,11 +784,11 @@ function addiCon($num) {      // 原料に対する絞り込み条件をクエ�
 
       if ($iri == 'ricePolishingRate') {
         echo "?s sk-make:${iri} / schema:value ?${iri}."."\n";
-        if (!empty($_POST["min_${flt}"])) {
+        if (!empty($_POST["min_${flt}"]) || $_POST["min_${flt}"] == '0') {
           $min = $_POST["min_${flt}"];
           echo "filter(?${iri} >= ${min})"."\n";
         }
-        if (!empty($_POST["max_${flt}"])) {
+        if (!empty($_POST["max_${flt}"]) || $_POST["max_${flt}"] == '0') {
           $max = $_POST["max_${flt}"];
           echo "filter(?${iri} <= ${max})"."\n";
         }
@@ -820,11 +827,11 @@ function addmCon($num) {      // 製法に対する絞り込み条件をクエ�
       echo "   sk-eval:${iri} / schema:maxValue ?max_${ord}."."\n";
       echo "bind(((?min_${ord} + ?max_${ord}) / 2) as ?${ord}_value)"."\n";
 
-      if (!empty($_POST["min_${flt}"])) {
+      if (!empty($_POST["min_${flt}"]) || $_POST["min_${flt}"] == '0') {
         $min = $_POST["min_${flt}"];
         echo "filter(?${ord}_value >= ${min})"."\n";
       }
-      if (!empty($_POST["max_${flt}"])) {
+      if (!empty($_POST["max_${flt}"]) || $_POST["max_${flt}"] == '0') {
         $max = $_POST["max_${flt}"];
         echo "filter(?${ord}_value <= ${max})"."\n";
       }
@@ -849,7 +856,7 @@ function addmCon($num) {      // 製法に対する絞り込み条件をクエ�
         if ($iri != $_POST['manufacture']) {
           echo "?s sk-make:${iri} / schema:value ?${iri}."."\n";
         }
-        if (!empty($_POST["min_${flt}"])) {
+        if (!empty($_POST["min_${flt}"]) || $_POST["min_${flt}"] == '0') {
           $min = $_POST["min_${flt}"];
           if ($iri == $_POST['manufacture']) {
             echo "filter(?man >= ${min})"."\n";
@@ -857,7 +864,7 @@ function addmCon($num) {      // 製法に対する絞り込み条件をクエ�
             echo "filter(?${iri} >= ${min})"."\n";
           }
         }
-        if (!empty($_POST["max_${flt}"])) {
+        if (!empty($_POST["max_${flt}"]) || $_POST["max_${flt}"] == '0') {
           $max = $_POST["max_${flt}"];
           if ($iri == $_POST['manufacture']) {
             echo "filter(?man >= ${max})"."\n";
@@ -922,7 +929,7 @@ function ingFilter($iri) {
 
 // 製法で絞り込む際のクエリ記述
 function manFilter($iri) {
-  if (isset($_POST['ingredient']) && $iri == $_POST['manufacture']) {
+  if (isset($_POST['manufacture']) && $iri == $_POST['manufacture']) {
     if ($iri == 'fermentationMash') {
       $prefix = 'none';
       $item = $iri;
@@ -946,19 +953,20 @@ function manFilter($iri) {
     }
     $item = $iri;
   }
-  return [$iri, $prefix];
+  return [$item, $prefix];
 }
 
-function sameFilter($flt, $item, $prefix) {     // クエリの'='で表すフィルター処理
+// クエリの'='で表すフィルター処理
+function sameFilter($flt, $item, $prefix) {
   $element = $_POST[$flt];
   echo 'filter(';
   for ($i=0; $i<count($element); $i++) {
     $value = $element[$i];
-    if ($prefix != 'none') {      // IRIの場合
+    if ($prefix != 'none') {            // IRIの場合
       echo "?${item} = ${prefix}:${value}";
     }else if (is_numeric($value)) {     // 数値の場合
       echo "?${item} = ${value}";
-    }else {     // テキストの場合
+    }else {                             // テキストの場合
       echo "?${item} = '${value}'";
     }
     if (!empty($element[$i+1])) {
@@ -968,7 +976,10 @@ function sameFilter($flt, $item, $prefix) {     // クエリの'='で表すフ�
   echo ')'."\n" ;
 }
 
-// グラフ描画
+/* グラフ描画のための関数
+   なくても何とかなるが，ないとグラフがとても見づらくなる．
+*/
+// グラフ軸ラベルの記述
 function trans($val) {
   switch ($val) {
     case 'sakeMeterValue':
@@ -994,6 +1005,7 @@ function trans($val) {
   }
 }
 
+// グラフ軸目盛の最小値
 function minSize($val) {
   switch ($val) {
     case 'sakeMeterValue':
@@ -1016,6 +1028,7 @@ function minSize($val) {
   }
 }
 
+// グラフ軸目盛の最大値
 function maxSize($val) {
   switch ($val) {
     case 'sakeMeterValue':
@@ -1037,6 +1050,8 @@ function maxSize($val) {
       break;
   }
 }
+
+// グラフの大きさの設定
 function graphStyle() {
   if (!empty($_POST['compare'])) {
     echo '50%';
@@ -1045,6 +1060,7 @@ function graphStyle() {
   }
 }
 
+// グラフ位置の調整
 function chartArea($chart) {
   if (strpos($chart, 'Column')) {
     echo 'chartArea.left=10%';
@@ -1057,12 +1073,21 @@ function chartArea($chart) {
   }
 }
 
-function barWidth($val) {
-  if ($val == 'ricePolishingRate') {
-    echo '100%';
+// 棒グラフの設定
+function columnSetting($val) {
+  $chart = selectChart($val);
+  if (strpos($chart, 'Column')) {
+    echo 'explorer.keepInBounds=true';
+    echo '|';
+    echo 'explorer.maxZoomIn=0.1';
+    if ($val == 'ricePolishingRate') {
+      echo '|';
+      echo 'bar.groupWidth=100%';
+    }
   }
 }
 
+// データ数に基づくグラフ軸目盛の調整
 function matchSize($val) {
   switch ($val) {
     case 'ricePolishingRate':
