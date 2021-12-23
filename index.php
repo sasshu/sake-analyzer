@@ -25,7 +25,7 @@
         </div>
         <div class="content">
           <img class="sample-chart" src="image/visualization_2.png" alt="五百万石を使用する日本酒の日本酒度・酸度">
-          <p>五百万石を使用する日本酒の日本酒度・酸度</p>
+          <p>五百万石を使用する日本酒の日本酒度・酸度a</p>
         </div>
       </div>
     </div>
