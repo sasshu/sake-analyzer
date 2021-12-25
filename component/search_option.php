@@ -69,13 +69,16 @@
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="コシヒカリ" onclick="sCheck(this)">コシヒカリ</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="五百万石" onclick="sCheck(this)">五百万石</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="紫黒米" onclick="sCheck(this)">紫黒米</label>
+                <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="新之助" onclick="sCheck(this)">新之助</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="たかね錦" onclick="sCheck(this)">たかね錦</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="八反錦" onclick="sCheck(this)">八反錦</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="葉月みのり" onclick="sCheck(this)">葉月みのり</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="ひとごこち" onclick="sCheck(this)">ひとごこち</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="美山錦" onclick="sCheck(this)">美山錦</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="山田錦" onclick="sCheck(this)">山田錦</label>
+                <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="雪の精" onclick="sCheck(this)">雪の精</label>
                 <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="楽風舞" onclick="sCheck(this)">楽風舞</label>
+                <label class="check"><input class="element sub group0" type="checkbox" name="rice0[]" value="わせじまん" onclick="sCheck(this)">わせじまん</label>
               </div>
             </div>
             <label class="check"><input class="element main group0" type="checkbox" name="i-target0[]" value="yeast0" onclick="Switch(this);sCheck(this)">酵母</label>
