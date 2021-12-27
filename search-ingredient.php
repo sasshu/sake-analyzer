@@ -11,7 +11,7 @@
   <?php require_once('component/function.php'); ?>
   <title>原料を検索 | SakeAnalyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="icon" href="image/favicon.ico">
 </head>
 <body>

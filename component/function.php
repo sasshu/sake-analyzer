@@ -1,4 +1,50 @@
 <script type="text/javascript">
+// 問い合わせフォームの入力チェック
+function checkRequest() {
+  let invalid = [];                 // 無効な問い合わせ項目
+  const contact_type = document.getElementsByName('$お問い合わせ内容');
+  let count = 0;                    // お問い合わせ内容の選択数
+  // メールの表題を記述
+  for (var i = 0; i < contact_type.length; i++) {
+    if (contact_type[i].checked) {
+      let subject = document.getElementById('subject');
+      if (subject.value != '【問い合わせ】') {
+        subject.value += '，';
+      }
+      subject.value += contact_type[i].value;
+      count++;
+    }
+  }
+  // 無効な問い合わせ項目を配列に格納する
+  if (count == 0) {
+    invalid.push('contact-type');
+  }
+  let input = document.getElementsByClassName('required label');
+  for (var i = 0; i < input.length; i++) {
+    let folder = document.getElementById(input[i].htmlFor);
+    if (folder.value == '') {
+      invalid.push(folder.id);
+    }
+  }
+  // 無効な問い合わせ項目箇所を強調
+  if (invalid.length) {
+    for (var i = 0; i < invalid.length; i++) {
+      document.getElementById(invalid[i]).style.border = '2px solid red';
+    }
+    return false;
+  }
+  return true;
+}
+
+//強調した問い合わせ項目箇所を元に戻す
+function resetFormCss(element) {
+  if (element.className == 'text-input') {
+    element.style.border = '1px solid lightgray';
+  }else {
+    document.getElementById('contact-type').style.border = '1px solid lightgray';
+  }
+}
+
 // 成分検索の入力チェック
 function checkProp() {
   let x = document.getElementsByName('x-target');
@@ -362,13 +408,13 @@ function sRadio(radio) {
     let value = radios[i].name.substr(0, 2) + radios[i].value;
     if (radios[i].checked) {
       if (sessionStorage.getItem(value) == 'true') {        // すでにチェックされていた場合
-        sessionStorage.removeItem(value);                   // sessionからcheckboxの値を削除
+        sessionStorage.removeItem(value);                   // sessionからラジオボタンの値を削除
         radios[i].checked = false;
       }else {
         sessionStorage.setItem(value, radios[i].checked);     // sessionにラジオボタンの値を保存
       }
     }else {
-      sessionStorage.removeItem(value);                     // sessionからcheckboxの値を削除
+      sessionStorage.removeItem(value);                     // sessionからラジオボタンの値を削除
     }
   }
 }

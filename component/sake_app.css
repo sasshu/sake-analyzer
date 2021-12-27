@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-	margin: 50px 25px;
+	margin: 25px 25px 50px 25px;
 }
 
 a {
@@ -61,13 +61,11 @@ u:hover {
 .query-btn {
 	background-color: crimson;
 	border: none;
-	cursor: pointer;
 }
 
 .init-btn {
 	background-color: darkslategray;
 	border: none;
-	cursor: pointer;
 }
 
 input[type='number'] {
@@ -383,15 +381,6 @@ footer {
 .provider-btn {
   background-color: mediumseagreen;
 }
-/*
-.page-top {
-	text-align: center;
-}
-
-.top-btn {
-	background-color: darkcyan;
-}
-*/
 
 #page_top{
   width: 50px;
@@ -450,6 +439,7 @@ footer {
   opacity: 0.8;
   border-radius: 4px;
   text-align: center;
+	cursor: pointer;
 }
 
 .btn:hover {
@@ -507,4 +497,77 @@ footer {
 .brewery-query {
 	display: flex;
 	justify-content: space-around;
+}
+
+/* contact.php */
+#contact_form {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.contact-submit {
+	text-align: center;
+}
+
+.contact-btn {
+	background-color: blue;
+	border: none;
+}
+
+.contact-list {
+	margin-bottom: 15px;
+}
+
+.input-area {
+	margin-top: 5px;
+}
+
+.text-input {
+	border: 1px solid lightgray;
+	border-radius: 0.3em;
+	font-size: 18px;
+	width: 100%;
+	padding: 0.5em;
+}
+
+.form-check {
+	display: inline-block;
+	width: 250px;
+	white-space: nowrap;
+}
+
+.required:after {
+	margin-left: 1.0em;
+	padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.6em;
+  color: white;
+  background-color: crimson;
+  content: "必須";
+}
+
+.option:after {
+	margin-left: 1.0em;
+	padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.6em;
+  color: white;
+  background-color: darkslategray;
+  content: "任意";
+}
+
+/* thanks.php */
+.thanks-message {
+	text-align: center;
+	margin-top: 100px;
+}
+
+.fa-check-circle {
+	font-size: 7em;
+	color: green;
+}
+
+.thanks-message h2 {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
