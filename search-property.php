@@ -83,17 +83,20 @@
 
             select (count(?s) as ?count) where
             {
-              ?s a sk-eval:Sake .
+              select distinct ?s where
+              {
+                ?s a sk-eval:Sake .
 
-              ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
-                 sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
-              bind(((?min_x+ ?max_x) / 2) as ?x_value)
+                ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
+                   sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
+                bind(((?min_x+ ?max_x) / 2) as ?x_value)
 
-              ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
-                 sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
-              bind(((?min_y + ?max_y) / 2) as ?y_value)
+                ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
+                   sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
+                bind(((?min_y + ?max_y) / 2) as ?y_value)
 
-              <?php addpCon(1); ?>
+                <?php addpCon(1); ?>
+              }
             }
             "
             data-sgvizler-chart="sgvizler.visualization.Text"
@@ -108,18 +111,20 @@
 
           select distinct ?label ?x_value ?y_value (count(?s) as ?count) where
           {
-            ?s a sk-eval:Sake .
-            bind('' as ?label)
+            select distinct ?s ?label ?x_value ?y_value where
+            {
+              ?s a sk-eval:Sake .
 
-            ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
-               sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
-            bind(((?min_x+ ?max_x) / 2) as ?x_value)
+              ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
+                 sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
+              bind(((?min_x+ ?max_x) / 2) as ?x_value)
 
-            ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
-               sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
-            bind(((?min_y + ?max_y) / 2) as ?y_value)
+              ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
+                 sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
+              bind(((?min_y + ?max_y) / 2) as ?y_value)
 
-            <?php addpCon(1); ?>
+              <?php addpCon(1); ?>
+            }
           }
           "
           data-sgvizler-chart="google.visualization.BubbleChart"
@@ -136,17 +141,20 @@
 
             select (count(?s) as ?count) where
             {
-              ?s a sk-eval:Sake .
+              select distinct ?s ?label ?x_value ?y_value where
+              {
+                ?s a sk-eval:Sake .
 
-              ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
-                 sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
-              bind(((?min_x+ ?max_x) / 2) as ?x_value)
+                ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
+                   sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
+                bind(((?min_x+ ?max_x) / 2) as ?x_value)
 
-              ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
-                 sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
-              bind(((?min_y + ?max_y) / 2) as ?y_value)
+                ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
+                   sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
+                bind(((?min_y + ?max_y) / 2) as ?y_value)
 
-              <?php addpCon(2); ?>
+                <?php addpCon(2); ?>
+              }
             }
             "
             data-sgvizler-chart="sgvizler.visualization.Text"
@@ -161,18 +169,20 @@
 
           select ?label ?x_value ?y_value (count(?s) as ?count) where
           {
-            ?s a sk-eval:Sake .
-            bind('' as ?label)
+            select distinct ?s ?label ?x_value ?y_value where
+            {
+              ?s a sk-eval:Sake .
 
-            ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
-               sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
-            bind(((?min_x+ ?max_x) / 2) as ?x_value)
+              ?s sk-eval:<?php echo $xt; ?> / schema:minValue ?min_x ;
+                 sk-eval:<?php echo $xt; ?> / schema:maxValue ?max_x .
+              bind(((?min_x+ ?max_x) / 2) as ?x_value)
 
-            ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
-               sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
-            bind(((?min_y + ?max_y) / 2) as ?y_value)
+              ?s sk-eval:<?php echo $yt; ?> / schema:minValue ?min_y ;
+                 sk-eval:<?php echo $yt; ?> / schema:maxValue ?max_y .
+              bind(((?min_y + ?max_y) / 2) as ?y_value)
 
-            <?php addpCon(2); ?>
+              <?php addpCon(2); ?>
+            }
           }
           "
           data-sgvizler-chart="google.visualization.BubbleChart"

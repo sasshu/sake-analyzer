@@ -89,9 +89,12 @@
 
             select (count(?s) as ?count) where
             {
-              ?s a sk-eval:Sake .
-              <?php man($man); ?>
-              <?php addmCon(1); ?>
+              select distinct ?s ?man where
+              {
+                ?s a sk-eval:Sake .
+                <?php man($man); ?>
+                <?php addmCon(1); ?>
+              }
             }
             "
             data-sgvizler-chart="sgvizler.visualization.Text">
@@ -105,9 +108,12 @@
 
           select ?man (count(?s) as ?count) where
           {
-            ?s a sk-eval:Sake .
-            <?php man($man); ?>
-            <?php addmCon(1); ?>
+            select distinct ?s ?man where
+            {
+              ?s a sk-eval:Sake .
+              <?php man($man); ?>
+              <?php addmCon(1); ?>
+            }
           }
           <?php dataSort($man); ?>
           "
@@ -125,9 +131,12 @@
 
             select (count(?s) as ?count) where
             {
-              ?s a sk-eval:Sake .
-              <?php man($man); ?>
-              <?php addmCon(2); ?>
+              select distinct ?s ?man where
+              {
+                ?s a sk-eval:Sake .
+                <?php man($man); ?>
+                <?php addmCon(2); ?>
+              }
             }
             "
             data-sgvizler-chart="sgvizler.visualization.Text"
@@ -142,9 +151,12 @@
 
           select ?man (count(?s) as ?count) where
           {
-            ?s a sk-eval:Sake .
-            <?php man($man); ?>
-            <?php addmCon(2); ?>
+            select distinct ?s ?man where
+            {
+              ?s a sk-eval:Sake .
+              <?php man($man); ?>
+              <?php addmCon(2); ?>
+            }
           }
           <?php dataSort($man); ?>
           "

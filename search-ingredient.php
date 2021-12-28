@@ -71,15 +71,15 @@
             data-sgvizler-query="
             <?php preQuery(); ?>
 
-            select (count(?ing) as ?count) where
+            select (count(?s) as ?count) where
             {
               select distinct ?s ?ing where
-                {
-                  ?s a sk-eval:Sake ;
-                     schema:material ?ingredient .
-                     <?php ing($ing); ?>
-                     <?php addiCon(1); ?>
-                }
+              {
+                ?s a sk-eval:Sake ;
+                   schema:material ?ingredient .
+                   <?php ing($ing); ?>
+                   <?php addiCon(1); ?>
+              }
             }
             "
             data-sgvizler-chart="sgvizler.visualization.Text"
@@ -92,15 +92,15 @@
           data-sgvizler-query="
           <?php preQuery(); ?>
 
-          select ?ing (count(?ing) as ?count) where
+          select ?ing (count(?s) as ?count) where
           {
             select distinct ?s ?ing where
-              {
-                ?s a sk-eval:Sake ;
-                   schema:material ?ingredient .
-                   <?php ing($ing); ?>
-                   <?php addiCon(1); ?>
-              }
+            {
+              ?s a sk-eval:Sake ;
+                 schema:material ?ingredient .
+                 <?php ing($ing); ?>
+                 <?php addiCon(1); ?>
+            }
           }
           order by desc(?count)
           "
@@ -116,15 +116,15 @@
             data-sgvizler-query="
             <?php preQuery(); ?>
 
-            select (count(?ing) as ?count) where
+            select (count(?s) as ?count) where
             {
               select distinct ?s ?ing where
-                {
-                  ?s a sk-eval:Sake ;
-                     schema:material ?ingredient .
-                     <?php ing($ing); ?>
-                     <?php addiCon(2); ?>
-                }
+              {
+                ?s a sk-eval:Sake ;
+                   schema:material ?ingredient .
+                   <?php ing($ing); ?>
+                   <?php addiCon(2); ?>
+              }
             }
             "
             data-sgvizler-chart="sgvizler.visualization.Text"
@@ -137,15 +137,15 @@
           data-sgvizler-query="
           <?php preQuery(); ?>
 
-          select ?ing (count(?ing) as ?count) where
+          select ?ing (count(?s) as ?count) where
           {
             select distinct ?s ?ing where
-              {
-                ?s a sk-eval:Sake ;
-                   schema:material ?ingredient .
-                   <?php ing($ing); ?>
-                   <?php addiCon(2); ?>
-              }
+            {
+              ?s a sk-eval:Sake ;
+                 schema:material ?ingredient .
+                 <?php ing($ing); ?>
+                 <?php addiCon(2); ?>
+            }
           }
           order by desc(?count)
           "
