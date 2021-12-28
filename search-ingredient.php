@@ -73,10 +73,13 @@
 
             select (count(?ing) as ?count) where
             {
-              ?s a sk-eval:Sake ;
-                   schema:material ?ingredient .
-                   <?php ing($ing); ?>
-                   <?php addiCon(1); ?>
+              select distinct ?s ?ing where
+                {
+                  ?s a sk-eval:Sake ;
+                     schema:material ?ingredient .
+                     <?php ing($ing); ?>
+                     <?php addiCon(1); ?>
+                }
             }
             "
             data-sgvizler-chart="sgvizler.visualization.Text"
@@ -91,10 +94,13 @@
 
           select ?ing (count(?ing) as ?count) where
           {
-            ?s a sk-eval:Sake ;
-                 schema:material ?ingredient .
-                 <?php ing($ing); ?>
-                 <?php addiCon(1); ?>
+            select distinct ?s ?ing where
+              {
+                ?s a sk-eval:Sake ;
+                   schema:material ?ingredient .
+                   <?php ing($ing); ?>
+                   <?php addiCon(1); ?>
+              }
           }
           order by desc(?count)
           "
@@ -112,10 +118,13 @@
 
             select (count(?ing) as ?count) where
             {
-              ?s a sk-eval:Sake ;
-                   schema:material ?ingredient .
-                   <?php ing($ing); ?>
-                   <?php addiCon(2); ?>
+              select distinct ?s ?ing where
+                {
+                  ?s a sk-eval:Sake ;
+                     schema:material ?ingredient .
+                     <?php ing($ing); ?>
+                     <?php addiCon(2); ?>
+                }
             }
             "
             data-sgvizler-chart="sgvizler.visualization.Text"
@@ -130,10 +139,13 @@
 
           select ?ing (count(?ing) as ?count) where
           {
-            ?s a sk-eval:Sake ;
-                 schema:material ?ingredient .
-                 <?php ing($ing); ?>
-                 <?php addiCon(2); ?>
+            select distinct ?s ?ing where
+              {
+                ?s a sk-eval:Sake ;
+                   schema:material ?ingredient .
+                   <?php ing($ing); ?>
+                   <?php addiCon(2); ?>
+              }
           }
           order by desc(?count)
           "
