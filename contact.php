@@ -17,8 +17,8 @@
       <form id="contact_form" action="https://api.staticforms.xyz/submit" method="post">
         <input type="hidden" name="accessKey" value="da725dd4-44cc-481c-86f9-6868cfd19c50">
         <input id="subject" type="hidden" name="subject" value="【問い合わせ】">
-        <input type="hidden" name="redirectTo" value="http://localhost/SakeAnalyzer/thanks">
-        <!-- <input type="hidden" name="redirectTo" value="https://sake-analyzer.herokuapp.com/thanks"> -->
+        <!-- <input type="hidden" name="redirectTo" value="http://localhost/SakeAnalyzer/thanks"> -->
+        <input type="hidden" name="redirectTo" value="https://sake-analyzer.herokuapp.com/thanks">
         <input type="hidden" name="replyTo" value="@">
         <div class="contact">
           <div class="contact-list">
