@@ -5,6 +5,7 @@
   <?php require_once('component/function.php'); ?>
   <title>お問い合わせ | SakeAnalyzer</title>
   <link rel="stylesheet" href="component/sake_app.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
   <link rel="icon" href="image/favicon.ico">
 </head>
 <body>
@@ -31,6 +32,12 @@
             <label for="company" class="required label">会社名</label>
             <div class="input-area">
               <input id="company" class="text-input" type="text" name="$会社名" placeholder="〇〇酒造株式会社" oninput="resetFormCss(this)">
+            </div>
+          </div>
+          <div class="contact-list">
+            <label for="position" class="option">役職</label>
+            <div class="input-area">
+              <input id="position" class="text-input" type="text" name="$役職" placeholder="杜氏">
             </div>
           </div>
           <div class="contact-list">
@@ -65,6 +72,9 @@
           <input class="btn contact-btn" type="submit" onclick="return checkRequest();" value="送信">
         </div>
       </form>
+      <div id="page_top">
+        <a href="#"></a>
+      </div>
     </div>
   </div>
   <footer>
