@@ -1,4 +1,14 @@
 <script type="text/javascript">
+// ログアウトしていいかチェック
+function noteLogout() {
+  let logout = confirm('ログアウトしますか？');
+  if (logout) {
+    initialize();
+    return true;
+  }
+  return false;
+}
+
 // 問い合わせフォームの入力チェック
 function checkRequest() {
   let invalid = [];                 // 無効な問い合わせ項目
@@ -511,22 +521,6 @@ function initialize() {
 
 
 <?php
-function sRadio($type, $value) {      // ラジオボタンの入力保持
-  if (isset($_POST[$type]) && $_POST[$type] == $value) {
-    echo 'checked';
-  }
-}
-
-/*
-function Queryjudge($attr, $xt, $yt) {
-  if (isset($_POST['x-target']) && isset($_POST['y-target'])) {
-    $attr = 'result-wrapper';
-    $xt = $_POST['x-target'];
-    $yt = $_POST['y-target'];
-  }
-}
-*/
-
 function getEndpoint() {      // SPARQL endpointの取得
   /*
   return 'http://echigodb.jp:8893/sparql/';

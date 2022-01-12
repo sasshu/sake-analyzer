@@ -13,4 +13,14 @@
   </li>
   <li><a href="credit-brewery" onclick="initialize()">データ提供元</a></li>
   <li><a href="contact" onclick="initialize()">お問い合わせ</a></li>
+  <?php
+  /*
+  if (isset($_SESSION['username'])) {
+    echo '<li><a href="logout" onclick="return noteLogout()">ログアウト</a></li>';
+  }else {
+    echo '<li><a href="login">ログイン</a></li>';
+  }
+  */
+  ?>
+
 </ul>

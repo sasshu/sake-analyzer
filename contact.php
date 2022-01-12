@@ -10,7 +10,7 @@
 </head>
 <body>
   <header>
-    <?php include("component/header.html"); ?>
+    <?php include("component/header.php"); ?>
   </header>
   <div class="contact-wrapper">
     <div class="container">
@@ -78,7 +78,7 @@
     </div>
   </div>
   <footer>
-    <?php include("component/footer.html"); ?>
+    <?php include("component/footer.php"); ?>
   </footer>
 </body>
 </html>

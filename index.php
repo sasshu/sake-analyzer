@@ -9,7 +9,7 @@
 </head>
 <body>
   <header>      <!-- ヘッダーの読み込み -->
-    <?php include("component/header.html"); ?>
+    <?php include("component/header.php"); ?>
   </header>
   <div class="top-wrapper">     <!-- アプリ内容の説明 -->
     <div class="container">
@@ -62,7 +62,7 @@
     </div>
   </div>
   <footer>      <!-- フッター -->
-    <?php include("component/footer.html"); ?>
+    <?php include("component/footer.php"); ?>
   </footer>
 </body>
 </html>
