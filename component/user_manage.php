@@ -1,6 +1,10 @@
 <?php
 function getUrl() {
-  $protocol = empty($_SERVER["HTTPS"]) ? "http://" : "https://";
+  if ($_SERVER["HTTP_HOST"] == 'localhost') {
+    $protocol = "http://";
+  }else {
+    $protocol = "https://";
+  }
   $url = $protocol.$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
   return $url;
 }
