@@ -576,59 +576,54 @@ footer {
 /* login.php */
 #login_form {
   box-sizing: border-box;
-	color:#111;
-	margin:70px auto;
-  background:#2a3644;
-  width:347px;
-  text-align:center;
-  padding:40px;
+	margin:	70px auto;
+  background-color: seagreen;
+  width: 500px;
+  text-align: center;
+  padding: 40px;
   border-radius: 6px;
 }
 
 #login_form > p {
 	text-align: left;
-  color:#f4f4f4;
-  text-shadow:1px 1px 0px rgba(0, 0, 0, 0.7);
-  margin-bottom:5px;
+  color: #f4f4f4;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
+  margin-bottom: 5px;
 }
 
 .login-element {
-	border:none;
-  background:rgba(0, 0, 0, 0.2);
-  color:#fff;
-  text-shadow:1px 1px 0px rgba(0, 0, 0,0.3);
-  display:block;
-  width:90%;
-	padding:15px;
-  margin-bottom:20px;
+	border: none;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0,0.3);
+  display: block;
+  width: 92%;
+	padding: 15px;
+  margin-bottom: 20px;
   border-radius: 6px;
   transition: all 1s ease-in-out;
-  outline:none;
+  outline: none;
 }
 
 .login-element:focus {
-  background:rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   transition: all 1s ease-in-out;
 }
 
 .login-button {
+	position: relative;
 	border: none;
-  position:relative;
-  display:block;
-  margin-top:15px;
-  margin-bottom:15px;
-  padding:17px;
-  width:270px;
+  padding: 17px;
+  width: 270px;
   border-radius: 6px;
-  transition: all 1s ease-in-out;
-  font-size:1.2em;
-  background:#f26964;
-  color:#f4f4f4;
-  box-shadow:0px 3px 0px #ab4b47;
-  cursor:pointer;
+  font-size: 1.2em;
+  background-color: #f26964;
+  color: #f4f4f4;
+  box-shadow: 0px 3px 0px #ab4b47;
+  cursor: pointer;
 }
 
 .login-button:active {
-  top:3px;
-  box-shadow:none;
+  top: 3px;
+  box-shadow: none;
 }
