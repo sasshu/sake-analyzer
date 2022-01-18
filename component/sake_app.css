@@ -25,6 +25,10 @@ ul {
 	list-style: none;
 }
 
+.loupe {
+	cursor: zoom-in;
+}
+
 u {
 	cursor: pointer;
 }
@@ -85,6 +89,14 @@ input[type="radio"] , input[type="checkbox"] {
 }
 
 /* 検索 */
+.fa-question-circle {
+	color: green;
+	position: relative;
+	top: -15px;
+	right: -5px;
+	font-size: 0.7em;
+}
+
 .form-execute {
 	text-align: center;
 }
@@ -270,25 +282,7 @@ footer {
 .data-detail {
 	line-height: 20px;
 	text-align: center;
-	margin-top: 20px;
-}
-
-.mit-contents {
-	line-height: 20px;
-	font-size: 13px;
-	width: 350px;
-	margin: 50px auto 20px;
-}
-
-.section {
-	text-indent: -1rem;
-}
-
-.mit-contents {
-	line-height: 20px;
-	font-size: 13px;
-	width: 350px;
-	margin: 50px auto 20px;
+	margin: 20px 0px;
 }
 
 /* index.php */
@@ -383,23 +377,6 @@ footer {
 	margin-top: 70px;
 }
 
-.contents {
-	display: flex;
-}
-
-.content {
-	text-align: center;
-	margin: 0 30px;
-}
-
-#chart1 {
-	margin-top: 50px;
-}
-
-.sample-chart {
-	width: 100%;
-}
-
 .popup_wrap input {
   display: none;
 }
@@ -418,13 +395,12 @@ footer {
   transition: opacity 0.5s, transform 0s 0.5s;
   transform: scale(0);
 }
-/*
+
 .pop_trigger {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-*/
 
 .pop_content {
 	padding: 10px;
@@ -440,14 +416,6 @@ footer {
 .search-index img {
 	width: 80%;
 	margin-bottom: 20px;
-}
-
-.manual img {
-	width: 100%;
-}
-
-.pop_content p {
-  text-align: center;
 }
 
 .search-intro {

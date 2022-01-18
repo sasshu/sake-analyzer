@@ -1,0 +1,5 @@
+============================================================
+< Sgvizler >
+Copyright (c) 2015 mgskjaeveland
+https://github.com/mgskjaeveland/sgvizler/blob/master/LICENSE
+============================================================

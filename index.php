@@ -41,7 +41,7 @@
             <div class="center">
               <i class="fas fa-long-arrow-alt-down"></i>
             </div>
-            <a href="image/sample_property.png" data-lightbox="group"><img src="image/sample_property.png" alt="日本酒度と酸度" width="100%"></a>
+            <a href="image/sample_property.png" data-lightbox="group" data-title="日本酒度と酸度の関係"><img class="loupe" src="image/sample_property.png" alt="日本酒度と酸度" width="100%"></a>
             <p>日本酒度と酸度の関係</p>
           </div>
           <p class="sample-intro">日本酒の成分として、日本酒度、酸度、アミノ酸度、アルコール分といった数値データを検索することができます。それらのうち二項目を散布図として、数値の分布が可視化されます。</p>
@@ -59,8 +59,8 @@
             <div class="center">
               <i class="fas fa-long-arrow-alt-down"></i>
             </div>
-            <a href="image/sample_ingredient.png" data-lightbox="group"><img src="image/sample_ingredient.png" alt="精米歩合が60%以上で使用される米の品種別割合" width="100%"></a>
-            <p>精米歩合が60%以上で使用される米の品種別割合</p>
+            <a href="image/sample_ingredient.png" data-lightbox="group" data-title="精米歩合が60%以上で使用される米品種"><img class="loupe" src="image/sample_ingredient.png" alt="精米歩合が60%以上で使用される米品種" width="100%"></a>
+            <p>精米歩合が60%以上で使用される米品種</p>
           </div>
           <p class="sample-intro">日本酒の原料として、米・酵母の品種、麹のブランド、水の硬度（軟水・硬水）を検索することができます。円グラフによって、それぞれ日本酒に使用される割合が可視化されます。</p>
         </div>
@@ -76,24 +76,12 @@
             <div class="center">
               <i class="fas fa-long-arrow-alt-down"></i>
             </div>
-            <a href="image/sample_manufacture.png" data-lightbox="group"><img src="image/sample_manufacture.png" alt="五百万石の精米歩合" width="100%"></a>
+            <a href="image/sample_manufacture.png" data-lightbox="group" data-title="五百万石の精米歩合"><img class="loupe" src="image/sample_manufacture.png" alt="五百万石の精米歩合" width="100%"></a>
             <p>五百万石の精米歩合</p>
           </div>
           <p class="sample-intro">日本酒の製法として、特定名称や製麹、酒母造りなどの種類に加え、精米歩合といった数値データを検索することができます。それぞれ円グラフまたは棒グラフによって、合致した製法で造られる日本酒の数や割合が可視化されます。</p>
         </div>
       </div>
-      <!--
-      <div class="contents">
-        <div class="content">
-          <img id="chart1" class="sample-chart" src="image/visualization_1.png" alt="各原料米で造られた日本酒の割合">
-          <p>各原料米で造られた日本酒の割合</p>
-        </div>
-        <div class="content">
-          <img class="sample-chart" src="image/visualization_2.png" alt="五百万石を使用する日本酒の日本酒度・酸度">
-          <p>五百万石を使用する日本酒の日本酒度・酸度</p>
-        </div>
-      </div>
-      -->
     </div>
   </div>
   <div class="btn-wrapper">     <!-- ページ遷移ボタン -->
@@ -104,7 +92,6 @@
           <label for="search_trig" class="pop_trig"></label>
           <div class="pop_content">
             <label for="search_trig" class="close">×</label>
-            <p>成分・原料・製法それぞれを検索できます。</p>
             <div class="search-intro">
               <div class="search-index">
                 <img src="image/property_index.png" alt="成分">
@@ -126,6 +113,9 @@
         <a href="credit-brewery" class="btn provider-btn">データを載せている酒蔵を見る</a>      <!-- 酒蔵のクレジットページへ -->
       </div>
     </div>
+  </div>
+  <div id="page_top">
+    <a href="#"></a>
   </div>
   <footer>      <!-- フッター -->
     <?php include("component/footer.php"); ?>

@@ -9,16 +9,25 @@ require_logined_session();
 <html>
 <head>
   <meta charset="UTF-8">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>      <!-- jQueryの読み込み -->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>     <!-- Google Chartsの読み込み -->
-  <script type="text/javascript" src="sgvizler.js"></script>     <!-- Sgvizlerの読み込み -->
-  <script type="text/javascript">
-    $(document).ready(() => {sgvizler.containerDrawAll();});
-  </script>     <!-- Sgvizlerコンテナの呼び出し -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>      <!-- jQueryの読み込み -->
+  <script src="https://www.gstatic.com/charts/loader.js"></script>     <!-- Google Chartsの読み込み -->
+  <script src="sgvizler.js"></script>     <!-- Sgvizlerの読み込み -->
+  <script>
+    $(document).ready(() => {sgvizler.containerDrawAll();});     /* Sgvizlerコンテナの呼び出し */
+  </script>
   <?php require_once('component/function.php'); ?>
   <title>成分を検索 | Sake Analyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+  <script>
+  /* 拡大画像の設定 */
+  lightbox.option({
+    'maxWidth': 90%,
+    'maxHeight': 90%
+  })
+  </script>
   <link rel="icon" href="image/favicon.ico">
 </head>
 <body>
@@ -27,20 +36,10 @@ require_logined_session();
   </header>
   <form id="search_form" class="search-wrapper" action="#result-graphs" method="post">     <!-- 検索フォーム -->
     <div class="container">
-      <h1 class="section-title">成分を検索</h1>
+      <h1 class="section-title">成分を検索
+        <a href="image/manual_property.png" data-lightbox="group"><i class="far fa-question-circle" title="検索方法"></i></a>
+      </h1>
       <p class="sec-intro">日本酒の成分を、散布図で可視化します。<br>二種の成分間の関係を調べることができます。</p>
-      <div class="popup_wrap">
-        <input id="manual_trig" type="checkbox"><label for="manual_trig"><u>検索方法</u></label>
-        <div class="popup_overlay">
-          <label for="manual_trig" class="pop_trig"></label>
-          <div class="pop_content">
-            <label for="manual_trig" class="close">×</label>
-            <div class="manual">
-              <img src="image/manual_property.png" alt="成分検索マニュアル">
-            </div>
-          </div>
-        </div>
-      </div>
       <div id="page_top">
         <a href="#"></a>
       </div>
