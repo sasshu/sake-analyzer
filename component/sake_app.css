@@ -267,6 +267,23 @@ footer {
 	border-top: 1px solid lightgray;
 }
 
+.data-detail {
+	line-height: 20px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.mit-contents {
+	line-height: 20px;
+	font-size: 13px;
+	width: 350px;
+	margin: 50px auto 20px;
+}
+
+.section {
+	text-indent: -1rem;
+}
+
 .mit-contents {
 	line-height: 20px;
 	font-size: 13px;
@@ -275,6 +292,97 @@ footer {
 }
 
 /* index.php */
+.emphasis-box {
+	position: relative;
+  margin: 2em 0;
+  padding: 0.5em 1em;
+  border: solid 3px #0c3;
+  border-radius: 8px;
+}
+
+.box-title {
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 30px;
+  background-color: #FFF;
+  color: black;
+  font-weight: bold;
+}
+
+.emphasis-box p {
+  margin-top: 15px;
+}
+
+.balloon-left {
+  position: relative;
+  display: inline-block;
+	margin-left: 25px;
+  padding: 20px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 16px;
+  background-color: #e0edff;
+	border-radius: 15px;
+}
+
+.balloon-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #e0edff;
+}
+
+.specification {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.specification h2 {
+	border-bottom: 1px solid #0c3;
+	margin-bottom: 20px;
+}
+
+.sample-result {
+	width: 48%;
+	text-align: center;
+}
+
+.point {
+	margin-bottom: 50px;
+}
+
+.point h3 {
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+.fa-user {
+	font-size: 2em;
+}
+
+.fa-long-arrow-alt-down {
+	font-size: 2em;
+	padding: 10px 0;
+}
+
+.commentary {
+	display: flex;
+	justify-content: space-around;
+}
+
+.sample-intro {
+	width: 48%;
+	margin-top: 70px;
+}
+
 .contents {
 	display: flex;
 }

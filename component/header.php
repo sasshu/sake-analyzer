@@ -1,5 +1,5 @@
 <div class="header-left">
-  <h1>SakeAnalyzer</h1>
+  <h1>Sake Analyzer</h1>
 </div>
 <ul class="header-right">
   <li><a href="index" onclick="initialize()">ホーム</a></li>

@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>お問い合わせ | SakeAnalyzer</title>
+  <title>お問い合わせ | Sake Analyzer</title>
   <link rel="stylesheet" href="component/sake_app.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="icon" href="image/favicon.ico">

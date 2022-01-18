@@ -14,7 +14,7 @@
     })
   </script>
   <?php require_once('component/function.php'); ?>
-  <title>データ提供元 | SakeAnalyzer</title>     <!-- ページタイトル -->
+  <title>データ提供元 | Sake Analyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
   <link rel="icon" href="image/favicon.ico">
 </head>

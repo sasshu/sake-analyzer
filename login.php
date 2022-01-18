@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script type="text/javascript">
     $(document).ready(() => {sgvizler.containerDrawAll();});
   </script>     <!-- Sgvizlerコンテナの呼び出し -->
-  <title>ログイン | SakeAnalyzer</title>     <!-- ページタイトル -->
+  <title>ログイン | Sake Analyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="icon" href="image/favicon.ico">
