@@ -610,7 +610,6 @@ footer {
 .form-check {
 	display: inline-block;
 	width: 100%;
-	white-space: nowrap;
 }
 
 .required:after {
