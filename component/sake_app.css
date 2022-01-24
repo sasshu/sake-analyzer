@@ -609,7 +609,7 @@ footer {
 
 .form-check {
 	display: inline-block;
-	width: 250px;
+	width: 100%;
 	white-space: nowrap;
 }
 

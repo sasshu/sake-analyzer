@@ -21,13 +21,6 @@ require_logined_session();
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
-  <script>
-  /* 拡大画像の設定 */
-  lightbox.option({
-    'maxWidth': 90%,
-    'maxHeight': 90%
-  })
-  </script>
   <link rel="icon" href="image/favicon.ico">
 </head>
 <body>

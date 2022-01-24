@@ -1,4 +1,10 @@
-<?php @session_start(); ?>
+<?php
+require_once('component/user_manage.php');
+@session_start();
+$_SESSION['url'] = getUrl();
+require_logined_session();
+?>
+
 <!doctype html>
 <html>
 <head>
