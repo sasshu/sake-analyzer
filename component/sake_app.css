@@ -226,10 +226,14 @@ input[type="radio"] , input[type="checkbox"] {
 }
 
 header {
-  height: 65px;
+	height: 65px;
   width: 100%;
 	margin-bottom: 20px;
   background-color: rgba(0, 128, 0, 0.8);
+}
+
+.bar-icon {
+	display: none;
 }
 
 .header-left h1 {
@@ -269,7 +273,7 @@ header {
 
 .header-right-child {
 	display: none;
-	position:absolute;
+	position: absolute;
 	background-color: rgba(0, 128, 0, 1.0);
 	padding: 0;
 	z-index: 1;
@@ -279,8 +283,7 @@ footer {
 	border-top: 1px solid lightgray;
 }
 
-.data-detail {
-	line-height: 20px;
+.footer-center {
 	text-align: center;
 	margin: 20px 0px;
 }
@@ -335,7 +338,8 @@ footer {
 }
 
 .specification {
-	width: 800px;
+	width: 100%;
+	max-width: 850px;
 	margin: 0 auto;
 }
 
@@ -578,7 +582,8 @@ footer {
 
 /* contact.php */
 #contact_form {
-	width: 800px;
+	width: 100%;
+	max-width: 850px;
 	margin: 0 auto;
 }
 
@@ -701,4 +706,59 @@ footer {
 .login-button:active {
   top: 3px;
   box-shadow: none;
+}
+
+@media screen and (max-width: 1000px) {
+/* 1000px以下に適用されるCSS（タブレット用） */
+.header-right {
+	display: none;
+	position: absolute;
+	top: 65px;
+	margin: 0;
+	padding: 0;
+	z-index: 5;
+	width: 100%;
+	background-color: #ddd;
+}
+
+.header-right li {
+	border-bottom: 1px solid #fff;
+	font-weight: bold;
+}
+
+.header-right a {
+	color: black;
+	padding: 0px 30px;
+}
+
+.header-right-child {
+	display: block;
+	position: static;
+	background-color: #ddd;
+}
+
+.header-right-child li {
+	border-bottom: 1px solid #fff;
+}
+
+#search-head {
+	border: 0px solid #eee;
+}
+
+#search-head > a {
+	display: none;
+}
+
+.bar-icon {
+	position: absolute;
+	right: 15px;
+	top: 7.5px;
+	display: block;
+	cursor: pointer;
+}
+
+#menu-btn-check:checked ~ .header-right {
+	display: block;
+}
+
 }

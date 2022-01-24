@@ -1,6 +1,8 @@
 <div class="header-left">
   <h1>Sake Analyzer</h1>
 </div>
+<input id="menu-btn-check" class="hide" type="checkbox">
+<label for="menu-btn-check" id="bar-icon"><img class="bar-icon"src="image/menu.png" alt="menu" width="50px" height="50px"></label>
 <ul class="header-right">
   <li><a href="index" onclick="initialize()">ホーム</a></li>
   <li id="search-head">
@@ -20,5 +22,4 @@
     echo '<li><a href="login">ログイン</a></li>';
   }
   ?>
-
 </ul>
