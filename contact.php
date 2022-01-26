@@ -62,10 +62,10 @@ require_logined_session();
           <div class="contact-list">
             <p class="required">お問い合わせ内容</p>
             <div id="contact-type" class="text-input" style="margin-top: 5px;">
-              <label class="form-check"><input class="element" type="checkbox" name="$お問い合わせ内容" value="アプリ機能に対する意見・要望" oninput="resetFormCss(this)">本アプリケーションの機能に対する意見・要望がある方</label>
-              <label class="form-check" style="margin-top: 5px;"><input class="element" type="checkbox" name="$お問い合わせ内容" value="アプリの不具合" oninput="resetFormCss(this)">本アプリケーションで意図しない動作を確認した方</label>
-              <label class="form-check" style="margin-top: 5px;"><input class="element" type="checkbox" name="$お問い合わせ内容" value="データ提供の希望" oninput="resetFormCss(this)">自社データを提供し、本アプリケーションでの使用を許可してくださる方</label>
-              <label class="form-check" style="margin-top: 5px;"><input class="element" type="checkbox" name="$お問い合わせ内容" value="データの更新" oninput="resetFormCss(this)">本アプリケーションで既に使用している自社データの更新を行いたい方</label>
+              <label class="form-check"><input class="element" type="checkbox" name="$お問い合わせ内容" value="アプリ機能に対する意見・要望" oninput="resetFormCss(this)">本アプリケーションの機能に対する意見や要望</label>
+              <label class="form-check" style="margin-top: 5px;"><input class="element" type="checkbox" name="$お問い合わせ内容" value="アプリの不具合" oninput="resetFormCss(this)">本アプリケーションでの意図しない動作についての連絡</label>
+              <label class="form-check" style="margin-top: 5px;"><input class="element" type="checkbox" name="$お問い合わせ内容" value="データ提供の希望" oninput="resetFormCss(this)">本アプリケーションに新たに追加していただける日本酒データの提供の申し出</label>
+              <label class="form-check" style="margin-top: 5px;"><input class="element" type="checkbox" name="$お問い合わせ内容" value="データの更新" oninput="resetFormCss(this)">本アプリケーションで既に使用している日本酒データの更新の申し出</label>
               <label class="form-check" style="margin-top: 5px;"><input class="element" type="checkbox" name="$お問い合わせ内容" value="その他" oninput="resetFormCss(this)">その他</label>
             </div>
           </div>
