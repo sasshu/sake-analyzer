@@ -21,7 +21,7 @@ require_logined_session();
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
-  <link rel="icon" href="image/favicon.ico">
+  <link rel="icon" href="logo/favicon.png">
 </head>
 <body>
   <header>      <!-- ヘッダーの読み込み -->

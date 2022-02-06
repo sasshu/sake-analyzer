@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <title>ログイン | Sake Analyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-  <link rel="icon" href="image/favicon.ico">
+  <link rel="icon" href="logo/favicon.png">
 </head>
 <body>
   <header>      <!-- ヘッダーの読み込み -->

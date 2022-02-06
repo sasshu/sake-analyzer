@@ -534,6 +534,7 @@ function preQuery() {     // グラフやprefixの指定
   echo 'PREFIX sk-prep: <http://www.sakevoc.jp/prep/>'."\n";
   echo 'PREFIX sk-make: <http://www.sakevoc.jp/make/>'."\n";
   echo 'with <http://sake_data>'."\n";
+  // echo 'with <http://sake_data_del>'."\n";
 }
 
 // 原料に対するクエリ詳細

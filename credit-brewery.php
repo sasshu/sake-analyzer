@@ -22,7 +22,7 @@ require_logined_session();
   <?php require_once('component/function.php'); ?>
   <title>データ提供元 | Sake Analyzer</title>     <!-- ページタイトル -->
   <link rel="stylesheet" href="component/sake_app.css">     <!-- cssの読み込み -->
-  <link rel="icon" href="image/favicon.ico">
+  <link rel="icon" href="logo/favicon.png">
 </head>
 <body>
   <header>

@@ -1,5 +1,6 @@
 <div class="header-left">
-  <h1>Sake Analyzer</h1>
+  <a href="index" onclick="initialize()"><img src="logo/logo_green.png" alt="" height="65px" style="margin-left: 20px;"></a>
+
 </div>
 <input id="menu-btn-check" class="hide" type="checkbox">
 <label for="menu-btn-check" id="bar-icon"><img class="bar-icon"src="image/menu.png" alt="menu" width="50px" height="50px"></label>

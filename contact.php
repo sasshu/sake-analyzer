@@ -13,7 +13,7 @@ require_logined_session();
   <title>お問い合わせ | Sake Analyzer</title>
   <link rel="stylesheet" href="component/sake_app.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
-  <link rel="icon" href="image/favicon.ico">
+  <link rel="icon" href="logo/favicon.png">
 </head>
 <body>
   <header>
