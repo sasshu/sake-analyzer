@@ -71,7 +71,7 @@ require_logined_session();
           bind(concat(?a1, ?a2, ?a3) as ?address)
         }"
         data-sgvizler-chart="sgvizler.visualization.Map"
-        data-sgvizler-chart-options="useMapTypeControl=true|showInfoWindow=true|showTooltip=true"
+        data-sgvizler-chart-options="mapType=normal|useMapTypeControl=true|showInfoWindow=true|showTooltip=true"
         style="width:75%; height:600px;">
         </div>
         <div id="brewry-list" class="query"
