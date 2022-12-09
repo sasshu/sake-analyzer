@@ -1,5 +1,5 @@
 # sake-analyzer
-[link](https://sake-analyzer.herokuapp.com/){:target="_blank"}
+https://sake-analyzer.herokuapp.com/
 
 ※IDとパスワードによるログインが必要です。
 
