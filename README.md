@@ -1,22 +1,17 @@
 # sake-analyzer
+https://sake-analyzer.herokuapp.com/
+※IDとパスワードによるログインが必要です。
+ID：cooperator
+パスワード：sake_0117_key
+
 ## アプリ概要
 日本酒の成分や製法のデータを可視化するWebアプリケーションです。
 
+絞り込み機能により、様々な条件を指定してデータをグラフに出力することができます。
+
 ## スクリーンショット
-<img src="https://user-images.githubusercontent.com/94373729/206601353-6e398908-1a1a-491c-9f8c-4322b33d6df9.png">
-<img src="https://user-images.githubusercontent.com/94373729/206601756-3158bb2a-871c-42cb-9211-2ec57fa79a5b.png" width="500">
-<img src="https://user-images.githubusercontent.com/94373729/206601893-5d997198-8441-4594-84b4-7ff2db2b1b49.png" width="500">
+<img src="https://user-images.githubusercontent.com/94373729/206603425-92e6911d-1892-4752-8a5f-2894bb48b450.png">
+<img src="https://user-images.githubusercontent.com/94373729/206603767-34813a81-d55a-4442-8bcc-07d7c344d6c3.png">
+<img src="https://user-images.githubusercontent.com/94373729/206601893-5d997198-8441-4594-84b4-7ff2db2b1b49.png">
 
-## 使用例
-<img src="https://user-images.githubusercontent.com/94373729/168720159-caf42697-7db2-4e44-8f9e-9c422f0ff06f.gif" width="200">
-
-## 作ろうと思ったきっかけ
-毎年冬から春にかけて山崎製パン株式会社のパン（ヤマパン）に点数シールがついてきて、「○○点集めるとお皿がもらえる」というキャンペーン（ヤマザキ春のパン祭り）が実施されています。
-
-私は最近（2022年2月）ホットサンドメーカーを購入し、食パンを消費する機会が増えました。
-
-同じ時期にキャンペーンが実施されていたため、食パンについている点数シールを集めはじめました。
-
-しかしいざ集めていくと、「**あと何点でお皿がもらえるのか**」というのがシール台紙をパッと見ただけではわからなく、**面倒ながらも**毎回電卓で計算して確認していました。
-
-この計算に**全国のヤマパン消費者が困っている**だろうなと思い、**シールを貼って点数を逆算するだけのスマホアプリ**を開発しました。
+## 説明資料
