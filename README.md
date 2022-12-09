@@ -3,7 +3,9 @@
 日本酒の成分や製法のデータを可視化するWebアプリケーションです。
 
 ## スクリーンショット
-<img src="https://user-images.githubusercontent.com/94373729/206599506-cfb8abda-6a31-4f5e-9dab-9d17d5b001cc.png" width="200">
+<img src="https://user-images.githubusercontent.com/94373729/206601353-6e398908-1a1a-491c-9f8c-4322b33d6df9.png" width="500">
+<img src="https://user-images.githubusercontent.com/94373729/206601756-3158bb2a-871c-42cb-9211-2ec57fa79a5b.png" width="500">
+<img src="https://user-images.githubusercontent.com/94373729/206601893-5d997198-8441-4594-84b4-7ff2db2b1b49.png" width="500">
 
 ## 使用例
 <img src="https://user-images.githubusercontent.com/94373729/168720159-caf42697-7db2-4e44-8f9e-9c422f0ff06f.gif" width="200">
