@@ -1,7 +1,10 @@
 # sake-analyzer
 https://sake-analyzer.herokuapp.com/
+
 ※IDとパスワードによるログインが必要です。
+
 ID：cooperator
+
 パスワード：sake_0117_key
 
 ## アプリ概要
@@ -15,3 +18,4 @@ ID：cooperator
 <img src="https://user-images.githubusercontent.com/94373729/206601893-5d997198-8441-4594-84b4-7ff2db2b1b49.png">
 
 ## 説明資料
+https://www.docswell.com/s/Shusuke_Sato/KN83DZ-sake-analyzer
